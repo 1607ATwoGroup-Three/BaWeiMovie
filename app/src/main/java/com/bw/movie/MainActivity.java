@@ -10,7 +10,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        BaseActivity.fullScreen(this,true);
+        BaseActivity.fullScreen(this,false);
         setContentView(R.layout.activity_main);
     }
 
