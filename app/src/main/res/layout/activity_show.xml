@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".avtivity.ShowActivity">
+
+    <FrameLayout
+        android:id="@+id/show_frage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_marginBottom="12dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/show_lin"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <ImageView
+            android:id="@+id/show_btn_Cinema"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/com_icon_cinema_default"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+        <ImageView
+            android:id="@+id/show_btn_My"
+            android:layout_marginRight="24dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/com_icon_my_default"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+        <ImageView
+            android:id="@+id/show_btn_Film"
+            android:layout_marginLeft="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/com_icon_film_selected"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+    </RelativeLayout>
+</RelativeLayout>

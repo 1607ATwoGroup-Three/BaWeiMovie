@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <ImageView
-        android:paddingTop="25dp"
-        android:background="@color/colorAccent"
-        android:layout_width="375dp"
-        android:layout_height="30dp" />
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/tv"
-        android:background="#3fccd6"
+        android:id="@+id/img"
+        android:fitsSystemWindows="true"
+        android:background="@mipmap/icon_start_page"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="match_parent" />
+    <TextView
+        android:layout_marginBottom="24dp"
+        android:layout_above="@id/main_text_1"
+        android:layout_centerHorizontal="true"
+        android:text="维度影院"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/main_text_1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="98dp"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:text="一场不一样的视图盛宴"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
