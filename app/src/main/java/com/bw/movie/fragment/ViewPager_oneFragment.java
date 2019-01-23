@@ -20,5 +20,4 @@ public class ViewPager_oneFragment extends Fragment {
         View view =View.inflate(getContext(),R.layout.fragment_view_pager_one,null);
         return view;
     }
-
 }

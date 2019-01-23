@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.ViewPager_oneFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_gravity="center"
+        android:background="@mipmap/yin_tu1"
+        android:layout_marginTop="150dp"
+        android:layout_width="205dp"
+        android:layout_height="205dp" />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:text="一场电影"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="净化你的灵魂"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

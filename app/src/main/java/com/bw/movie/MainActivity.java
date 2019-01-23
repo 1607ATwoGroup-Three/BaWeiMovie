@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
-import com.bw.movie.R;
 import com.bw.movie.avtivity.IndexActivity;
+import com.bw.movie.avtivity.LoginActivity;
 import com.bw.movie.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -15,7 +15,7 @@ public class MainActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(index==0){
-                Intent intent =new Intent(MainActivity.this,IndexActivity.class);
+                Intent intent =new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
