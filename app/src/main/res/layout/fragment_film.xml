@@ -6,14 +6,33 @@
     android:background="#a7f2d0"
     tools:context=".fragment.FilmFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="186dp"
+        android:background="@mipmap/com_background_fub2" />
+
+    <ImageView
+        android:id="@+id/film_image_white"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/com_icon_loc_white_default" />
+
     <TextView
-        android:id="@+id/film_text"
+        android:textSize="14sp"
+        android:layout_marginLeft="6dp"
+        android:layout_alignTop="@id/film_image_white"
+        android:id="@+id/film_text_white"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/film_image_white"
+        android:text="北京"
+        android:textColor="#ffffff" />
+
     <recycler.coverflow.RecyclerCoverFlow
-        android:visibility="gone"
         android:id="@+id/film_recycle"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        />
+        android:visibility="gone" />
 </RelativeLayout>

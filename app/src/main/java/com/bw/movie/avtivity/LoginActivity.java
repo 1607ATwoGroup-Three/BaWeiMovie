@@ -12,7 +12,7 @@ import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.LoginData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
-import com.bw.movie.utils.SpUtil;
+import com.bw.movie.utils.SpBase;
 import com.xw.repo.XEditText;
 
 import java.util.HashMap;
@@ -33,11 +33,11 @@ public class LoginActivity extends BaseActivity implements Contract.View {
     protected void initView() {
         setContentView(R.layout.activity_login);
 
-        SpUtil.put("cb",false);
-        boolean cb =SpUtil.getBoolean("cb", false);
+        SpBase.save("cb",false+"");
+        boolean cb = Boolean.parseBoolean(SpBase.getString("cb", false + ""));
         if (cb){
-            String phone = SpUtil.getString("log_phone", "");
-            String pwd = SpUtil.getString("log_pwd", "");
+            String phone = SpBase.getString( "log_phone", "");
+            String pwd = SpBase.getString("log_pwd", "");
             login_phone.setText(phone);
             login_pwd.setText(pwd);
             login_jizhumima.setChecked(true);
@@ -70,13 +70,12 @@ public class LoginActivity extends BaseActivity implements Contract.View {
                 String log_phone = login_phone.getText().toString();
                 String log_pwd = login_pwd.getText().toString();
                 if (login_jizhumima.isChecked()){
-                    edit.putString("log_phone",log_phone);
-                    edit.putString("log_pwd",log_pwd);
-                    edit.putBoolean("cb",true);
-                    edit.commit();
+                    SpBase.save("log_phone",log_phone);
+                    SpBase.save("log_pwd",log_pwd);
+                    SpBase.save("cb",true+"");
+                    SpBase.save("log_phone",log_phone);
                 }else {
-                    edit.clear();
-                    edit.commit();
+                    SpBase.cancel();
                 }
             }
         });

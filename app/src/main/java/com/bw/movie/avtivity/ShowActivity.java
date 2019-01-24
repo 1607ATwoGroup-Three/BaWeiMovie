@@ -1,23 +1,16 @@
 package com.bw.movie.avtivity;
 
-import android.Manifest;
 import android.animation.ObjectAnimator;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.maps.AMap;
@@ -30,9 +23,7 @@ import com.bw.movie.fragment.CinemaFragment;
 import com.bw.movie.fragment.FilmFragment;
 import com.bw.movie.fragment.MyFragment;
 import com.bw.movie.utils.LocationUtil;
-import com.bw.movie.utils.SpUtil;
-
-import java.util.Map;
+import com.bw.movie.utils.SpBase;
 
 
 public class ShowActivity extends AppCompatActivity implements View.OnClickListener,LocationSource {
@@ -83,6 +74,13 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         if(aMap==null){
             aMap =show_mapView.getMap();
         }
+        setLocationCallBack();
+        aMap.setLocationSource(this);
+        //设置缩放级别
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+        //显示定位层并可触发，默认false
+        aMap.setMyLocationEnabled(true);
+
         fragment[0] = new FilmFragment();
         fragment[1] = new CinemaFragment();
         fragment[2] = new MyFragment();
@@ -92,12 +90,6 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         img[3] = show_btn_My_selected;
         img[4] = show_btn_Cinema;
         img[5] = show_btn_Cinema_selected;
-        setLocationCallBack();
-        aMap.setLocationSource(this);
-        //设置缩放级别
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
-        //显示定位层并可触发，默认false
-        aMap.setMyLocationEnabled(true);
     }
 
     public void present() {
@@ -173,9 +165,9 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("经度",lat+"");
                 Log.e("玮度",lgt+"");
                 Log.e("城区",str);
-                SpUtil.put("lat",lat);
-                SpUtil.put("lgt",lgt);
-                SpUtil.put("str",str);
+                SpBase.save("lat",lat+"");
+                SpBase.save("lgt",lgt+"");
+                SpBase.save("str",str);
             }
         });
     }
