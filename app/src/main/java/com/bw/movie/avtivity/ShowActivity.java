@@ -67,7 +67,6 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initData() {
-
         fragment[0] = new FilmFragment();
         fragment[1] = new CinemaFragment();
         fragment[2] = new MyFragment();
