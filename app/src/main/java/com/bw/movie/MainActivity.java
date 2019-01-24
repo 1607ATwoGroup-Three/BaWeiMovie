@@ -6,12 +6,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
 
-import com.bw.movie.avtivity.IndexActivity;
 import com.bw.movie.avtivity.LoginActivity;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.contract.Contract;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
@@ -77,6 +75,8 @@ public class MainActivity extends BaseActivity {
                     }
                 }
             });
+        }else{
+            handler.sendEmptyMessage(0);
         }
     }
 

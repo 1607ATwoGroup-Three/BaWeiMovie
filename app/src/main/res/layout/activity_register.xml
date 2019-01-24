@@ -225,7 +225,7 @@
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
         android:background="#7df1f1f1" />
- 
+
     <Button
         android:id="@+id/login_button"
         android:layout_width="280dp"
