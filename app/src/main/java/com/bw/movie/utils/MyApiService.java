@@ -5,6 +5,8 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
@@ -24,7 +26,7 @@ public interface  MyApiService {
     Observable<ResponseBody> get(@Url String url,@HeaderMap Map<String,Object> headmap, @QueryMap Map<String,Object> map);
 
     @POST
-    Observable<ResponseBody> post(@Url String url,@HeaderMap Map<String,Object> headmap,@QueryMap Map<String,Object>map);
+    Observable<ResponseBody> post(@Url String url, @HeaderMap Map<String,Object> headmap, @FieldMap Map<String, Object>map);
 
     @POST
     Observable<ResponseBody> img(@Url String url, @HeaderMap Map<String,Object> headmap, @Body MultipartBody body);

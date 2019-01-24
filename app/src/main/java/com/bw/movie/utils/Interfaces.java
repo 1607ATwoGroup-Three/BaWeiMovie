@@ -32,21 +32,22 @@ public class Interfaces {
     public static final String UserCheckIn = "movieApi/user/v1/verify/userSignIn";
     //    用户购票记录查询列表 get
     public static final String QueryListOfUserPurchaseRecords = "movieApi/user/v1/verify/findUserBuyTicketRecordList";
-//    微信登陆 post
+    //    微信登陆 post
     public static final String WeChatlanding = "movieApi/user/v1/weChatBindingLogin";
-//    绑定微信账号 post
+    //    绑定微信账号 post
     public static final String IndingWechatAccount = "movieApi/user/v1/verify/bindWeChat";
-//    是否绑定微信账号 get
+    //    是否绑定微信账号 get
     public static final String WhetherToBindWeichatAccount = "movieApi/user/v1/verify/whetherToBindWeChat";
-//    查询热门电影列表 get
+    //    查询热门电影列表 get
     public static final String QueryTheListOfPopularMovies = "movieApi/movie/v1/findHotMovieList";
-//    查询正在上映电影列表 get
+    //    查询正在上映电影列表 get
     public static final String QueryTheListOfMoviesBeingShown = "movieApi/movie/v1/findReleaseMovieList";
-//    查询即将上映电影列表 GET
+    //    查询即将上映电影列表 GET
     public static final String QueryTheListOfUpcomingMovies = "movieApi/movie/v1/findComingSoonMovieList";
-//    根据电影ID查询电影信息 get
+    //    根据电影ID查询电影信息 get
     public static final String SearchFilmInformationBasedOnFilmID = "movieApi/movie/v1/findMoviesById";
-//    查看电影详情 get
-    public static final String CheckOutTheDetailsOfTheMovie  = "movieApi/movie/v1/findMoviesDetail";
-
+    //    查看电影详情 get
+    public static final String CheckOutTheDetailsOfTheMovie = "movieApi/movie/v1/findMoviesDetail";
+    //    查询附近的影院 get
+    public static final String SearchForNearbyCinemas = "movieApi/cinema/v1/findNearbyCinemas";
 }

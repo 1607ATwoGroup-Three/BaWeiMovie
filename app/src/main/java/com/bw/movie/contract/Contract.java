@@ -31,4 +31,10 @@ public interface Contract {
         void success(T success);
         void error(String error);
     }
+    interface PermissionListener {
+//        动态获取权限成功
+        void granted();
+//        失败
+        void denied(List<String> deniedList);
+    }
 }

@@ -12,13 +12,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initView() {
         setContentView(R.layout.activity_login);
-        Button zc = findViewById(R.id.login_btn_register);
-        zc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
-            }
-        });
+
     }
 
     @Override
