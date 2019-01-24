@@ -1,9 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/login_zhuce_beijing"
     tools:context=".avtivity.RegisterActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/line4"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:background="@mipmap/register_icon_name_default" />
+
+        <com.xw.repo.XEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="昵称"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="#eeeeee"
+            android:textColorHint="#eeeeee"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/line4"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:background="#7df1f1f1" />
+
+    <LinearLayout
+        android:id="@+id/line5"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv4"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:background="@mipmap/register_icon_sex_default" />
+
+        <com.xw.repo.XEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="性别"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="#eeeeee"
+            android:textColorHint="#eeeeee"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/line5"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:background="#7df1f1f1" />
+
+    <LinearLayout
+        android:id="@+id/line6"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv5"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:background="@mipmap/register_icon_date_default" />
+
+        <com.xw.repo.XEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="出生日期"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="#eeeeee"
+            android:textColorHint="#eeeeee"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv6"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/line6"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:background="#7df1f1f1" />
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv6"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:background="@mipmap/register_icon_phone_default" />
+
+        <com.xw.repo.XEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="手机号"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="#eeeeee"
+            android:textColorHint="#eeeeee"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/line1"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:background="#7df1f1f1" />
+
+    <LinearLayout
+        android:id="@+id/line3"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv1"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:background="@mipmap/register_icon_mail_default" />
+
+        <com.xw.repo.XEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="邮箱"
+            android:textColor="#eeeeee"
+            android:textColorHint="#eeeeee"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/line3"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:background="#7df1f1f1" />
+
+    <LinearLayout
+        android:id="@+id/line2"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv3"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="40dp"
+            android:background="@mipmap/register_icon_lock_default" />
+
+        <com.xw.repo.XEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="登录密码"
+            android:inputType="textPassword"
+            android:maxLength="6"
+            android:textColor="#eeeeee"
+            android:textColorHint="#eeeeee"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/line2"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="10dp"
+        android:background="#7df1f1f1" />
+ 
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/tv2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:background="@drawable/login_login"
+        android:text="注册"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+</RelativeLayout>
