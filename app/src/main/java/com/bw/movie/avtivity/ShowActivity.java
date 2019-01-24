@@ -56,7 +56,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BaseActivity.fullScreen(this, false);
+        BaseActivity.fullScreen(this, true);
         setContentView(R.layout.activity_show);
         initView();
         initData();

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
 
+import com.bw.movie.avtivity.IndexActivity;
 import com.bw.movie.avtivity.LoginActivity;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.contract.Contract;
@@ -32,7 +33,7 @@ public class MainActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(index==0){
-                Intent intent =new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent =new Intent(MainActivity.this,IndexActivity.class);
                 startActivity(intent);
                 finish();
             }

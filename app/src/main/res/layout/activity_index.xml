@@ -9,36 +9,46 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/index_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="411dp">
+        android:layout_height="match_parent">
     </android.support.v4.view.ViewPager>
     <RadioGroup
-        android:layout_below="@id/index_viewpager"
-        android:layout_width="wrap_content"
+        android:id="@+id/viewpager_rg"
+        android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content">
         <RadioButton
-            android:background="#333333"
-            android:button="@null"
+            android:id="@+id/viewpager_rb1"
             android:layout_width="12dp"
-            android:layout_height="12dp" />
+            android:layout_height="12dp"
+            android:background="@drawable/viewpager_circle_selected"
+            android:button="@null"
+            android:checked="true" />
+
         <RadioButton
-            android:background="#d8d8d8"
-            android:layout_marginLeft="10dp"
-            android:button="@null"
+            android:id="@+id/viewpager_rb2"
             android:layout_width="12dp"
-            android:layout_height="12dp" />
+            android:layout_height="12dp"
+            android:background="@drawable/viewpager_circle_selected"
+            android:button="@null"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
         <RadioButton
-            android:background="#d8d8d8"
-            android:layout_marginLeft="10dp"
-            android:button="@null"
+            android:id="@+id/viewpager_rb3"
             android:layout_width="12dp"
-            android:layout_height="12dp" />
+            android:layout_height="12dp"
+            android:background="@drawable/viewpager_circle_selected"
+            android:button="@null"
+            android:layout_marginRight="10dp"/>
+
         <RadioButton
-            android:background="#d8d8d8"
-            android:layout_marginLeft="10dp"
-            android:button="@null"
+            android:id="@+id/viewpager_rb4"
             android:layout_width="12dp"
-            android:layout_height="12dp" />
+            android:layout_height="12dp"
+            android:background="@drawable/viewpager_circle_selected"
+            android:button="@null" />
     </RadioGroup>
 </RelativeLayout>
