@@ -26,10 +26,8 @@ import com.bw.movie.utils.LocationUtil;
 import com.bw.movie.utils.SpBase;
 
 
-public class ShowActivity extends AppCompatActivity implements View.OnClickListener,LocationSource {
+public class ShowActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private LocationSource.OnLocationChangedListener mListener = null;//定位监听器
-    private LocationUtil locationUtil;
 
     private FrameLayout show_frage;
     private ImageView show_btn_Cinema;
@@ -41,13 +39,12 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView show_btn_Cinema_selected;
     private ImageView show_btn_My_selected;
     private ImageView show_btn_Film_selected;
-    private MapView show_mapView;
-    private AMap aMap;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BaseActivity.fullScreen(this, true);
+        BaseActivity.fullScreen(this, false);
         setContentView(R.layout.activity_show);
         initView();
         initData();
@@ -55,7 +52,6 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initView() {
-        show_mapView = findViewById(R.id.show_mapView);
         show_frage = findViewById(R.id.show_frage);
         show_btn_Film = findViewById(R.id.show_btn_Film_default);
         show_btn_My = findViewById(R.id.show_btn_My_default);
@@ -71,15 +67,6 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initData() {
-        if(aMap==null){
-            aMap =show_mapView.getMap();
-        }
-        setLocationCallBack();
-        aMap.setLocationSource(this);
-        //设置缩放级别
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
-        //显示定位层并可触发，默认false
-        aMap.setMyLocationEnabled(true);
 
         fragment[0] = new FilmFragment();
         fragment[1] = new CinemaFragment();
@@ -154,32 +141,5 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         animator2.setDuration(1500);
         animator.start();
         animator2.start();
-    }
-
-    private void setLocationCallBack() {
-        locationUtil = new LocationUtil();
-        locationUtil.setLocationCallBack(new LocationUtil.ILocationCallBack() {
-            @Override
-            public void callBack(String str,double lat,double lgt,AMapLocation aMapLocation) {
-                mListener.onLocationChanged(aMapLocation);
-                Log.e("经度",lat+"");
-                Log.e("玮度",lgt+"");
-                Log.e("城区",str);
-                SpBase.save("lat",lat+"");
-                SpBase.save("lgt",lgt+"");
-                SpBase.save("str",str);
-            }
-        });
-    }
-//    这是一个定位的回调
-    @Override
-    public void activate(OnLocationChangedListener onLocationChangedListener) {
-        mListener = onLocationChangedListener;
-        locationUtil.startLocate(getApplicationContext());
-    }
-
-    @Override
-    public void deactivate() {
-        mListener = null;
     }
 }

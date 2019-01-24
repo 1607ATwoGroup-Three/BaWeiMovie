@@ -183,4 +183,9 @@
         android:text="游客模式"
         android:textColor="#fff"
         android:textSize="12sp" />
+    <com.amap.api.maps.MapView
+        android:visibility="gone"
+        android:id="@+id/login_mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.amap.api.maps.MapView>
 </RelativeLayout>
