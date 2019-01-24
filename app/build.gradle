@@ -46,4 +46,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 //  首页的旋转木马
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
+
+    implementation 'com.xw.repo:xedittext:2.1.0@aar'
 }
