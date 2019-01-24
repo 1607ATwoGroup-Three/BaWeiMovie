@@ -40,7 +40,6 @@ public class FilmFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("111111","111111111111");
         film_text_white.setText(SpBase.getString("str","没有定位"));
     }
 }

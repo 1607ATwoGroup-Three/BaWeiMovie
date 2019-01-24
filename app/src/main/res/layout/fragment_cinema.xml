@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#47a4ec"
     tools:context=".fragment.CinemaFragment">
 
+    <ImageView
+        android:id="@+id/cinema_image_white"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/com_icon_loc_white_default" />
+
     <TextView
+        android:id="@+id/cinema_text_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/cinema_image_white"
+        android:layout_marginLeft="6dp"
+        android:layout_toRightOf="@id/cinema_image_white"
+        android:text="北京"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
 
-        android:text="影院"
-        android:background="#3e90e2"
+    <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="25dp"
+        android:layout_below="@id/cinema_image_white"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <TextView
+            android:background="@drawable/cinema_ed"
+            android:gravity="center"
+            android:id="@+id/cinema_btn_Recommend"
+            android:layout_width="83dp"
+            android:layout_height="25dp"
+            android:text="推荐影院"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/cinema_btn_nearby"
+            android:layout_width="83dp"
+            android:layout_height="25dp"
+            android:layout_below="@id/cinema_image_white"
+            android:layout_marginLeft="32dp"
+            android:layout_toRightOf="@id/cinema_btn_Recommend"
+            android:gravity="center"
+            android:text="附近影院"
+            android:background="@drawable/cinema_noed"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>
