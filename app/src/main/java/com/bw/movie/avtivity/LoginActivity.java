@@ -9,8 +9,11 @@ import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.bean.LoginData;
 import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.SpUtil;
+import com.xw.repo.XEditText;
 
 import java.util.HashMap;
 import java.util.Map;
