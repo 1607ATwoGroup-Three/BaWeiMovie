@@ -99,7 +99,6 @@ public class LoginActivity extends BaseActivity implements Contract.View {
         map.put("phone",login_phone.getText()+"");
         map.put("pwd",login_pwd.getText()+"");
 
-
     }
 
 

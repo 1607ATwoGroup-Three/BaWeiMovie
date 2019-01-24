@@ -11,7 +11,6 @@
         <!-- Customize your theme here. -->
         <item name="colorControlNormal">#fdfafa</item>
         <item name="colorControlActivated">#f6f7d4</item>
-
     </style>
 
 </resources>
