@@ -34,7 +34,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- 更改设置 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
     <!-- 3.2.0版本增加 -->
@@ -68,13 +69,16 @@
         <activity android:name=".avtivity.ShowActivity" />
         <activity android:name=".avtivity.IndexActivity" />
         <activity android:name=".avtivity.LoginActivity" />
-        <activity android:name=".avtivity.RegisterActivity"></activity>
+        <activity android:name=".avtivity.RegisterActivity" />
         <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="4bad02a26fa5a05aaec725c777a4e0a6" />
         <!-- 定位需要的服务 -->
-        <service android:name="com.amap.api.location.APSService"></service>
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".avtivity.my.UserActivity" />
+        <activity android:name=".avtivity.my.ResetPwdActivity"></activity>
     </application>
 
 </manifest>
