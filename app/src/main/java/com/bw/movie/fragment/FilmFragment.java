@@ -3,6 +3,8 @@ package com.bw.movie.fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -18,13 +20,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.adapter.FilmAdapter;
+import com.bw.movie.bean.PopularData;
+import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
+import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.SpBase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 这是一个影片的fragment
  */
 
-public class FilmFragment extends Fragment implements View.OnClickListener {
+public class FilmFragment extends Fragment implements View.OnClickListener, Contract.View {
 
 
     private ImageView film_image_white;
@@ -32,8 +44,12 @@ public class FilmFragment extends Fragment implements View.OnClickListener {
     private EditText film_search_ed;
     private TextView film_search;
     private LinearLayout film_search_lin;
+    private RecyclerView film_recycle;
     private TransitionSet mSet;
     boolean isExpand = false;
+    private List<PopularData.ResultBean> list = new ArrayList<>();
+    private Contract.Presenter presenter;
+    private FilmAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +57,19 @@ public class FilmFragment extends Fragment implements View.OnClickListener {
         View view = View.inflate(getContext(), R.layout.fragment_film, null);
 
         initView(view);
+        present();
         return view;
+    }
+
+    private void present() {
+        presenter = new Presenter(this);
+        Map<String,Object> headmap =new HashMap<>();
+        headmap.put("userId",SpBase.getString(getContext(),"userId",""));
+        headmap.put("sessionId",SpBase.getString(getContext(),"sessionId",""));
+        Map<String,Object> map =new HashMap<>();
+        map.put("page","1");
+        map.put("count","100");
+        presenter.get(Interfaces.SearchForHotMovies,headmap,map,PopularData.class);
     }
 
     private void initView(View view) {
@@ -52,12 +80,18 @@ public class FilmFragment extends Fragment implements View.OnClickListener {
         film_search.setOnClickListener(this);
         film_search_lin = (LinearLayout) view.findViewById(R.id.film_search_lin);
         film_search_lin.setOnClickListener(this);
+        film_recycle = (RecyclerView) view.findViewById(R.id.film_recycle);
+        film_recycle.setOnClickListener(this);
+        film_recycle.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new FilmAdapter(getContext(),list);
+//        adapter.settype(0);
+        film_recycle.setAdapter(adapter);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        film_text_white.setText(SpBase.getString(getContext(),"str", "没有定位"));
+        film_text_white.setText(SpBase.getString(getContext(), "str", "没有定位"));
     }
 
     private void submit() {
@@ -129,5 +163,20 @@ public class FilmFragment extends Fragment implements View.OnClickListener {
     private int dip2px(float dpVale) {
         final float scale = getResources().getDisplayMetrics().density;
         return (int) (dpVale * scale + 0.5f);
+    }
+
+    @Override
+    public void success(Object success) {
+        if (success instanceof PopularData) {
+            PopularData data = (PopularData) success;
+            list.addAll(data.getResult());
+            adapter.settype(2);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void error(String error) {
+        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
     }
 }
