@@ -146,6 +146,13 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, ShowActivity.class);
             startActivity(intent);
+
+            String sessionId = loginData.getResult().getSessionId();
+            int userId = loginData.getResult().getUserId();
+            SpBase.save("sessionId",sessionId);
+            SpBase.save("userId",userId+"");
+            Toast.makeText(this, sessionId, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, userId+"", Toast.LENGTH_SHORT).show();
             finish();
         }else {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
