@@ -68,8 +68,8 @@
 
         <activity android:name=".avtivity.ShowActivity" />
         <activity android:name=".avtivity.IndexActivity" />
-        <activity android:name=".avtivity.LoginActivity" />
-        <activity android:name=".avtivity.RegisterActivity" />
+        <activity android:name=".avtivity.LoginActivity" android:launchMode="singleTask"/>
+        <activity android:name=".avtivity.RegisterActivity" android:launchMode="singleTask" />
         <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"

@@ -35,14 +35,16 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv1"
         android:layout_width="300dp"
         android:layout_height="2dp"
+        android:background="#33ffffff"
         android:layout_below="@id/line1"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        />
+
 
     <LinearLayout
         android:id="@+id/line2"
@@ -73,14 +75,14 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv2"
         android:layout_width="300dp"
         android:layout_height="2dp"
+        android:background="#33ffffff"
         android:layout_below="@id/line2"
         android:layout_marginLeft="38dp"
-        android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:id="@+id/line3"

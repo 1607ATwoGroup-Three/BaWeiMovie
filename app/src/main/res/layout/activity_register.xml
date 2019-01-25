@@ -22,26 +22,26 @@
             android:background="@mipmap/register_icon_name_default" />
 
         <com.xw.repo.XEditText
+            android:id="@+id/Register_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:background="@null"
             android:hint="昵称"
-            android:inputType="phone"
             android:maxLength="11"
             android:textColor="#eeeeee"
             android:textColorHint="#eeeeee"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv4"
         android:layout_width="300dp"
         android:layout_height="2dp"
         android:layout_below="@id/line4"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        android:background="#33ffffff" />
 
     <LinearLayout
         android:id="@+id/line5"
@@ -59,6 +59,7 @@
             android:background="@mipmap/register_icon_sex_default" />
 
         <com.xw.repo.XEditText
+            android:id="@+id/Register_sex"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -68,17 +69,17 @@
             android:maxLength="11"
             android:textColor="#eeeeee"
             android:textColorHint="#eeeeee"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv5"
         android:layout_width="300dp"
         android:layout_height="2dp"
         android:layout_below="@id/line5"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        android:background="#33ffffff" />
 
     <LinearLayout
         android:id="@+id/line6"
@@ -96,6 +97,7 @@
             android:background="@mipmap/register_icon_date_default" />
 
         <com.xw.repo.XEditText
+            android:id="@+id/Register_birthday"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -105,17 +107,17 @@
             android:maxLength="11"
             android:textColor="#eeeeee"
             android:textColorHint="#eeeeee"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv6"
         android:layout_width="300dp"
         android:layout_height="2dp"
         android:layout_below="@id/line6"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        android:background="#33ffffff" />
 
     <LinearLayout
         android:id="@+id/line1"
@@ -133,6 +135,7 @@
             android:background="@mipmap/register_icon_phone_default" />
 
         <com.xw.repo.XEditText
+            android:id="@+id/Register_phone"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -142,17 +145,17 @@
             android:maxLength="11"
             android:textColor="#eeeeee"
             android:textColorHint="#eeeeee"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv1"
         android:layout_width="300dp"
         android:layout_height="2dp"
         android:layout_below="@id/line1"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        android:background="#33ffffff" />
 
     <LinearLayout
         android:id="@+id/line3"
@@ -170,6 +173,7 @@
             android:background="@mipmap/register_icon_mail_default" />
 
         <com.xw.repo.XEditText
+            android:id="@+id/Register_emil"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -177,17 +181,17 @@
             android:hint="邮箱"
             android:textColor="#eeeeee"
             android:textColorHint="#eeeeee"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv3"
         android:layout_width="300dp"
         android:layout_height="2dp"
         android:layout_below="@id/line3"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        android:background="#33ffffff" />
 
     <LinearLayout
         android:id="@+id/line2"
@@ -205,6 +209,7 @@
             android:background="@mipmap/register_icon_lock_default" />
 
         <com.xw.repo.XEditText
+            android:id="@+id/Register_pwd"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -214,20 +219,20 @@
             android:maxLength="6"
             android:textColor="#eeeeee"
             android:textColorHint="#eeeeee"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <View
         android:id="@+id/tv2"
         android:layout_width="300dp"
         android:layout_height="2dp"
         android:layout_below="@id/line2"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="10dp"
-        android:background="#7df1f1f1" />
+        android:background="#33ffffff" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/Register_button"
         android:layout_width="280dp"
         android:layout_height="40dp"
         android:layout_below="@id/tv2"

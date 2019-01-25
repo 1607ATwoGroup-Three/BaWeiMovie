@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.maps.AMap;
@@ -18,6 +19,8 @@ import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.LoginData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
+import com.bw.movie.utils.EncryptUtil;
+import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.LocationUtil;
 import com.bw.movie.utils.SpBase;
 import com.xw.repo.XEditText;
@@ -40,6 +43,9 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     private LocationSource.OnLocationChangedListener mListener = null;//定位监听器
     private LocationUtil locationUtil;
     private AMap aMap;
+    private Presenter presenter;
+    private String log_pwd;
+    private String log_phone;
 
     @Override
     protected void initView() {
@@ -87,17 +93,28 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 startActivity(intent);
             }
         });
+        //登录
         login_button.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View v) {
 
-                String log_phone = login_phone.getText().toString();
-                String log_pwd = login_pwd.getText().toString();
+                Map<String,Object> headmap=new HashMap<>();
+                Map<String,Object> map=new HashMap<>();
+                map.put("phone",login_phone.getText()+"");
+                String pwd = login_pwd.getTrimmedString ().trim ();
+                String encrypt = EncryptUtil.encrypt (pwd);
+                map.put("pwd",encrypt);
+                presenter.post(Interfaces.Land,headmap,map,LoginData.class);
+
+                log_phone = login_phone.getText().toString();
+                log_pwd = login_pwd.getText().toString();
                 if (login_jizhumima.isChecked()){
-                    SpBase.save("log_phone",log_phone);
-                    SpBase.save("log_pwd",log_pwd);
+                    SpBase.save("log_phone", log_phone);
+                    SpBase.save("log_pwd", log_pwd);
                     SpBase.save("cb",true+"");
-                    SpBase.save("log_phone",log_phone);
                 }else {
                     SpBase.cancel();
                 }
@@ -117,24 +134,27 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
 
     @Override
     protected void present() {
-        Presenter presenter=new Presenter(this);
-        Map<String,String> map=new HashMap<>();
-        map.put("phone",login_phone.getText()+"");
-        map.put("pwd",login_pwd.getText()+"");
+        presenter = new Presenter(this);
     }
 
 
     @Override
     public void success(Object success) {
         LoginData loginData= (LoginData) success;
+        String message = loginData.getMessage();
         if(loginData.getStatus().equals("0000")){
-
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this, ShowActivity.class);
+            startActivity(intent);
+            finish();
+        }else {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void error(String error) {
-
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 
 //    这是定位
@@ -164,5 +184,13 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     @Override
     public void deactivate() {
         mListener = null;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("121111111","11111111111");
+        String phone = SpBase.getString("ter_phone","");
+        login_phone.setText(phone);
     }
 }
