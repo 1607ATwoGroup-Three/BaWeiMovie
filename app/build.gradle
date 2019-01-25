@@ -48,4 +48,6 @@ dependencies {
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
     implementation 'com.xw.repo:xedittext:2.1.0@aar'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //出生日期三级联动
+    implementation 'com.contrarywind:Android-PickerView:4.1.7'
 }
