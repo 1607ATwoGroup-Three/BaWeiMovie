@@ -51,16 +51,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     protected void initView() {
         setContentView(R.layout.activity_login);
 
-        SpBase.save(LoginActivity.this,"cb",false+"");
-        boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
-        if (cb){
-            String phone = SpBase.getString( LoginActivity.this,"log_phone", "");
-            String pwd = SpBase.getString(LoginActivity.this,"log_pwd", "");
-            login_phone.setText(phone);
-            login_pwd.setText(pwd);
-            login_jizhumima.setChecked(true);
-        }
-
     }
 
     @Override
@@ -84,6 +74,15 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         login_jizhumima = findViewById(R.id.login_jizhumima);
         login_zidongdenglu = findViewById(R.id.login_zidongdenglu);
         youke = findViewById(R.id.Youke);
+
+        boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
+        if (cb){
+            String phone = SpBase.getString( LoginActivity.this,"log_phone", "");
+            String pwd = SpBase.getString(LoginActivity.this,"log_pwd", "");
+            login_phone.setText(phone);
+            login_pwd.setText(pwd);
+            login_jizhumima.setChecked(true);
+        }
 
         //点击事件
         login_Zhuce.setOnClickListener(new View.OnClickListener() {
@@ -148,14 +147,12 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         if(loginData.getStatus().equals("0000")){
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, ShowActivity.class);
-            startActivity(intent);
 
             String sessionId = loginData.getResult().getSessionId();
             int userId = loginData.getResult().getUserId();
             SpBase.save(LoginActivity.this,"sessionId",sessionId);
             SpBase.save(LoginActivity.this,"userId",userId+"");
-            Toast.makeText(this, sessionId, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, userId+"", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
             finish();
         }else {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
