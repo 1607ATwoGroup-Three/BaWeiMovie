@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.amap.api.maps.LocationSource;
 import com.bw.movie.contract.Contract;
@@ -33,6 +34,7 @@ import java.util.List;
 public abstract class BaseActivity extends AppCompatActivity {
     private static Contract.PermissionListener mListener;
     private static Activity activity ;
+    private long exitTime =0;
     /**
      * context
      **/
@@ -66,17 +68,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         present();
         ctx = this;
 // screenManager.setScreenRoate(isScreenRoate, this);
-    }
-    //返回键返回事件
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (KeyEvent.KEYCODE_BACK == keyCode) {
-            if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-                finish();
-                return true;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
     }
     /**
      *   * 通过设置全屏，设置状态栏透明
@@ -166,4 +157,20 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction () == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis () - exitTime) > 2000) {
+                //弹出提示，可以有多种方式
+                Toast.makeText (this, "再按一次退出程序", Toast.LENGTH_SHORT).show ();
+                exitTime = System.currentTimeMillis ();
+            } else {
+                finish ();
+            }
+            return true;
+        }
+        return super.onKeyDown (keyCode, event);
+    }
+
 }

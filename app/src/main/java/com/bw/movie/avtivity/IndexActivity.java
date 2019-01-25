@@ -21,6 +21,7 @@ import com.bw.movie.fragment.ViewPager_fourFragment;
 import com.bw.movie.fragment.ViewPager_oneFragment;
 import com.bw.movie.fragment.ViewPager_threeFragment;
 import com.bw.movie.fragment.ViewPager_twoFragment;
+import com.bw.movie.utils.SpBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,12 @@ public class IndexActivity extends BaseActivity {
     protected void initView() {
         BaseActivity.fullScreen(this,true);
         setContentView(R.layout.activity_index);
+        String index = SpBase.getString("index", false+"");
+        if(Boolean.parseBoolean(index)){
+            startActivity(new Intent(IndexActivity.this,LoginActivity.class));
+//          overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            finish();
+        }
     }
 
     @Override
@@ -81,14 +88,13 @@ public class IndexActivity extends BaseActivity {
                         endX=event.getX();
                         endY=event.getY();
                         WindowManager windowManager= (WindowManager)getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-
                         //获取屏幕的宽度
                         Point size = new Point();
                         windowManager.getDefaultDisplay().getSize(size);
                         int width=size.x;
-
                         //首先要确定的是，是否到了最后一页，然后判断是否向左滑动，并且滑动距离是否符合，我这里的判断距离是屏幕宽度的4分之一（这里可以适当控制）
-                        if(mViewpagerVp.getCurrentItem()==(mlist.size()-1)&&startX-endX>=(width/4)){
+                        if(mViewpagerVp.getCurrentItem()==(mlist.size()-1)&&startX-endX>=(width/5)){
+                            SpBase.save("index",true+"");
                             startActivity(new Intent(IndexActivity.this,LoginActivity.class));
 //                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                             finish();
