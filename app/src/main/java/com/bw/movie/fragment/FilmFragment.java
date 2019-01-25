@@ -57,7 +57,7 @@ public class FilmFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        film_text_white.setText(SpBase.getString("str", "没有定位"));
+        film_text_white.setText(SpBase.getString(getContext(),"str", "没有定位"));
     }
 
     private void submit() {

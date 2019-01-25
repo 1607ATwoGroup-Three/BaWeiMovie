@@ -300,7 +300,7 @@ public class RegisterActivity extends BaseActivity implements Contract.View {
         if (registerData.getStatus().equals("0000")){
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             String ter_phone = register_phone.getText().toString();
-            SpBase.save("ter_phone",ter_phone);
+            SpBase.save(RegisterActivity.this,"ter_phone",ter_phone);
             Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
             startActivity(intent);
         }else {

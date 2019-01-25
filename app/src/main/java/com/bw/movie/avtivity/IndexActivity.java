@@ -36,8 +36,8 @@ public class IndexActivity extends BaseActivity {
     protected void initView() {
         BaseActivity.fullScreen(this,true);
         setContentView(R.layout.activity_index);
-        String index = SpBase.getString("index", false+"");
-        if(Boolean.parseBoolean(index)){
+        String index = SpBase.getString(IndexActivity.this,"index", 2+"");
+        if(index.equals("1")){
             startActivity(new Intent(IndexActivity.this,LoginActivity.class));
 //          overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
@@ -94,7 +94,7 @@ public class IndexActivity extends BaseActivity {
                         int width=size.x;
                         //首先要确定的是，是否到了最后一页，然后判断是否向左滑动，并且滑动距离是否符合，我这里的判断距离是屏幕宽度的4分之一（这里可以适当控制）
                         if(mViewpagerVp.getCurrentItem()==(mlist.size()-1)&&startX-endX>=(width/5)){
-                            SpBase.save("index",true+"");
+                            SpBase.save(IndexActivity.this,"index",1+"");
                             startActivity(new Intent(IndexActivity.this,LoginActivity.class));
 //                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                             finish();

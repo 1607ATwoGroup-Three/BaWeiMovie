@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.CinemaAdapter;
+import com.bw.movie.avtivity.ShowActivity;
 import com.bw.movie.bean.NearbyCinemaData;
 import com.bw.movie.bean.RecommendCinemaData;
 import com.bw.movie.contract.Contract;
@@ -63,15 +64,15 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
         cinema_btn_nearby = (TextView) view.findViewById(R.id.cinema_btn_nearby);
         cinema_btn_nearby.setOnClickListener(this);
         cinema_btn_Recommend.setOnClickListener(this);
-        cinema_text_white.setText(SpBase.getString("str", "没有定位"));
+        cinema_text_white.setText(SpBase.getString(getContext(),"str", "没有定位"));
 
         adapter = new CinemaAdapter(getContext(), Nearbylist, recommendlist);
         adapter.setType(0);
         cinema_recycle.setLayoutManager(new LinearLayoutManager(getContext()));
         cinema_recycle.setAdapter(adapter);
 
-        hashmap.put("userId", SpBase.getString("userId", "0"));
-        hashmap.put("sessionId", SpBase.getString("sessionId", ""));
+        hashmap.put("userId", SpBase.getString(getContext(),"userId", "0"));
+        hashmap.put("sessionId", SpBase.getString(getContext(),"sessionId", ""));
 
     }
 
@@ -102,8 +103,8 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
             case R.id.cinema_btn_nearby:
                 adapter.setType(1);
                 Map<String, Object> map2 = new HashMap<>();
-                map2.put("longitude",SpBase.getString("lgt",""));
-                map2.put("latitude",SpBase.getString("lat",""));
+                map2.put("longitude",SpBase.getString(getContext(),"lgt",""));
+                map2.put("latitude",SpBase.getString(getContext(),"lat",""));
                 map2.put("page", 1);
                 map2.put("count", 100);
                 presenter.get(Interfaces.SearchForNearbyCinemas, hashmap, map2,NearbyCinemaData.class);

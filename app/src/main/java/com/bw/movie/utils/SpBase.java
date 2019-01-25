@@ -15,19 +15,19 @@ import com.bw.movie.appliction.MyApp;
 public class SpBase {
     private static final String Sp_Name = "user";
     //    存数据
-    public static void save(String key, String value) {
-        SharedPreferences preferences = MyApp.context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE);
+    public static void save(Context context,String key, String value) {
+        SharedPreferences preferences = context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE);
         preferences.edit().putString(key, value).commit();
     }
 
     //    取数据
-    public static String getString( String key, String defultValue) {
-        return MyApp.context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE).getString(key, defultValue);
+    public static String getString(Context context,String key, String defultValue) {
+        return context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE).getString(key, defultValue);
     }
 
-    //    清空数据
-    public static void cancel() {
-        SharedPreferences preferences = MyApp.context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE);
-        preferences.edit().clear().commit();
+    //    删除数据
+    public static void remove(Context context,String index) {
+        SharedPreferences preferences =context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE);
+        preferences.edit().remove(index).commit();
     }
 }

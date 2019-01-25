@@ -51,11 +51,11 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     protected void initView() {
         setContentView(R.layout.activity_login);
 
-        SpBase.save("cb",false+"");
-        boolean cb = Boolean.parseBoolean(SpBase.getString("cb", false + ""));
+        SpBase.save(LoginActivity.this,"cb",false+"");
+        boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
         if (cb){
-            String phone = SpBase.getString( "log_phone", "");
-            String pwd = SpBase.getString("log_pwd", "");
+            String phone = SpBase.getString( LoginActivity.this,"log_phone", "");
+            String pwd = SpBase.getString(LoginActivity.this,"log_pwd", "");
             login_phone.setText(phone);
             login_pwd.setText(pwd);
             login_jizhumima.setChecked(true);
@@ -112,11 +112,14 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 log_phone = login_phone.getText().toString();
                 log_pwd = login_pwd.getText().toString();
                 if (login_jizhumima.isChecked()){
-                    SpBase.save("log_phone", log_phone);
-                    SpBase.save("log_pwd", log_pwd);
-                    SpBase.save("cb",true+"");
+                    SpBase.save(LoginActivity.this,"log_phone", log_phone);
+                    SpBase.save(LoginActivity.this,"log_pwd", log_pwd);
+                    SpBase.save(LoginActivity.this,"cb",true+"");
                 }else {
-                    SpBase.cancel();
+//                    SpBase.remove();
+                    /**
+                     * 这需要更改的
+                     */
                 }
             }
         });
@@ -149,8 +152,8 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
 
             String sessionId = loginData.getResult().getSessionId();
             int userId = loginData.getResult().getUserId();
-            SpBase.save("sessionId",sessionId);
-            SpBase.save("userId",userId+"");
+            SpBase.save(LoginActivity.this,"sessionId",sessionId);
+            SpBase.save(LoginActivity.this,"userId",userId+"");
             Toast.makeText(this, sessionId, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, userId+"", Toast.LENGTH_SHORT).show();
             finish();
@@ -174,9 +177,9 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 Log.e("经度",lat+"");
                 Log.e("玮度",lgt+"");
                 Log.e("城区",str);
-                SpBase.save("lat",lat+"");
-                SpBase.save("lgt",lgt+"");
-                SpBase.save("str",str);
+                SpBase.save(LoginActivity.this,"lat",lat+"");
+                SpBase.save(LoginActivity.this,"lgt",lgt+"");
+                SpBase.save(LoginActivity.this,"str",str);
             }
         });
     }
@@ -197,7 +200,7 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     protected void onResume() {
         super.onResume();
         Log.e("121111111","11111111111");
-        String phone = SpBase.getString("ter_phone","");
+        String phone = SpBase.getString(LoginActivity.this,"ter_phone","");
         login_phone.setText(phone);
     }
 }
