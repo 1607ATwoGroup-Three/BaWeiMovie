@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,8 +102,8 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
             case R.id.cinema_btn_nearby:
                 adapter.setType(1);
                 Map<String, Object> map2 = new HashMap<>();
-                map2.put("longitude",SpBase.getString("lat",""));
-                map2.put("latitude",SpBase.getString("lgt",""));
+                map2.put("longitude",SpBase.getString("lgt",""));
+                map2.put("latitude",SpBase.getString("lat",""));
                 map2.put("page", 1);
                 map2.put("count", 100);
                 presenter.get(Interfaces.SearchForNearbyCinemas, hashmap, map2,NearbyCinemaData.class);

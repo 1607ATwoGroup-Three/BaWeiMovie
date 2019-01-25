@@ -46,6 +46,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
 
     public void setType(int type){
         this.type=type;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -55,12 +56,23 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
             viewHolder.recycle_item_address.setText(Recommendlist.get(i).getAddress());
             viewHolder.recycle_item_distance.setText(Recommendlist.get(i).getDistance()+"km");
             MyGlideUtil.setDefaultImage(context,Recommendlist.get(i).getLogo(),viewHolder.recycle_item_image);
+            if(Recommendlist.get(i).getFollowCinema()==2){
+                Glide.with(context).load(R.mipmap.com_icon_collection_default).into(viewHolder.recycle_item_follow);
+            }else{
+                Glide.with(context).load(R.mipmap.com_icon_collection_selected).into(viewHolder.recycle_item_follow);
+            }
         } else {
             viewHolder.recycle_item_name.setText(Nearbylist.get(i).getName());
             viewHolder.recycle_item_address.setText(Nearbylist.get(i).getAddress());
-            double v1 = Nearbylist.get(i).getDistance() / 1000000;
-            viewHolder.recycle_item_distance.setText(v1+"km");
+            int v1 = Nearbylist.get(i).getDistance() / 1000;
+            int v = Nearbylist.get(i).getDistance() % 1000;
+            viewHolder.recycle_item_distance.setText(v1+"."+v+"km");
             MyGlideUtil.setDefaultImage(context,Nearbylist.get(i).getLogo(),viewHolder.recycle_item_image);
+            if(Nearbylist.get(i).getFollowCinema()==2){
+                Glide.with(context).load(R.mipmap.com_icon_collection_default).into(viewHolder.recycle_item_follow);
+            }else{
+                Glide.with(context).load(R.mipmap.com_icon_collection_selected).into(viewHolder.recycle_item_follow);
+            }
         }
     }
 
