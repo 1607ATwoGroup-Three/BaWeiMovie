@@ -50,4 +50,6 @@ public class Interfaces {
     public static final String CheckOutTheDetailsOfTheMovie = "movieApi/movie/v1/findMoviesDetail";
     //    查询附近的影院 get
     public static final String SearchForNearbyCinemas = "movieApi/cinema/v1/findNearbyCinemas";
+    //    查询推荐影院 get
+    public static final String SearchForRecommendedCinema = "movieApi/cinema/v1/findRecommendCinemas";
 }

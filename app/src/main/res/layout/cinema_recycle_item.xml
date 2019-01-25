@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    >
+
+    <ImageView
+        android:id="@+id/recycle_item_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        />
+
+    <TextView
+        android:id="@+id/recycle_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/recycle_item_image"
+        android:text="hahahahah"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/recycle_item_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recycle_item_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/recycle_item_image"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="啊哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/recycle_item_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recycle_item_address"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@id/recycle_item_image"
+        android:text="5.0km"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/recycle_item_follow"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        />
+</RelativeLayout>

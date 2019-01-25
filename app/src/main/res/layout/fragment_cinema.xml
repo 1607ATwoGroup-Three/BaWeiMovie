@@ -26,6 +26,7 @@
         android:textSize="14sp" />
 
     <LinearLayout
+        android:id="@+id/cinema_lin"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -57,4 +58,13 @@
             android:textColor="#333333"
             android:textSize="14sp" />
     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cinema_recycle"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="24dp"
+        android:layout_below="@id/cinema_lin"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 </RelativeLayout>

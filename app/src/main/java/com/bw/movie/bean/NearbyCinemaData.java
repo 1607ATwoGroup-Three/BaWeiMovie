@@ -80,7 +80,7 @@ public class NearbyCinemaData {
             this.commentTotal = commentTotal;
         }
 
-        public int getDistance() {
+        public double getDistance() {
             return distance;
         }
 

@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
 //            联网的权限
             "android.permission.INTERNET",
 //            相机
-//            "android.permission.CAMERA",
+            "android.permission.CAMERA",
 //            定位
             "android.permission.ACCESS_FINE_LOCATION"};
 
@@ -66,12 +66,14 @@ public class MainActivity extends BaseActivity {
                     for (String denied : deniedList) {
                         if (denied.equals("android.permission.ACCESS_FINE_LOCATION")) {
                             Toast.makeText(ctx, "定位失败,请检查是否打开定位权限！", Toast.LENGTH_SHORT).show();
-                        } else if(denied.equals("android.permission.READ_EXTERNAL_STORAGE")|denied.equals("android.permission.WRITE_EXTERNAL_STORAGE")){
-                            Toast.makeText(ctx, "没有文件读写权限,请检查是否打开！", Toast.LENGTH_SHORT).show();
+                        } else if(denied.equals("android.permission.READ_EXTERNAL_STORAGE")){
+                            Toast.makeText(ctx, "没有文件读权限,请检查是否打开！", Toast.LENGTH_SHORT).show();
                         }else if(denied.equals("android.permission.INTERNET")){
                             Toast.makeText(ctx, "联网失败，请检查是否打开联网权限", Toast.LENGTH_SHORT).show();
+                        }else if(denied.equals("android.permission.WRITE_EXTERNAL_STORAGE")){
+                            Toast.makeText(ctx, "没有文件写权限,请检查是否打开！", Toast.LENGTH_SHORT).show();
                         }/*else if(denied.equals("android.permission.CAMERA")){
-                            Toast.makeText(ctx, "获取相机失败，请给相机权限否则后续功能无法正常使用", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ctx, "获取相机失败，请给予相机权限", Toast.LENGTH_SHORT).show();
                         }*/
                     }
                 }
