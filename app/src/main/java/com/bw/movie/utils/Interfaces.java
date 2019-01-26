@@ -58,6 +58,5 @@ public class Interfaces {
     public static final String UpdataPwd = "movieApi/user1erify/modifyUserPwd";
 
     public static final String UserMessage = "movieApi/user1erify/getUserInfoByUserId";
-
-
+    
 }
