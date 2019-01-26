@@ -21,7 +21,10 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.FilmAdapter;
-import com.bw.movie.bean.PopularData;
+import com.bw.movie.bean.FilmTypeBean;
+import com.bw.movie.bean.IsShowingUpBean;
+import com.bw.movie.bean.PopularCinemaBean;
+import com.bw.movie.bean.ToBeShownSoonBean;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
@@ -47,15 +50,23 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
     private RecyclerView film_recycle;
     private TransitionSet mSet;
     boolean isExpand = false;
-    private List<PopularData.ResultBean> list = new ArrayList<>();
+//    热门电影
+    private List<PopularCinemaBean.ResultBean> Poplist = new ArrayList<>();
+    //    正在热映
+    private List<IsShowingUpBean.ResultBean> IsSlist = new ArrayList<>();
+    //    即将上映
+    private List<ToBeShownSoonBean.ResultBean> ToBlist = new ArrayList<>();
     private Contract.Presenter presenter;
+    private Map<String, Object> headmap;
+    private Map<String, Object> map;
+//    Item 的类型
+    private List<FilmTypeBean> typeBeanList = new ArrayList<>();
     private FilmAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = View.inflate(getContext(), R.layout.fragment_film, null);
-
         initView(view);
         present();
         return view;
@@ -63,13 +74,14 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
 
     private void present() {
         presenter = new Presenter(this);
-        Map<String,Object> headmap =new HashMap<>();
+        headmap = new HashMap<>();
         headmap.put("userId",SpBase.getString(getContext(),"userId",""));
         headmap.put("sessionId",SpBase.getString(getContext(),"sessionId",""));
-        Map<String,Object> map =new HashMap<>();
+        map = new HashMap<>();
         map.put("page","1");
         map.put("count","100");
-        presenter.get(Interfaces.SearchForHotMovies,headmap,map,PopularData.class);
+//        查询热门电影
+        presenter.get(Interfaces.SearchForHotMovies, headmap, map,PopularCinemaBean.class);
     }
 
     private void initView(View view) {
@@ -81,10 +93,8 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
         film_search_lin = (LinearLayout) view.findViewById(R.id.film_search_lin);
         film_search_lin.setOnClickListener(this);
         film_recycle = (RecyclerView) view.findViewById(R.id.film_recycle);
-        film_recycle.setOnClickListener(this);
         film_recycle.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new FilmAdapter(getContext(),list);
-//        adapter.settype(0);
+        adapter = new FilmAdapter(getContext(),typeBeanList,Poplist,IsSlist,ToBlist);
         film_recycle.setAdapter(adapter);
     }
 
@@ -167,10 +177,32 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
 
     @Override
     public void success(Object success) {
-        if (success instanceof PopularData) {
-            PopularData data = (PopularData) success;
-            list.addAll(data.getResult());
-            adapter.settype(2);
+        if (success instanceof PopularCinemaBean) {
+            PopularCinemaBean data = (PopularCinemaBean) success;
+            Poplist.addAll(data.getResult());
+            typeBeanList.clear();
+            FilmTypeBean bean1 =new FilmTypeBean();
+            bean1.setType(0);
+            typeBeanList.add(bean1);
+//            正在上映
+            FilmTypeBean bean =new FilmTypeBean();
+            bean.setType(1);
+            typeBeanList.add(bean);
+            presenter.get(Interfaces.QueryTheListOfMoviesBeingShown, headmap, map,IsShowingUpBean.class);
+        }else if(success instanceof IsShowingUpBean){
+            IsShowingUpBean bean = (IsShowingUpBean) success;
+            IsSlist.addAll(bean.getResult());
+            //            即将上映
+            FilmTypeBean bea =new FilmTypeBean();
+            bea.setType(2);
+            typeBeanList.add(bea);
+            presenter.get(Interfaces.QueryTheListOfUpcomingMovies, headmap, map,ToBeShownSoonBean.class);
+        }else if(success instanceof ToBeShownSoonBean){
+            ToBeShownSoonBean bean = (ToBeShownSoonBean) success;
+            ToBlist.addAll(bean.getResult());
+            FilmTypeBean be =new FilmTypeBean();
+            be.setType(3);
+            typeBeanList.add(be);
             adapter.notifyDataSetChanged();
         }
     }
