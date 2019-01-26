@@ -52,7 +52,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
         headmap.put("userId",userid+"");
         headmap.put("sessionId",sessionid+"");
         Map<String,Object> map=new HashMap<>();
-        presenter.get(Interfaces.UserMessage,headmap,map,IDUserData.class);
+        presenter.get(Interfaces.QueryUserInformation,headmap,map,IDUserData.class);
     }
 
     private void initView(View view) {

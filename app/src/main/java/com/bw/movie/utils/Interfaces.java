@@ -57,11 +57,6 @@ public class Interfaces {
     //    查询热门电影 get
     public static final String SearchForHotMovies = "movieApi/movie/v1/findHotMovieList";
 
-    public static final String UpdataPwd = "movieApi/user1erify/modifyUserPwd";
-
-    public static final String UserMessage = "movieApi/user1erify/getUserInfoByUserId";
-
-
 //查询用户 关注的影片列表 get
 
     public static final String SearchForVideosOfInterestToUsers = "movieApi/movie/v1/verify/findMoviePageList";

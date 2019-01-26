@@ -107,9 +107,8 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 String pwd = login_pwd.getTrimmedString ().trim ();
                 String encrypt = EncryptUtil.encrypt (pwd);
                 map.put("pwd",encrypt);
+                SpBase.save(LoginActivity.this,"pwd",pwd+"");
                 presenter.post(Interfaces.Land,headmap,map,LoginData.class);
-
-
             }
         });
 
