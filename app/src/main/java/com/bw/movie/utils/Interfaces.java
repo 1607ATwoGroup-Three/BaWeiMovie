@@ -40,8 +40,6 @@ public class Interfaces {
     public static final String IndingWechatAccount = "movieApi/user/v1/verify/bindWeChat";
     //    是否绑定微信账号 get
     public static final String WhetherToBindWeichatAccount = "movieApi/user/v1/verify/whetherToBindWeChat";
-    //    查询热门电影列表 get
-    public static final String QueryTheListOfPopularMovies = "movieApi/movie/v1/findHotMovieList";
     //    查询正在上映电影列表 get
     public static final String QueryTheListOfMoviesBeingShown = "movieApi/movie/v1/findReleaseMovieList";
     //    查询即将上映电影列表 GET
@@ -57,8 +55,7 @@ public class Interfaces {
     //    查询热门电影 get
     public static final String SearchForHotMovies = "movieApi/movie/v1/findHotMovieList";
 
-//查询用户 关注的影片列表 get
-
+    //查询用户 关注的影片列表 get
     public static final String SearchForVideosOfInterestToUsers = "movieApi/movie/v1/verify/findMoviePageList";
     //    关注电影 get
     public static final String FocusOnMovies = "movieApi/movie/v1/verify/followMovie";
