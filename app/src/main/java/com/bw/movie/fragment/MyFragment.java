@@ -10,11 +10,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.avtivity.my.UserActivity;
+import com.bw.movie.bean.IDUserData;
+import com.bw.movie.bean.UserMessageData;
+import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
+import com.bw.movie.utils.Interfaces;
+import com.bw.movie.utils.SpBase;
 
-public class MyFragment extends Fragment implements View.OnClickListener{
+import java.util.HashMap;
+import java.util.Map;
+
+public class MyFragment extends Fragment implements View.OnClickListener,Contract.View {
     private ImageView my_head_image;
     private TextView my_Name;
     private ImageView my_message;
@@ -29,7 +40,19 @@ public class MyFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = View.inflate(getContext(), R.layout.fragment_my, null);
         initView(view);
+        presenter();
         return view;
+    }
+
+    private void presenter() {
+        String sessionid = SpBase.getString(getContext(), "sessionId", "");
+        String userid = SpBase.getString(getContext(), "userId", "");
+        Presenter presenter=new Presenter(this);
+        Map<String,Object> headmap=new HashMap<>();
+        headmap.put("userId",userid+"");
+        headmap.put("sessionId",sessionid+"");
+        Map<String,Object> map=new HashMap<>();
+        presenter.get(Interfaces.UserMessage,headmap,map,IDUserData.class);
     }
 
     private void initView(View view) {
@@ -75,5 +98,22 @@ public class MyFragment extends Fragment implements View.OnClickListener{
             case R.id.my_logoff:
                 break;
         }
+    }
+
+    @Override
+    public void success(Object success) {
+        if (success instanceof IDUserData){
+            IDUserData idUserData= (IDUserData) success;
+            IDUserData.ResultBean result = idUserData.getResult();
+            String nickName = result.getNickName();
+            String headPic = result.getHeadPic();
+            my_Name.setText(nickName);
+            Glide.with(getContext()).load(headPic).into(my_head_image);
+        }
+    }
+
+    @Override
+    public void error(String error) {
+
     }
 }

@@ -54,4 +54,10 @@ public class Interfaces {
     public static final String SearchForRecommendedCinema = "movieApi/cinema/v1/findRecommendCinemas";
     //    查询热门电影 get
     public static final String SearchForHotMovies = "movieApi/movie/v1/findHotMovieList";
+    
+    public static final String UpdataPwd = "movieApi/user1erify/modifyUserPwd";
+
+    public static final String UserMessage = "movieApi/user1erify/getUserInfoByUserId";
+
+
 }

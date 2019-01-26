@@ -6,8 +6,17 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bw.movie.R;
+import com.bw.movie.bean.IDUserData;
+import com.bw.movie.bean.ResetPwdData;
+import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
+import com.bw.movie.utils.Interfaces;
+import com.bw.movie.utils.SpBase;
 
-public class ResetPwdActivity extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Map;
+
+public class ResetPwdActivity extends AppCompatActivity implements Contract.View {
 
     private ImageView Reset_Back;
 
@@ -15,6 +24,16 @@ public class ResetPwdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_pwd);
+
+        String sessionid = SpBase.getString(this, "sessionId", "");
+        String userid = SpBase.getString(this, "userId", "");
+        Presenter presenter = new Presenter(this);
+        Map<String, Object> headmap = new HashMap<>();
+        headmap.put("userId", userid + "");
+        headmap.put("sessionId", sessionid + "");
+        Map<String, Object> map = new HashMap<>();
+        presenter.get(Interfaces.UpdataPwd, headmap, map, ResetPwdData.class);
+
         initView();
     }
 
@@ -26,5 +45,18 @@ public class ResetPwdActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void success(Object success) {
+        if (success instanceof ResetPwdData){
+            ResetPwdData resetPwdData= (ResetPwdData) success;
+
+        }
+    }
+
+    @Override
+    public void error(String error) {
+
     }
 }

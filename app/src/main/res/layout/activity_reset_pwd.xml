@@ -121,8 +121,8 @@
     <ImageView
         android:id="@+id/Reset_Back"
         android:layout_alignParentBottom="true"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:background="@mipmap/com_icon_my_defaul"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="26dp"/>
