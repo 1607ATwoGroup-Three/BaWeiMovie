@@ -76,10 +76,11 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         youke = findViewById(R.id.Youke);
 
         boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
+        String phone = SpBase.getString(LoginActivity.this,"ter_phone",null);
+        Log.e("phone1111111111111111",phone+"");
+        login_phone.setText(phone+"");
         if (cb){
-            String phone = SpBase.getString( LoginActivity.this,"log_phone", "");
-            String pwd = SpBase.getString(LoginActivity.this,"log_pwd", "");
-            login_phone.setText(phone);
+            String pwd = SpBase.getString(LoginActivity.this,"log_pwd", null);
             login_pwd.setText(pwd);
             login_jizhumima.setChecked(true);
         }
@@ -108,18 +109,7 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 map.put("pwd",encrypt);
                 presenter.post(Interfaces.Land,headmap,map,LoginData.class);
 
-                log_phone = login_phone.getText().toString();
-                log_pwd = login_pwd.getText().toString();
-                if (login_jizhumima.isChecked()){
-                    SpBase.save(LoginActivity.this,"log_phone", log_phone);
-                    SpBase.save(LoginActivity.this,"log_pwd", log_pwd);
-                    SpBase.save(LoginActivity.this,"cb",true+"");
-                }else {
-//                    SpBase.remove();
-                    /**
-                     * 这需要更改的
-                     */
-                }
+
             }
         });
 
@@ -152,6 +142,16 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
             int userId = loginData.getResult().getUserId();
             SpBase.save(LoginActivity.this,"sessionId",sessionId);
             SpBase.save(LoginActivity.this,"userId",userId+"");
+            log_phone = login_phone.getText().toString().trim();
+            log_pwd = login_pwd.getText().toString().trim();
+            SpBase.save(LoginActivity.this,"ter_phone",log_phone);
+            if (login_jizhumima.isChecked()){
+                SpBase.save(LoginActivity.this,"log_pwd", log_pwd);
+                SpBase.save(LoginActivity.this,"cb",true+"");
+            }else{
+                SpBase.remove(LoginActivity.this,"log_pwd");
+                SpBase.remove(LoginActivity.this,"cb");
+            }
             startActivity(intent);
             finish();
         }else {
