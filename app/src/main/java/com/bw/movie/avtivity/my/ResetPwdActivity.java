@@ -67,7 +67,6 @@ public class ResetPwdActivity extends AppCompatActivity implements Contract.View
 
     @Override
     public void success(Object success) {
-        newPwd.setText(pwd+"");
         if (success instanceof ResetPwdData) {
             ResetPwdData resetPwdData = (ResetPwdData) success;
 

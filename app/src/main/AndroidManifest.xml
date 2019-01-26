@@ -12,8 +12,7 @@
     <uses-permission
         android:name="android.permission.CHANGE_CONFIGURATION"
         tools:ignore="ProtectedPermissions" />
-
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- 请求网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -70,8 +69,12 @@
 
         <activity android:name=".avtivity.ShowActivity" />
         <activity android:name=".avtivity.IndexActivity" />
-        <activity android:name=".avtivity.LoginActivity" android:launchMode="singleTask"/>
-        <activity android:name=".avtivity.RegisterActivity" android:launchMode="singleTask" />
+        <activity
+            android:name=".avtivity.LoginActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".avtivity.RegisterActivity"
+            android:launchMode="singleTask" />
         <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -80,7 +83,12 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".avtivity.my.UserActivity" />
-        <activity android:name=".avtivity.my.ResetPwdActivity"></activity>
+        <activity android:name=".avtivity.my.ResetPwdActivity" />
+        <activity android:name=".avtivity.my.OpinionActivity" />
+        <activity android:name=".avtivity.my.OpinionFankuiActivity" />
+        <activity android:name=".avtivity.my.FollowActivity" />
+        <activity android:name=".avtivity.my.PayActivity" />
+        <activity android:name=".avtivity.my.EditionxActivity"></activity>
     </application>
 
 </manifest>

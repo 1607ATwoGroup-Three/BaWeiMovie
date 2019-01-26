@@ -14,12 +14,17 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.avtivity.my.EditionxActivity;
+import com.bw.movie.avtivity.my.FollowActivity;
+import com.bw.movie.avtivity.my.OpinionActivity;
+import com.bw.movie.avtivity.my.PayActivity;
 import com.bw.movie.avtivity.my.UserActivity;
 import com.bw.movie.bean.IDUserData;
 import com.bw.movie.bean.UserMessageData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
+import com.bw.movie.utils.MyGlideUtil;
 import com.bw.movie.utils.SpBase;
 
 import java.util.HashMap;
@@ -88,12 +93,20 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
                 startActivity(intent);
                 break;
             case R.id.my_care:
+                Intent inCare=new Intent(getContext(),FollowActivity.class);
+                startActivity(inCare);
                 break;
             case R.id.my_pay:
+                Intent inPay=new Intent(getContext(),PayActivity.class);
+                startActivity(inPay);
                 break;
             case R.id.my_opinion:
+                Intent in=new Intent(getContext(),OpinionActivity.class);
+                startActivity(in);
                 break;
             case R.id.my_edition:
+                Intent ine=new Intent(getContext(),EditionxActivity.class);
+                startActivity(ine);
                 break;
             case R.id.my_logoff:
                 break;
@@ -108,7 +121,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
             String nickName = result.getNickName();
             String headPic = result.getHeadPic();
             my_Name.setText(nickName);
-            Glide.with(getContext()).load(headPic).into(my_head_image);
+            MyGlideUtil.setCircleImage(getContext(),headPic,my_head_image);
         }
     }
 

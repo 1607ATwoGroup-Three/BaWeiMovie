@@ -13,6 +13,7 @@ import com.bw.movie.bean.IDUserData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
+import com.bw.movie.utils.MyGlideUtil;
 import com.bw.movie.utils.SpBase;
 
 import java.text.SimpleDateFormat;
@@ -98,12 +99,9 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
             String format = f.format(d);
             user_birthday.setText(format);
-
-            //user_sex.setText(sex);
-            //user_birthday.setText(birthday);
             user_name.setText(nickName);
             user_phone.setText(phone);
-            Glide.with(this).load(headPic).into(my_message);
+            MyGlideUtil.setCircleImage(UserActivity.this,headPic,my_message);
         }
     }
 

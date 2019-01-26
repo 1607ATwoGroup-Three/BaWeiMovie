@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".avtivity.my.OpinionActivity">
+
+    <TextView
+        android:id="@+id/opinion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="意见反馈"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="28dp"/>
+    <LinearLayout
+        android:id="@+id/line3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/opinion"
+        android:paddingLeft="24dp"
+        android:paddingTop="30dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="327dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/my_linear"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="写下您对产品的感受吧！工作人员将会在第一时间评估处理。"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Opinion_tijiao"
+        android:background="@drawable/my_tijiao"
+        android:layout_width="48dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/line3"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="300dp"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
+    <ImageView
+        android:id="@+id/Opinion_Back"
+        android:layout_alignParentBottom="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@mipmap/com_icon_my_defaul"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="26dp"/>
+
+</RelativeLayout>
