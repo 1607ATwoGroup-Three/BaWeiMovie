@@ -86,6 +86,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
         headmap.put("sessionId", SpBase.getString(MovieListActivity.this, "sessionId", ""));
         map = new HashMap<>();
         map.put("page", "1");
+        map.put("count", "100");
     }
 
     @Override
@@ -171,7 +172,8 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                     Intent intent =new Intent(MovieListActivity.this,MovieDetailsActivity.class);
-                    intent.putExtra("movieid",list.get(position).getId());
+                    intent.putExtra("movieId",list.get(position).getId()+"");
+                    intent.putExtra("islove",list.get(position).getFollowMovie()+"");
                     startActivity(intent);
                 }
             });
@@ -198,7 +200,8 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                     Intent intent =new Intent(MovieListActivity.this,MovieDetailsActivity.class);
-                    intent.putExtra("movieid",list.get(position).getId());
+                    intent.putExtra("movieId",list.get(position).getId()+"");
+                    intent.putExtra("islove",list.get(position).getFollowMovie()+"");
                     startActivity(intent);
                 }
             });
@@ -225,7 +228,8 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                     Intent intent =new Intent(MovieListActivity.this,MovieDetailsActivity.class);
-                    intent.putExtra("movieid",list.get(position).getId());
+                    intent.putExtra("movieId",list.get(position).getId()+"");
+                    intent.putExtra("islove",list.get(position).getFollowMovie()+"");
                     startActivity(intent);
                 }
             });
