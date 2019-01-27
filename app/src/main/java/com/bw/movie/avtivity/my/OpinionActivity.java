@@ -4,15 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.bean.IDUserData;
+import com.bw.movie.bean.OpinionBean;
+import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
+import com.bw.movie.utils.Interfaces;
+import com.bw.movie.utils.SpBase;
 
-public class OpinionActivity extends BaseActivity {
+import java.util.HashMap;
+import java.util.Map;
+
+public class OpinionActivity extends BaseActivity implements Contract.View {
 
     private Button Opinion_tijiao;
     private ImageView Opinion_Back;
+    private Presenter presenter;
+    private EditText content;
 
     @Override
     protected void initView() {
@@ -23,12 +36,22 @@ public class OpinionActivity extends BaseActivity {
     protected void initData() {
         Opinion_tijiao = findViewById(R.id.Opinion_tijiao);
         Opinion_Back=findViewById(R.id.Opinion_Back);
+        content = findViewById(R.id.opinion_content);
+
         //提交
         Opinion_tijiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(OpinionActivity.this, OpinionFankuiActivity.class);
-                startActivity(in);
+                String sessionid = SpBase.getString(OpinionActivity.this, "sessionId", "");
+                String userid = SpBase.getString(OpinionActivity.this, "userId", "");
+
+                Map<String, Object> headmap = new HashMap<>();
+                headmap.put("userId", userid + "");
+                headmap.put("sessionId", sessionid + "");
+                Map<String, Object> map = new HashMap<>();
+                String scontent = content.getText().toString();
+                map.put("content",scontent);
+                presenter.post(Interfaces.Feedback, headmap, map, OpinionBean.class);
             }
         });
         //返回
@@ -44,12 +67,26 @@ public class OpinionActivity extends BaseActivity {
     @Override
     protected void present() {
 
+        presenter = new Presenter(this);
+
     }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) and run LayoutCreator again
+    public void success(Object success) {
+        if(success instanceof OpinionBean){
+            OpinionBean opinionBean= (OpinionBean) success;
+            String message = opinionBean.getMessage();
+            if(opinionBean.getStatus().equals("0000")){
+                Toast.makeText(OpinionActivity.this, message, Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(OpinionActivity.this, OpinionFankuiActivity.class);
+                startActivity(in);
+            }
+        }
+    }
+
+    @Override
+    public void error(String error) {
+
     }
 }

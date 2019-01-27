@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.avtivity.my.EditionxActivity;
 import com.bw.movie.avtivity.my.FollowActivity;
+import com.bw.movie.avtivity.my.HornActivity;
 import com.bw.movie.avtivity.my.OpinionActivity;
 import com.bw.movie.avtivity.my.PayActivity;
 import com.bw.movie.avtivity.my.UserActivity;
@@ -39,6 +40,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
     private ImageView my_opinion;
     private ImageView my_edition;
     private ImageView my_logoff;
+    private ImageView my_horn;
 
     @Nullable
     @Override
@@ -70,6 +72,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
         my_opinion = (ImageView) view.findViewById(R.id.my_opinion);
         my_edition = (ImageView) view.findViewById(R.id.my_edition);
         my_logoff = (ImageView) view.findViewById(R.id.my_logoff);
+        my_horn = (ImageView) view.findViewById(R.id.my_horn);
 
         my_head_image.setOnClickListener(this);
         my_Name.setOnClickListener(this);
@@ -79,11 +82,16 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
         my_opinion.setOnClickListener(this);
         my_edition.setOnClickListener(this);
         my_logoff.setOnClickListener(this);
+        my_horn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.my_horn:
+                Intent inhorn=new Intent(getContext(),HornActivity.class);
+                startActivity(inhorn);
+                break;
             case R.id.my_head_image:
                 break;
             case R.id.my_Name:

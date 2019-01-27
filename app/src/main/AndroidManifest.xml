@@ -47,7 +47,7 @@
     <application
         android:name=".appliction.MyApp"
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -127,7 +127,7 @@
             android:name=".avtivity.MovieListActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".avtivity.MovieDetailsActivity"></activity>
+        <activity android:name=".avtivity.my.HornActivity"></activity>
     </application>
 
 </manifest>
