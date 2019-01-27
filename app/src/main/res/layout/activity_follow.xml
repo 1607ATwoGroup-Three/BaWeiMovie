@@ -18,7 +18,7 @@
         <TextView
             android:background="@drawable/cinema_ed"
             android:gravity="center"
-            android:id="@+id/cinema_btn_Recommend"
+            android:id="@+id/care_YinPian"
             android:layout_width="83dp"
             android:layout_height="25dp"
             android:text="电影"
@@ -26,7 +26,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/cinema_btn_nearby"
+            android:id="@+id/care_YinYuan"
             android:layout_width="83dp"
             android:layout_height="25dp"
             android:layout_below="@id/cinema_image_white"
