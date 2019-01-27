@@ -31,46 +31,47 @@ public enum MyGlideUtil {
      */
     public static void setDefaultImage(Context mContext, String mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 
     public static void setDefaultImage(Context mContext, Uri mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 
     /**
      * 默认加载圆形图
+     *
      * @param mContext
      * @param mImageUrl
      * @param mImageView
      */
     public static void setCircleImage(Context mContext, String mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.circleCropTransform ())
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.circleCropTransform())
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 
     public static void setCircleImage(Context mContext, Uri mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.circleCropTransform ())
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.circleCropTransform())
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 
     /**
@@ -82,22 +83,22 @@ public enum MyGlideUtil {
      */
     public static void setStaticImage(Context mContext, String mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .apply (RequestOptions.noAnimation ())//强制加载图片格式为静态图片   默认情况下都可以加载
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.noAnimation())//强制加载图片格式为静态图片   默认情况下都可以加载
+                .into(mImageView);
     }
 
     public static void setStaticImage(Context mContext, Uri mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .apply (RequestOptions.noAnimation ())//强制加载图片格式为静态图片   默认情况下都可以加载
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.noAnimation())//强制加载图片格式为静态图片   默认情况下都可以加载
+                .into(mImageView);
     }
 
     /**
@@ -109,47 +110,58 @@ public enum MyGlideUtil {
      */
     public void setGifImage(Context mContext, String mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .asGif () //强制加载动态图片
-                .load (mImageUrl)
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .asGif() //强制加载动态图片
+                .load(mImageUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 
     public void setGifImage(Context mContext, Uri mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .asGif () //强制加载动态图片
-                .load (mImageUrl)
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .asGif() //强制加载动态图片
+                .load(mImageUrl)
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 
     /**
      * 加载圆角图片
+     *
      * @param mContext
      * @param mImageUrl
      * @param mImageView
      */
     public static void setRoundImage(Context mContext, String mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.bitmapTransform (new RoundedCorners(10)))
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 
     public static void setRoundImage(Context mContext, Uri mImageUrl, ImageView mImageView) {
 
-        Glide.with (mContext)
-                .load (mImageUrl)
-                .apply (RequestOptions.bitmapTransform (new RoundedCorners (10)))
-                .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
-                .apply (RequestOptions.placeholderOf (R.mipmap.haha_1)) //加载中 默认的加载图片
-                .into (mImageView);
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
+    }
+
+    public static void setRoundImage(Context mContext, int mImageUrl, ImageView mImageView) {
+
+        Glide.with(mContext)
+                .load(mImageUrl)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
+                .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .into(mImageView);
     }
 }

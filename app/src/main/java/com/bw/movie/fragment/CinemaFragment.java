@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.CinemaAdapter;
-import com.bw.movie.avtivity.ShowActivity;
 import com.bw.movie.bean.NearbyCinemaData;
 import com.bw.movie.bean.RecommendCinemaData;
 import com.bw.movie.contract.Contract;
@@ -28,8 +26,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.bw.movie.R.drawable.cinema_noed;
 
 /**
  * 影院的fragment

@@ -1,6 +1,7 @@
 package com.bw.movie.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.FilmAdapter;
+import com.bw.movie.avtivity.MovieListActivity;
 import com.bw.movie.bean.FilmTypeBean;
 import com.bw.movie.bean.IsShowingUpBean;
 import com.bw.movie.bean.PopularCinemaBean;
@@ -99,7 +101,10 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
         adapter.getonclcked(new FilmAdapter.onclick() {
             @Override
             public void list(int id) {
-                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+                Intent intent =new Intent(getContext(),MovieListActivity.class);
+                intent.putExtra("whilt",SpBase.getString(getContext(), "str", "没有定位"));
+                intent.putExtra("type",id+"");
+                startActivity(intent);
             }
 
             @Override

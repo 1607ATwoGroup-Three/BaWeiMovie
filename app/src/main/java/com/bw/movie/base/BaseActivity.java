@@ -2,7 +2,6 @@ package com.bw.movie.base;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -11,14 +10,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.amap.api.maps.LocationSource;
 import com.bw.movie.contract.Contract;
 
 import java.util.ArrayList;
@@ -34,6 +31,7 @@ import java.util.List;
 public abstract class BaseActivity extends AppCompatActivity {
     private static Contract.PermissionListener mListener;
     private static Activity activity ;
+    private static boolean a;
     private long exitTime =0;
     /**
      * context
@@ -157,8 +155,21 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * 判断是否走双击退出程序
+     * @param b
+     */
+    public static void  doublekeydown(boolean b){
+        if(b==false){
+            a=true;
+        }else{
+            a=false;
+        }
+    }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(!a){
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction () == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis () - exitTime) > 2000) {
@@ -170,7 +181,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
             return true;
         }
+    }
         return super.onKeyDown (keyCode, event);
     }
-
 }

@@ -1,32 +1,21 @@
 package com.bw.movie.avtivity;
 
 import android.animation.ObjectAnimator;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.maps.AMap;
-import com.amap.api.maps.CameraUpdateFactory;
-import com.amap.api.maps.LocationSource;
-import com.amap.api.maps.MapView;
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.fragment.CinemaFragment;
 import com.bw.movie.fragment.FilmFragment;
 import com.bw.movie.fragment.MyFragment;
-import com.bw.movie.utils.LocationUtil;
-import com.bw.movie.utils.SpBase;
 
 
-public class ShowActivity extends AppCompatActivity implements View.OnClickListener{
+public class ShowActivity extends BaseActivity implements View.OnClickListener{
 
 
     private FrameLayout show_frage;
@@ -42,16 +31,14 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView() {
+        BaseActivity.doublekeydown(true);
         BaseActivity.fullScreen(this, false);
         setContentView(R.layout.activity_show);
-        initView();
-        initData();
-        present();
     }
 
-    public void initView() {
+    @Override
+    protected void initData() {
         show_frage = findViewById(R.id.show_frage);
         show_btn_Film = findViewById(R.id.show_btn_Film_default);
         show_btn_My = findViewById(R.id.show_btn_My_default);
@@ -66,7 +53,8 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         show_btn_My.setOnClickListener(this);
     }
 
-    public void initData() {
+    @Override
+    protected void present() {
         fragment[0] = new FilmFragment();
         fragment[1] = new CinemaFragment();
         fragment[2] = new MyFragment();
@@ -76,12 +64,9 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         img[3] = show_btn_My_selected;
         img[4] = show_btn_Cinema;
         img[5] = show_btn_Cinema_selected;
-    }
 
-    public void present() {
         setfragmentdisplay(0);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -141,4 +126,5 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         animator.start();
         animator2.start();
     }
+
 }

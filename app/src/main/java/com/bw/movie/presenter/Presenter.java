@@ -48,4 +48,13 @@ public class Presenter implements Contract.Presenter, Contract.MyCallBack {
     public void error(String error) {
         view.error(error);
     }
+
+    public void ontach(){
+        if(model!=null){
+            model=null;
+        }
+        if(view!=null){
+            view=null;
+        }
+    }
 }
