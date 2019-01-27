@@ -126,7 +126,8 @@
         <activity
             android:name=".avtivity.MovieListActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".avtivity.my.HornActivity"></activity>
     </application>
 
 </manifest>
