@@ -96,6 +96,17 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
         film_recycle.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new FilmAdapter(getContext(),typeBeanList,Poplist,IsSlist,ToBlist);
         film_recycle.setAdapter(adapter);
+        adapter.getonclcked(new FilmAdapter.onclick() {
+            @Override
+            public void list(int id) {
+                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void movie(int id) {
+                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

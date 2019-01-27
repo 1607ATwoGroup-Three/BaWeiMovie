@@ -52,7 +52,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -67,14 +70,24 @@
             android:name="design_height_in_dp"
             android:value="667" />
 
-        <activity android:name=".avtivity.ShowActivity" />
-        <activity android:name=".avtivity.IndexActivity" />
+        <activity
+            android:name=".avtivity.ShowActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.IndexActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".avtivity.LoginActivity"
-            android:launchMode="singleTask" />
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".avtivity.RegisterActivity"
-            android:launchMode="singleTask" />
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -82,13 +95,38 @@
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".avtivity.my.UserActivity" />
-        <activity android:name=".avtivity.my.ResetPwdActivity" />
-        <activity android:name=".avtivity.my.OpinionActivity" />
-        <activity android:name=".avtivity.my.OpinionFankuiActivity" />
-        <activity android:name=".avtivity.my.FollowActivity" />
-        <activity android:name=".avtivity.my.PayActivity" />
-        <activity android:name=".avtivity.my.EditionxActivity"></activity>
+        <activity
+            android:name=".avtivity.my.UserActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.my.ResetPwdActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.my.OpinionActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.my.OpinionFankuiActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.my.FollowActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.my.PayActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.my.EditionxActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".avtivity.MovieListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

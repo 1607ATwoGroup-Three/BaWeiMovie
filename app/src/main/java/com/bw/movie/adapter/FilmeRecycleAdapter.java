@@ -40,9 +40,17 @@ public class FilmeRecycleAdapter extends RecyclerView.Adapter<FilmeRecycleAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.film_recycle_item_name.setText(list.get(i).getName());
-        MyGlideUtil.setDefaultImage(context,list.get(i).getImageUrl(),viewHolder.film_recycle_item_img);
+        MyGlideUtil.setRoundImage(context,list.get(i).getImageUrl(),viewHolder.film_recycle_item_img);
+        viewHolder.film_recycle_item_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(onclicked!=null){
+                    onclicked.movie(list.get(i).getId(),i);
+                }
+            }
+        });
     }
 
     @Override
@@ -58,5 +66,13 @@ public class FilmeRecycleAdapter extends RecyclerView.Adapter<FilmeRecycleAdapte
             this.film_recycle_item_img = (ImageView) itemView.findViewById(R.id.film_recycle_item_img);
             this.film_recycle_item_name = (TextView) itemView.findViewById(R.id.film_recycle_item_name);
         }
+    }
+
+    public interface onclicked{
+        void movie(int id,int i);
+    }
+    private onclicked onclicked;
+    public void getonclick(onclicked onclicked){
+        this.onclicked=onclicked;
     }
 }
