@@ -6,17 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".avtivity.my.HornActivity">
 
-    <TextView
-        android:id="@+id/System_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="系统消息"
-        android:textSize="14sp"
-        android:textColor="#333333"
+    <LinearLayout
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="24dp"/>
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/System_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="系统消息"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginLeft="24dp"/>
+        <TextView
+            android:id="@+id/System_messageW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(0条未读)"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
     <TextView
-        android:layout_below="@+id/System_message"
+        android:layout_below="@+id/linear"
         android:id="@+id/Ticket_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

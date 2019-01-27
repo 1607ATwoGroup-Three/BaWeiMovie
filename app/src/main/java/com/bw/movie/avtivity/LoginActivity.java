@@ -104,8 +104,8 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 Map<String,Object> headmap=new HashMap<>();
                 Map<String,Object> map=new HashMap<>();
                 map.put("phone",login_phone.getText()+"");
-                String pwd = login_pwd.getTrimmedString ().trim ();
-                String encrypt = EncryptUtil.encrypt (pwd);
+                String pwd = login_pwd.getTrimmedString ().trim ();//XEdit得值的方法
+                String encrypt = EncryptUtil.encrypt (pwd);//加密
                 map.put("pwd",encrypt);
                 SpBase.save(LoginActivity.this,"pwd",pwd+"");
                 presenter.post(Interfaces.Land,headmap,map,LoginData.class);

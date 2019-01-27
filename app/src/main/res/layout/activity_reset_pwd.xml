@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".avtivity.my.ResetPwdActivity">
+    tools:context=".avtivity.my.ResetPwdActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
+        android:id="@+id/GaiMi_Line"
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,11 +80,10 @@
                     android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/newPwd"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:textColor="#999999"
-                    android:textSize="14sp"
-                    android:hint="123"/>
+                    android:textSize="14sp" />
 
             </LinearLayout>
             <TextView
@@ -109,16 +111,26 @@
 
                 <EditText
                     android:id="@+id/resetPwd"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:textColor="#999999"
-                    android:textSize="14sp"
-                    android:hint="123"/>
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
+    <Button
+        android:id="@+id/Update_save"
+        android:background="@drawable/my_tijiao"
+        android:layout_width="48dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/GaiMi_Line"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="300dp"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
 
     <ImageView
         android:id="@+id/Reset_Back"

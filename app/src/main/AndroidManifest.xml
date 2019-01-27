@@ -127,8 +127,9 @@
             android:name=".avtivity.MovieListActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".avtivity.my.HornActivity"></activity>
-        <activity android:name=".avtivity.MovieDetailsActivity"></activity>
+        <activity android:name=".avtivity.my.HornActivity" />
+        <activity android:name=".avtivity.MovieDetailsActivity" />
+        <activity android:name=".avtivity.my.EditionGXActivity"></activity>
     </application>
 
 </manifest>
