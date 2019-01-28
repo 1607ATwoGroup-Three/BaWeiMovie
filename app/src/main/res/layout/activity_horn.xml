@@ -29,133 +29,13 @@
             android:textColor="#333333"
             android:layout_marginLeft="5dp"/>
     </LinearLayout>
-
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/linear"
-        android:id="@+id/Ticket_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="购票消息"
-        android:textSize="16sp"
-        android:textColor="#333333"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="24dp"/>
-    <LinearLayout
-        android:id="@+id/line1"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Ticket_message">
-        <TextView
-            android:id="@+id/Message1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="暂无购票消息"
-            android:textSize="12sp"
-            android:textColor="#333333"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/xian1"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/line1"
-        android:layout_width="325dp"
-        android:layout_height="1dp"
-        android:background="#f1eeee"/>
-
-    <TextView
-        android:layout_below="@+id/xian1"
-        android:id="@+id/Film_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="电影消息"
-        android:textSize="16sp"
-        android:textColor="#333333"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="24dp"/>
-    <LinearLayout
-        android:id="@+id/line2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Film_message"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/Message2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="暂无电影消息"
-            android:textSize="12sp"
-            android:textColor="#333333"/>
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <TextView
-            android:id="@+id/time1"
-            android:layout_marginRight="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="08:00"
-            android:textSize="12sp"
-            android:textColor="#333333"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/xian2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/line2"
-        android:layout_width="325dp"
-        android:layout_height="1dp"
-        android:background="#f1eeee"/>
-
-    <TextView
-        android:layout_below="@+id/xian2"
-        android:id="@+id/Remind_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="提醒消息"
-        android:textSize="16sp"
-        android:textColor="#333333"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="24dp"/>
-    <LinearLayout
-        android:id="@+id/line3"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Remind_message">
-        <TextView
-            android:id="@+id/Message3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="暂无提醒消息"
-            android:textSize="12sp"
-            android:textColor="#333333"/>
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <TextView
-            android:id="@+id/time2"
-            android:layout_marginRight="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10-11 14:20"
-            android:textSize="12sp"
-            android:textColor="#333333"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/xian3"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/line3"
-        android:layout_width="325dp"
-        android:layout_height="1dp"
-        android:background="#f1eeee"/>
+        android:id="@+id/Recy"
+        ></android.support.v7.widget.RecyclerView>
 
     <ImageView
         android:id="@+id/System_Back"
