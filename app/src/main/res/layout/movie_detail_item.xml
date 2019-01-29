@@ -2,11 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
 
     <LinearLayout
         android:id="@+id/line1"
-        android:layout_width="325dp"
+        android:layout_width="312dp"
         android:layout_height="60dp"
         android:layout_marginLeft="24dp"
         android:layout_gravity="center_vertical">
@@ -32,7 +33,7 @@
         android:layout_marginLeft="24dp"
         android:text="156232222222222222222222222222222"
         android:id="@+id/Ping_Huifu_content"
-        android:layout_width="325dp"
+        android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/line1"
         android:lines="5"/>
@@ -40,7 +41,7 @@
         android:id="@+id/line2"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"
-        android:layout_width="325dp"
+        android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Ping_Huifu_content"
         android:orientation="horizontal">
@@ -89,7 +90,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"
         android:layout_below="@id/line2"
-        android:layout_width="325dp"
+        android:layout_width="312dp"
         android:layout_height="1dp"
         android:background="#f1eeee"/>
 
