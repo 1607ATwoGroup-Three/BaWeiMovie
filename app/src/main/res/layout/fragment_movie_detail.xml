@@ -23,12 +23,19 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginBottom="10dp" />
 
+            <ImageView
+                android:id="@+id/film_detail_image_down"
+                android:background="@mipmap/com_icon_down_default"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="28dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
             <LinearLayout
                 android:id="@+id/film_detail_rels3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-
                 android:layout_toRightOf="@id/predator"
                 android:orientation="vertical">
 
@@ -54,7 +61,6 @@
                         android:textColor="#333333"
                         android:textSize="11sp" />
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -366,6 +372,6 @@
         android:layout_width="110dp"
         android:layout_height="151dp"
         android:layout_marginLeft="24dp"
-        android:background="@drawable/login_login" />
+        />
 
 </RelativeLayout>

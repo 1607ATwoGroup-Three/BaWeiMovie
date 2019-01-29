@@ -77,7 +77,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
 
         boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
         String phone = SpBase.getString(LoginActivity.this,"ter_phone",null);
-        Log.e("phone1111111111111111",phone+"");
         login_phone.setText(phone+"");
         if (cb){
             String pwd = SpBase.getString(LoginActivity.this,"log_pwd", null);
@@ -195,7 +194,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("121111111","11111111111");
         String phone = SpBase.getString(LoginActivity.this,"ter_phone","");
         login_phone.setText(phone);
     }

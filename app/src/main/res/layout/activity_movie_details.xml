@@ -160,6 +160,19 @@
                 android:layout_marginLeft="32dp"
                 />
         </LinearLayout>
+        <!--这个图片用来处理一个简单的事件分发-->
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/details_visibility_img"
+            android:layout_below="@+id/details_movie_text_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/details_visibility_img_top"
+            android:layout_above="@id/details_visibility_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <FrameLayout
             android:visibility="gone"
             android:id="@+id/details_frg"

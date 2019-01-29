@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.FilmAdapter;
+import com.bw.movie.avtivity.MovieDetailsActivity;
 import com.bw.movie.avtivity.MovieListActivity;
 import com.bw.movie.bean.FilmTypeBean;
 import com.bw.movie.bean.IsShowingUpBean;
@@ -109,7 +110,10 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
 
             @Override
             public void movie(int id) {
-                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
+                Intent intent =new Intent(getContext(),MovieDetailsActivity.class);
+                intent.putExtra("movieId",id+"");
+                startActivity(intent);
+//                Toast.makeText(getContext(), id+"", Toast.LENGTH_SHORT).show();
             }
         });
     }

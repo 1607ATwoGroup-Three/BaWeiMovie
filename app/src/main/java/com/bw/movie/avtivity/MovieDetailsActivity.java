@@ -16,7 +16,10 @@ import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.MovieDetailBean;
 import com.bw.movie.contract.Contract;
+import com.bw.movie.fragment.MoviceStillsFragment;
 import com.bw.movie.fragment.MovieDetailFragment;
+import com.bw.movie.fragment.MovieFilmReviewFragment;
+import com.bw.movie.fragment.MovieNoticeFragment;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.MyGlideUtil;
@@ -32,6 +35,8 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
     private ImageView details_movie_image_love;
     private TextView details_movie_text_name;
     private ImageView details_movie_image_big;
+    private ImageView details_visibility_img;
+    private ImageView details_visibility_img_top;
     private TextView details_lin_movie_text_details;
     private TextView details_lin_movie_text_notice;
     private TextView details_lin_movie_text_photo;
@@ -52,6 +57,8 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
         BaseActivity.fullScreen(MovieDetailsActivity.this, false);
         setContentView(R.layout.activity_movie_details);
         details_image_back = findViewById(R.id.details_image_back);
+        details_visibility_img = findViewById(R.id.details_visibility_img);
+        details_visibility_img_top = findViewById(R.id.details_visibility_img_top);
         details_movie = findViewById(R.id.details_movie);
         details_movie_image_love = findViewById(R.id.details_movie_image_love);
         details_movie_text_name = findViewById(R.id.details_movie_text_name);
@@ -68,6 +75,8 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
         details_lin_movie_text_photo.setOnClickListener(this);
         details_lin_movie_text_review.setOnClickListener(this);
         details_movie_button_back.setOnClickListener(this);
+        details_visibility_img.setOnClickListener(this);
+        details_visibility_img_top.setOnClickListener(this);
         Intent intent = getIntent();
         movieId = intent.getStringExtra("movieId");
         islove = intent.getStringExtra("islove");
@@ -75,16 +84,20 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
 
     @Override
     protected void initData() {
+        if(islove!=null)
         if (islove.equals("2")) {
             MyGlideUtil.setRoundImage(MovieDetailsActivity.this, R.mipmap.com_icon_collection_default, details_movie_image_love);
-        } else {
+        } else if(islove.equals("1")){
             MyGlideUtil.setRoundImage(MovieDetailsActivity.this, R.mipmap.com_icon_collection_selected, details_movie_image_love);
+        }
+        if(movieId!=null){
+            SpBase.save(MovieDetailsActivity.this,"movieId",movieId);
         }
         headmap = new HashMap<>();
         map = new HashMap<>();
         headmap.put("userId", SpBase.getString(MovieDetailsActivity.this, "userId", ""));
         headmap.put("sessionId", SpBase.getString(MovieDetailsActivity.this, "sessionId", ""));
-        map.put("movieId", movieId);
+        map.put("movieId", SpBase.getString(MovieDetailsActivity.this, "movieId", ""));
         manager = getSupportFragmentManager();
     }
 
@@ -114,18 +127,40 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
         switch (v.getId()) {
             case R.id.details_lin_movie_text_details:
                 manager.beginTransaction().replace(R.id.details_frg,new MovieDetailFragment()).commit();
+                details_frg.setVisibility(View.VISIBLE);
+                details_visibility_img.setVisibility(View.VISIBLE);
+                details_visibility_img_top.setVisibility(View.VISIBLE);
                 break;
             case R.id.details_lin_movie_text_notice:
-
+                manager.beginTransaction().replace(R.id.details_frg,new MovieNoticeFragment()).commit();
+                details_frg.setVisibility(View.VISIBLE);
+                details_visibility_img.setVisibility(View.VISIBLE);
+                details_visibility_img_top.setVisibility(View.VISIBLE);
                 break;
             case R.id.details_lin_movie_text_photo:
-
+                manager.beginTransaction().replace(R.id.details_frg,new MoviceStillsFragment()).commit();
+                details_frg.setVisibility(View.VISIBLE);
+                details_visibility_img.setVisibility(View.VISIBLE);
+                details_visibility_img_top.setVisibility(View.VISIBLE);
                 break;
             case R.id.details_lin_movie_text_review:
-
+                manager.beginTransaction().replace(R.id.details_frg,new MovieFilmReviewFragment()).commit();
+                details_frg.setVisibility(View.VISIBLE);
+                details_visibility_img.setVisibility(View.VISIBLE);
+                details_visibility_img_top.setVisibility(View.VISIBLE);
                 break;
             case R.id.details_movie_button_back:
+//                返回
                 finish();
+                break;
+            case R.id.details_visibility_img:
+                //这是拦截一个点击事件的
+                break;
+            case R.id.details_visibility_img_top:
+//                点击其他地方关闭fragment
+                details_frg.setVisibility(View.GONE);
+                details_visibility_img.setVisibility(View.GONE);
+                details_visibility_img_top.setVisibility(View.GONE);
                 break;
         }
     }

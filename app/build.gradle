@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.bw.movie"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -52,4 +52,8 @@ dependencies {
     implementation 'com.contrarywind:Android-PickerView:4.1.7'
 //    这是一个adapter 的一个依赖
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+
+//    饺子视频播放器
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.9'
+
 }

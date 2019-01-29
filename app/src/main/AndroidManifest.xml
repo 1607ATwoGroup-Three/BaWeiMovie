@@ -128,7 +128,10 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity android:name=".avtivity.my.HornActivity" />
-        <activity android:name=".avtivity.MovieDetailsActivity" />
+        <activity
+            android:name=".avtivity.MovieDetailsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity android:name=".avtivity.my.EditionGXActivity"></activity>
     </application>
 

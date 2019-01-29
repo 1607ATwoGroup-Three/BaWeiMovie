@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/my_linear"
+    tools:context=".fragment.MoviceStillsFragment">
+
+    <TextView
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/stils_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="剧照"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_marginLeft="24dp"
+        android:id="@+id/stils_style"
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_below="@id/stils_name"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/cinema_ed" />
+
+    <ImageView
+        android:id="@+id/film_stils_image_down"
+        android:background="@mipmap/com_icon_down_default"
+        android:layout_marginRight="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/film_stils_recycle"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/stils_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
