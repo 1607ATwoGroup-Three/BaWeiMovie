@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,12 +35,12 @@ import java.util.Map;
 public class MyFragment extends Fragment implements View.OnClickListener,Contract.View {
     private ImageView my_head_image;
     private TextView my_Name;
-    private ImageView my_message;
-    private ImageView my_care;
-    private ImageView my_pay;
-    private ImageView my_opinion;
-    private ImageView my_edition;
-    private ImageView my_logoff;
+    private LinearLayout my_message;
+    private LinearLayout my_care;
+    private LinearLayout my_pay;
+    private LinearLayout my_opinion;
+    private LinearLayout my_edition;
+    private LinearLayout my_logoff;
     private ImageView my_horn;
 
     @Nullable
@@ -66,12 +67,12 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
 
         my_head_image = (ImageView) view.findViewById(R.id.my_head_image);
         my_Name = (TextView) view.findViewById(R.id.my_Name);
-        my_message = (ImageView) view.findViewById(R.id.my_message);
-        my_care = (ImageView) view.findViewById(R.id.my_care);
-        my_pay = (ImageView) view.findViewById(R.id.my_pay);
-        my_opinion = (ImageView) view.findViewById(R.id.my_opinion);
-        my_edition = (ImageView) view.findViewById(R.id.my_edition);
-        my_logoff = (ImageView) view.findViewById(R.id.my_logoff);
+        my_message = (LinearLayout) view.findViewById(R.id.my_message);
+        my_care = (LinearLayout) view.findViewById(R.id.my_care);
+        my_pay = (LinearLayout) view.findViewById(R.id.my_pay);
+        my_opinion = (LinearLayout) view.findViewById(R.id.my_opinion);
+        my_edition = (LinearLayout) view.findViewById(R.id.my_edition);
+        my_logoff = (LinearLayout) view.findViewById(R.id.my_logoff);
         my_horn = (ImageView) view.findViewById(R.id.my_horn);
 
         my_head_image.setOnClickListener(this);

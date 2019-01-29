@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class EditionxActivity extends BaseActivity implements Contract.View {
     protected void initData() {
 
         TextView look_Edition=findViewById(R.id.look_Edition);
+        ImageView Edition_Back=findViewById(R.id.Edition_Back);
 
         look_Edition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +54,13 @@ public class EditionxActivity extends BaseActivity implements Contract.View {
                 Map<String, Object> map = new HashMap<>();
                 presenter.get(Interfaces.QueryForNewVersion, headmap, map, EditionData.class);
 
+            }
+        });
 
-
+        Edition_Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
