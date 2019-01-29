@@ -59,21 +59,30 @@ public class ResetPwdActivity extends BaseActivity implements Contract.View {
         Update_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sessionid = SpBase.getString(ResetPwdActivity.this, "sessionId", "");
-                String userid = SpBase.getString(ResetPwdActivity.this, "userId", "");
-                Map<String, Object> headmap = new HashMap<>();
-                headmap.put("userId", userid + "");
-                headmap.put("sessionId", sessionid + "");
-                //老 新 重复密码
-                Map<String, Object> map = new HashMap<>();
-                map.put("oldPwd", encryptn);
+
                 String newpwd = newPwd.getText().toString();
                 String resetpwd = resetPwd.getText().toString();
-                String encrypt = EncryptUtil.encrypt(newpwd);
-                String encrypt1 = EncryptUtil.encrypt(resetpwd);
-                map.put("newPwd", encrypt);
-                map.put("newPwd2", encrypt1);
-                presenter.post(Interfaces.ChangePassword, headmap, map, ResetPwdData.class);
+
+                if (newpwd.equals(resetpwd)){
+                    String sessionid = SpBase.getString(ResetPwdActivity.this, "sessionId", "");
+                    String userid = SpBase.getString(ResetPwdActivity.this, "userId", "");
+                    Map<String, Object> headmap = new HashMap<>();
+                    headmap.put("userId", userid + "");
+                    headmap.put("sessionId", sessionid + "");
+                    //老 新 重复密码
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("oldPwd", encryptn);
+
+                    String encrypt = EncryptUtil.encrypt(newpwd);
+                    String encrypt1 = EncryptUtil.encrypt(resetpwd);
+                    map.put("newPwd", encrypt);
+                    map.put("newPwd2", encrypt1);
+                    presenter.post(Interfaces.ChangePassword, headmap, map, ResetPwdData.class);
+
+                }else {
+                    Toast.makeText(ResetPwdActivity.this, "确认密码一致", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -90,6 +99,7 @@ public class ResetPwdActivity extends BaseActivity implements Contract.View {
             String message = resetPwdData.getMessage();
             if (resetPwdData.getStatus().equals("0000")) {
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+                SpBase.save(ResetPwdActivity.this,"pwd",pwd+"");
                 finish();
             }
 
@@ -98,7 +108,7 @@ public class ResetPwdActivity extends BaseActivity implements Contract.View {
 
     @Override
     public void error(String error) {
-
+        Toast.makeText(ResetPwdActivity.this, error, Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
@@ -107,6 +108,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void error(String error) {
-
+        Toast.makeText(UserActivity.this, error, Toast.LENGTH_SHORT).show();
     }
 }

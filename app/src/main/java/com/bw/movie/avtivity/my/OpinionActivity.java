@@ -26,6 +26,7 @@ public class OpinionActivity extends BaseActivity implements Contract.View {
     private ImageView Opinion_Back;
     private Presenter presenter;
     private EditText content;
+    private String scontent;
 
     @Override
     protected void initView() {
@@ -40,18 +41,27 @@ public class OpinionActivity extends BaseActivity implements Contract.View {
 
         //提交
         Opinion_tijiao.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
-                String sessionid = SpBase.getString(OpinionActivity.this, "sessionId", "");
-                String userid = SpBase.getString(OpinionActivity.this, "userId", "");
+                scontent = content.getText().toString();
+                SpBase.save(OpinionActivity.this,"scontent",scontent+"");
+                if (scontent.equals("")){
+                    Toast.makeText(OpinionActivity.this, "内容不能为空", Toast.LENGTH_SHORT).show();
+                }else{
+                    String sessionid = SpBase.getString(OpinionActivity.this, "sessionId", "");
+                    String userid = SpBase.getString(OpinionActivity.this, "userId", "");
 
-                Map<String, Object> headmap = new HashMap<>();
-                headmap.put("userId", userid + "");
-                headmap.put("sessionId", sessionid + "");
-                Map<String, Object> map = new HashMap<>();
-                String scontent = content.getText().toString();
-                map.put("content",scontent);
-                presenter.post(Interfaces.Feedback, headmap, map, OpinionBean.class);
+                    Map<String, Object> headmap = new HashMap<>();
+                    headmap.put("userId", userid + "");
+                    headmap.put("sessionId", sessionid + "");
+                    Map<String, Object> map = new HashMap<>();
+
+                    map.put("content", scontent);
+                    presenter.post(Interfaces.Feedback, headmap, map, OpinionBean.class);
+                }
+                
             }
         });
         //返回
@@ -81,12 +91,13 @@ public class OpinionActivity extends BaseActivity implements Contract.View {
                 Toast.makeText(OpinionActivity.this, message, Toast.LENGTH_SHORT).show();
                 Intent in = new Intent(OpinionActivity.this, OpinionFankuiActivity.class);
                 startActivity(in);
+                content.setText("");
             }
         }
     }
 
     @Override
     public void error(String error) {
-
+        Toast.makeText(OpinionActivity.this, error, Toast.LENGTH_SHORT).show();
     }
 }

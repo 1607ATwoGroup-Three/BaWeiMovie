@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
 
-public class FollowActivity extends BaseActivity implements View.OnClickListener {
+public class FollowActivity extends BaseActivity implements View.OnClickListener,Contract.View {
 
     private ImageView Follow_back;
     private TextView care_yinPian;
     private TextView care_yinYuan;
+    private Presenter presenter;
 
 
     @Override
@@ -35,7 +38,7 @@ public class FollowActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void present() {
-
+        presenter = new Presenter(this);
     }
 
 
@@ -58,5 +61,15 @@ public class FollowActivity extends BaseActivity implements View.OnClickListener
                 care_yinPian.setTextColor(Color.BLACK);
                 break;
         }
+    }
+
+    @Override
+    public void success(Object success) {
+
+    }
+
+    @Override
+    public void error(String error) {
+
     }
 }
