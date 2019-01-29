@@ -1,7 +1,11 @@
 package com.bw.movie.fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,6 +26,7 @@ import com.bw.movie.avtivity.my.OpinionActivity;
 import com.bw.movie.avtivity.my.PayActivity;
 import com.bw.movie.avtivity.my.UserActivity;
 import com.bw.movie.bean.IDUserData;
+import com.bw.movie.bean.PostImageData;
 import com.bw.movie.bean.UserMessageData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
@@ -29,7 +34,9 @@ import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.MyGlideUtil;
 import com.bw.movie.utils.SpBase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MyFragment extends Fragment implements View.OnClickListener,Contract.View {
@@ -42,6 +49,9 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
     private LinearLayout my_edition;
     private LinearLayout my_logoff;
     private ImageView my_horn;
+    private Presenter presenter;
+    private Map<String, Object> headmap;
+    private Map<String, Object> map;
 
     @Nullable
     @Override
@@ -55,12 +65,12 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
     private void presenter() {
         String sessionid = SpBase.getString(getContext(), "sessionId", "");
         String userid = SpBase.getString(getContext(), "userId", "");
-        Presenter presenter=new Presenter(this);
-        Map<String,Object> headmap=new HashMap<>();
+        presenter = new Presenter(this);
+        headmap = new HashMap<>();
         headmap.put("userId",userid+"");
         headmap.put("sessionId",sessionid+"");
-        Map<String,Object> map=new HashMap<>();
-        presenter.get(Interfaces.QueryUserInformation,headmap,map,IDUserData.class);
+        Map<String,Object> map= new HashMap<>();
+        presenter.get(Interfaces.QueryUserInformation, headmap,map,IDUserData.class);
     }
 
     private void initView(View view) {
@@ -94,6 +104,9 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
                 startActivity(inhorn);
                 break;
             case R.id.my_head_image:
+                Intent intent1 = new Intent(Intent.ACTION_PICK);
+                intent1.setType("image/*");
+                startActivityForResult(intent1,0);
                 break;
             case R.id.my_Name:
                 break;
@@ -123,6 +136,26 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data==null){
+            return;
+        }
+        if(requestCode==0){
+            String filePath = getFilePath(null,requestCode,data);
+            /**
+             * 这里是用的上传头像
+             */
+            Map<String, Object> map = new HashMap<>();
+            List<Object> list =new ArrayList<>();
+            list.add(filePath);
+            presenter.img(Interfaces.UploadHead,headmap,map,list,PostImageData.class);
+//            objects.add(filePath);
+//            fpl_image_adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
     public void success(Object success) {
         if (success instanceof IDUserData){
             IDUserData idUserData= (IDUserData) success;
@@ -131,11 +164,46 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
             String headPic = result.getHeadPic();
             my_Name.setText(nickName);
             MyGlideUtil.setCircleImage(getContext(),headPic,my_head_image);
+        }else if(success instanceof PostImageData){
+            PostImageData data = (PostImageData) success;
+            if(data.getStatus().equals("0000")){
+                MyGlideUtil.setCircleImage(getContext(),data.getHeadPath(),my_head_image);
+                Toast.makeText(getContext(),data.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     @Override
     public void error(String error) {
+        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+    }
 
+
+    /**
+     * 得到图片的路径
+     *
+     * @param fileName
+     * @param requestCode
+     * @param data
+     * @return
+     */
+    public String getFilePath(String fileName, int requestCode, Intent data) {
+        if (requestCode == 1) {
+            return fileName;
+        } else if (requestCode == 0) {
+            Uri uri = data.getData();
+            String[] proj = {MediaStore.Images.Media.DATA};
+            Cursor actualimagecursor =getActivity().managedQuery(uri, proj, null, null, null);
+            int actual_image_column_index = actualimagecursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            actualimagecursor.moveToFirst();
+            String img_path = actualimagecursor
+                    .getString(actual_image_column_index);
+            // 4.0以上平台会自动关闭cursor,所以加上版本判断,OK
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+                actualimagecursor.close();
+            return img_path;
+        }
+        return null;
     }
 }
