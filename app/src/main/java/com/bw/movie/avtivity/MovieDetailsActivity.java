@@ -77,6 +77,7 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
         details_movie_button_back.setOnClickListener(this);
         details_visibility_img.setOnClickListener(this);
         details_visibility_img_top.setOnClickListener(this);
+        details_movie_button_buy.setOnClickListener(this);
         Intent intent = getIntent();
         movieId = intent.getStringExtra("movieId");
         islove = intent.getStringExtra("islove");
@@ -113,6 +114,7 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
             MovieDetailBean bean = (MovieDetailBean) success;
             MovieDetailBean.ResultBean resultBean = bean.getResult();
             details_movie_text_name.setText(resultBean.getName());
+            SpBase.save(MovieDetailsActivity.this,"moviename",resultBean.getName());
             MyGlideUtil.setRoundImage(ctx, resultBean.getImageUrl(), details_movie_image_big);
         }
     }
