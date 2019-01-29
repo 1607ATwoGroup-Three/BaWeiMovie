@@ -175,15 +175,6 @@
         android:layout_marginTop="16dp"
         android:background="@mipmap/log_icon_weixin_default" />
 
-    <TextView
-        android:id="@+id/Youke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:text="游客模式"
-        android:textColor="#fff"
-        android:textSize="12sp" />
     <com.amap.api.maps.MapView
         android:visibility="gone"
         android:id="@+id/login_mapView"

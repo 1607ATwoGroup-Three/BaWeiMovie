@@ -132,7 +132,8 @@
             android:name=".avtivity.MovieDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
-        <activity android:name=".avtivity.my.EditionGXActivity"></activity>
+        <activity android:name=".avtivity.my.EditionGXActivity" />
+        <activity android:name=".avtivity.TicketPurchaseActivity"></activity>
     </application>
 
 </manifest>

@@ -162,6 +162,10 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
                 details_visibility_img.setVisibility(View.GONE);
                 details_visibility_img_top.setVisibility(View.GONE);
                 break;
+            case R.id.details_movie_button_buy:
+                Intent intent =new Intent(MovieDetailsActivity.this,TicketPurchaseActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

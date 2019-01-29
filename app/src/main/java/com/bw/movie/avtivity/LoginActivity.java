@@ -37,7 +37,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     private CheckBox login_jizhumima;
     private CheckBox login_zidongdenglu;
     private SharedPreferences.Editor edit;
-    private TextView youke;
     private MapView show_mapView;
 
     private LocationSource.OnLocationChangedListener mListener = null;//定位监听器
@@ -73,8 +72,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         login_pwd = findViewById(R.id.login_pwd);
         login_jizhumima = findViewById(R.id.login_jizhumima);
         login_zidongdenglu = findViewById(R.id.login_zidongdenglu);
-        youke = findViewById(R.id.Youke);
-
         boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
         String phone = SpBase.getString(LoginActivity.this,"ter_phone",null);
         login_phone.setText(phone+"");
@@ -110,16 +107,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 presenter.post(Interfaces.Land,headmap,map,LoginData.class);
             }
         });
-
-        //游客模式
-        youke.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ShowActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override
@@ -135,7 +122,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         if(loginData.getStatus().equals("0000")){
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, ShowActivity.class);
-
             String sessionId = loginData.getResult().getSessionId();
             int userId = loginData.getResult().getUserId();
             SpBase.save(LoginActivity.this,"sessionId",sessionId);
