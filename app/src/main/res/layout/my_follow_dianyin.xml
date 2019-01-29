@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_linear"
+        android:orientation="horizontal"
+        android:padding="15dp">
+        <ImageView
+            android:layout_width="103dp"
+            android:layout_height="128dp"
+            android:id="@+id/Follow_img"/>
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="无双"
+                android:id="@+id/Follow_name"/>
+            <TextView
+                android:layout_marginTop="@dimen/dp_10"
+                android:textSize="12sp"
+                android:textColor="#333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="还是地方还福达合金"
+                android:id="@+id/Follow_content"/>
+            <TextView
+                android:layout_marginTop="12dp"
+                android:textSize="12sp"
+                android:textColor="#999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018-08-88"
+                android:id="@+id/Follow_time"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
