@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.avtivity.LoginActivity;
 import com.bw.movie.avtivity.my.EditionxActivity;
 import com.bw.movie.avtivity.my.FollowActivity;
 import com.bw.movie.avtivity.my.HornActivity;
@@ -131,6 +132,8 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
                 startActivity(ine);
                 break;
             case R.id.my_logoff:
+                Intent inlo=new Intent(getContext(),LoginActivity.class);
+                startActivity(inlo);
                 break;
         }
     }

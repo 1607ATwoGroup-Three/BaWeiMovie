@@ -6,24 +6,30 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 
 import com.bw.movie.R;
+import com.bw.movie.base.BaseActivity;
 
-public class EditionGXActivity extends AppCompatActivity {
+public class EditionGXActivity extends BaseActivity {
 
     private WebView webview;
     private ProgressBar progressbar;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+    protected void initView() {
         setContentView(R.layout.activity_edition_gx);
-        initView();
+
+
     }
 
-    private void initView() {
+    @Override
+    protected void initData() {
         webview = (WebView) findViewById(R.id.webview);
         progressbar = (ProgressBar) findViewById(R.id.progressbar);
 
         webview.loadUrl("http://www.baidu.com");//加载url
+    }
+
+    @Override
+    protected void present() {
 
     }
 }
