@@ -7,8 +7,10 @@ import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
 
-public class TicketPurchaseActivity extends BaseActivity {
+public class TicketPurchaseActivity extends BaseActivity implements Contract.View {
 
     private TextView movie_ticket_name;
     private RecyclerView movie_ticket_recycle;
@@ -29,6 +31,16 @@ public class TicketPurchaseActivity extends BaseActivity {
 
     @Override
     protected void present() {
+        Presenter presenter=new Presenter(this);
+    }
+
+    @Override
+    public void success(Object success) {
+
+    }
+
+    @Override
+    public void error(String error) {
 
     }
 }
