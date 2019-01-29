@@ -1,14 +1,13 @@
 package com.bw.movie.avtivity;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
-import com.bw.movie.adapter.CinemaAdapter;
 import com.bw.movie.adapter.TicketPurchaseAdapter;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.NearbyCinemaData;
@@ -20,7 +19,11 @@ import com.bw.movie.utils.SpBase;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TicketPurchaseActivity extends BaseActivity implements Contract.View {
+/**
+ * 这个页面的点击事件跳转到选择座位
+ */
+
+public class TicketPurchaseActivity extends BaseActivity implements Contract.View, View.OnClickListener {
 
     private TextView movie_ticket_name;
     private RecyclerView movie_ticket_recycle;
@@ -36,6 +39,7 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
         movie_ticket_name =findViewById(R.id.movie_ticket_name);
         movie_ticket_recycle =findViewById(R.id.movie_ticket_recycle);
         movie_ticket_back = findViewById(R.id.movie_ticket_back);
+        movie_ticket_back.setOnClickListener(this);
         hashmap.put("userId", SpBase.getString(TicketPurchaseActivity.this,"userId", "0"));
         hashmap.put("sessionId", SpBase.getString(TicketPurchaseActivity.this,"sessionId", ""));
 //        接口访问只有不到10个数据
@@ -69,5 +73,14 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
     @Override
     public void error(String error) {
         Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.movie_ticket_back:
+                finish();
+                break;
+        }
     }
 }

@@ -24,7 +24,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="24dp"
-        android:text="ahah"
+        android:text="选择合适的影院"
         android:textSize="10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
