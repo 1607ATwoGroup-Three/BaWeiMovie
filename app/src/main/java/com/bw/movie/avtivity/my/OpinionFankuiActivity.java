@@ -7,20 +7,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.base.BaseActivity;
 import com.bw.movie.utils.SpBase;
 
-public class OpinionFankuiActivity extends AppCompatActivity {
+public class OpinionFankuiActivity extends BaseActivity {
 
     private ImageView OpinionFK_Back;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+    protected void initView() {
         setContentView(R.layout.activity_opinion_fankui);
-        initView();
+
     }
 
-    private void initView() {
+    @Override
+    protected void initData() {
         OpinionFK_Back = (ImageView) findViewById(R.id.OpinionFK_Back);
         OpinionFK_Back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,5 +30,10 @@ public class OpinionFankuiActivity extends AppCompatActivity {
                 String content = SpBase.getString(OpinionFankuiActivity.this, "scontent", "");
             }
         });
+    }
+
+    @Override
+    protected void present() {
+
     }
 }

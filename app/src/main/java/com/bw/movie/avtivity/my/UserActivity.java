@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.IDUserData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
@@ -22,7 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserActivity extends AppCompatActivity implements View.OnClickListener, Contract.View {
+public class UserActivity extends BaseActivity implements View.OnClickListener, Contract.View {
 
     private ImageView my_message_reset;
     private ImageView my_message;
@@ -33,23 +34,15 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     private TextView user_emil;
     private ImageView User_Back;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+    protected void initView() {
+
         setContentView(R.layout.activity_user);
-        initView();
-        String sessionid = SpBase.getString(this, "sessionId", "");
-        String userid = SpBase.getString(this, "userId", "");
-        Presenter presenter = new Presenter(this);
-        Map<String, Object> headmap = new HashMap<>();
-        headmap.put("userId", userid + "");
-        headmap.put("sessionId", sessionid + "");
-        Map<String, Object> map = new HashMap<>();
-        presenter.get(Interfaces.QueryUserInformation, headmap, map, IDUserData.class);
+
     }
 
-    private void initView() {
-
+    @Override
+    protected void initData() {
         my_message_reset = (ImageView) findViewById(R.id.my_message_reset);
         my_message = (ImageView) findViewById(R.id.my_message);
         user_name = (TextView) findViewById(R.id.user_name);
@@ -61,6 +54,18 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         my_message_reset.setOnClickListener(this);
         User_Back = (ImageView) findViewById(R.id.User_Back);
         User_Back.setOnClickListener(this);
+    }
+
+    @Override
+    protected void present() {
+        String sessionid = SpBase.getString(this, "sessionId", "");
+        String userid = SpBase.getString(this, "userId", "");
+        Presenter presenter = new Presenter(this);
+        Map<String, Object> headmap = new HashMap<>();
+        headmap.put("userId", userid + "");
+        headmap.put("sessionId", sessionid + "");
+        Map<String, Object> map = new HashMap<>();
+        presenter.get(Interfaces.QueryUserInformation, headmap, map, IDUserData.class);
     }
 
     @Override
