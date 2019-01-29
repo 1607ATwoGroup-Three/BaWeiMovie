@@ -54,6 +54,7 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
 
     @Override
     protected void initView() {
+        BaseActivity.doublekeydown(false);
         BaseActivity.fullScreen(MovieDetailsActivity.this, false);
         setContentView(R.layout.activity_movie_details);
         details_image_back = findViewById(R.id.details_image_back);
