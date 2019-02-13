@@ -2,16 +2,14 @@ package com.bw.movie.avtivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.MovieDetailBean;
@@ -24,6 +22,10 @@ import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.MyGlideUtil;
 import com.bw.movie.utils.SpBase;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,12 +53,15 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
     private Map<String, Object> map;
     private Contract.Presenter presenter;
     private FragmentManager manager;
+    private int notice = 0;
 
     @Override
     protected void initView() {
+        EventBus.getDefault().register(MovieDetailsActivity.this);
         BaseActivity.doublekeydown(false);
         BaseActivity.fullScreen(MovieDetailsActivity.this, false);
         setContentView(R.layout.activity_movie_details);
+
         details_image_back = findViewById(R.id.details_image_back);
         details_visibility_img = findViewById(R.id.details_visibility_img);
         details_visibility_img_top = findViewById(R.id.details_visibility_img_top);
@@ -86,14 +91,14 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
 
     @Override
     protected void initData() {
-        if(islove!=null)
-        if (islove.equals("2")) {
-            MyGlideUtil.setRoundImage(MovieDetailsActivity.this, R.mipmap.com_icon_collection_default, details_movie_image_love);
-        } else if(islove.equals("1")){
-            MyGlideUtil.setRoundImage(MovieDetailsActivity.this, R.mipmap.com_icon_collection_selected, details_movie_image_love);
-        }
-        if(movieId!=null){
-            SpBase.save(MovieDetailsActivity.this,"movieId",movieId);
+        if (islove != null)
+            if (islove.equals("2")) {
+                MyGlideUtil.setRoundImage(MovieDetailsActivity.this, R.mipmap.com_icon_collection_default, details_movie_image_love);
+            } else if (islove.equals("1")) {
+                MyGlideUtil.setRoundImage(MovieDetailsActivity.this, R.mipmap.com_icon_collection_selected, details_movie_image_love);
+            }
+        if (movieId != null) {
+            SpBase.save(MovieDetailsActivity.this, "movieId", movieId);
         }
         headmap = new HashMap<>();
         map = new HashMap<>();
@@ -115,7 +120,7 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
             MovieDetailBean bean = (MovieDetailBean) success;
             MovieDetailBean.ResultBean resultBean = bean.getResult();
             details_movie_text_name.setText(resultBean.getName());
-            SpBase.save(MovieDetailsActivity.this,"moviename",resultBean.getName());
+            SpBase.save(MovieDetailsActivity.this, "moviename", resultBean.getName());
             MyGlideUtil.setRoundImage(ctx, resultBean.getImageUrl(), details_movie_image_big);
         }
     }
@@ -129,25 +134,26 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.details_lin_movie_text_details:
-                manager.beginTransaction().replace(R.id.details_frg,new MovieDetailFragment()).commit();
+                manager.beginTransaction().replace(R.id.details_frg, new MovieDetailFragment()).commit();
                 details_frg.setVisibility(View.VISIBLE);
                 details_visibility_img.setVisibility(View.VISIBLE);
                 details_visibility_img_top.setVisibility(View.VISIBLE);
                 break;
             case R.id.details_lin_movie_text_notice:
-                manager.beginTransaction().replace(R.id.details_frg,new MovieNoticeFragment()).commit();
+                notice = 1;
+                manager.beginTransaction().replace(R.id.details_frg, new MovieNoticeFragment()).commit();
                 details_frg.setVisibility(View.VISIBLE);
                 details_visibility_img.setVisibility(View.VISIBLE);
                 details_visibility_img_top.setVisibility(View.VISIBLE);
                 break;
             case R.id.details_lin_movie_text_photo:
-                manager.beginTransaction().replace(R.id.details_frg,new MoviceStillsFragment()).commit();
+                manager.beginTransaction().replace(R.id.details_frg, new MoviceStillsFragment()).commit();
                 details_frg.setVisibility(View.VISIBLE);
                 details_visibility_img.setVisibility(View.VISIBLE);
                 details_visibility_img_top.setVisibility(View.VISIBLE);
                 break;
             case R.id.details_lin_movie_text_review:
-                manager.beginTransaction().replace(R.id.details_frg,new MovieFilmReviewFragment()).commit();
+                manager.beginTransaction().replace(R.id.details_frg, new MovieFilmReviewFragment()).commit();
                 details_frg.setVisibility(View.VISIBLE);
                 details_visibility_img.setVisibility(View.VISIBLE);
                 details_visibility_img_top.setVisibility(View.VISIBLE);
@@ -161,14 +167,30 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
                 break;
             case R.id.details_visibility_img_top:
 //                点击其他地方关闭fragment
+                if (notice == 1) {
+                    EventBus.getDefault().postSticky(true);
+                    notice = 0;
+                }
                 details_frg.setVisibility(View.GONE);
                 details_visibility_img.setVisibility(View.GONE);
                 details_visibility_img_top.setVisibility(View.GONE);
                 break;
             case R.id.details_movie_button_buy:
-                Intent intent =new Intent(MovieDetailsActivity.this,TicketPurchaseActivity.class);
+                Intent intent = new Intent(MovieDetailsActivity.this, TicketPurchaseActivity.class);
                 startActivity(intent);
                 break;
         }
+    }
+
+    //    发送一个eventbus 关闭那个视频
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getInfo(Object object) {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
