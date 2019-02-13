@@ -97,7 +97,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                     get1001();
                     break;
                 case 1002:
-                    get1002();
+                    get1002( );
                     break;
                 case 1003:
                     get1003();

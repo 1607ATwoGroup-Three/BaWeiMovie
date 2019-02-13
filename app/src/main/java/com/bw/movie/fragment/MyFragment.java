@@ -108,7 +108,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
                 Intent intent1 = new Intent(Intent.ACTION_PICK);
                 intent1.setType("image/*");
                 startActivityForResult(intent1,0);
-                break;
+                 break;
             case R.id.my_Name:
                 break;
             case R.id.my_message:
@@ -134,6 +134,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
             case R.id.my_logoff:
                 Intent inlo=new Intent(getContext(),LoginActivity.class);
                 startActivity(inlo);
+                getActivity().finish();
                 break;
         }
     }

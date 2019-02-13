@@ -27,7 +27,6 @@ public class OpinionFankuiActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                String content = SpBase.getString(OpinionFankuiActivity.this, "scontent", "");
             }
         });
     }
