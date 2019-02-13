@@ -22,6 +22,8 @@ public class FollowActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initView() {
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(FollowActivity.this,true);
         setContentView(R.layout.activity_follow);
     }
 

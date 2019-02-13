@@ -36,7 +36,8 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
 
 
     protected void initView() {
-
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(UserActivity.this,true);
         setContentView(R.layout.activity_user);
 
     }

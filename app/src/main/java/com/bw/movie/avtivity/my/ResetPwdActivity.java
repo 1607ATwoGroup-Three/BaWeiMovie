@@ -34,6 +34,8 @@ public class ResetPwdActivity extends BaseActivity implements Contract.View {
 
 
     protected void initView() {
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(ResetPwdActivity.this,true);
         setContentView(R.layout.activity_reset_pwd);
     }
 

@@ -49,7 +49,8 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     @Override
     protected void initView() {
         setContentView(R.layout.activity_login);
-
+        BaseActivity.doublekeydown(true);
+        BaseActivity.fullScreen(LoginActivity.this,false);
     }
 
     @Override
@@ -180,6 +181,7 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     @Override
     protected void onResume() {
         super.onResume();
+        BaseActivity.doublekeydown(true);
         String phone = SpBase.getString(LoginActivity.this,"ter_phone","");
         login_phone.setText(phone);
     }

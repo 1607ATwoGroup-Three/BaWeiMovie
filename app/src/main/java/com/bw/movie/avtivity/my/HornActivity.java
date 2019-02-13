@@ -38,9 +38,9 @@ public class HornActivity extends BaseActivity implements Contract.View {
     private SystemMessageAdapter adapter;
 
     protected void initView() {
-
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(HornActivity.this,true);
         setContentView(R.layout.activity_horn);
-
     }
 
     @Override

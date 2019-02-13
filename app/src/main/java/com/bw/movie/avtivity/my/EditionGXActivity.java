@@ -15,9 +15,9 @@ public class EditionGXActivity extends BaseActivity {
 
 
     protected void initView() {
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(EditionGXActivity.this,true);
         setContentView(R.layout.activity_edition_gx);
-
-
     }
 
     @Override

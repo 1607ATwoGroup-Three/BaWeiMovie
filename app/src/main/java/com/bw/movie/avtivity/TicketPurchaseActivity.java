@@ -35,6 +35,7 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
     @Override
     protected void initView() {
         BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(TicketPurchaseActivity.this,true);
         setContentView(R.layout.activity_ticket_purchase);
         movie_ticket_name =findViewById(R.id.movie_ticket_name);
         movie_ticket_recycle =findViewById(R.id.movie_ticket_recycle);

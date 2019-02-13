@@ -30,6 +30,8 @@ public class OpinionActivity extends BaseActivity implements Contract.View {
 
     @Override
     protected void initView() {
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(OpinionActivity.this,true);
         setContentView(R.layout.activity_opinion);
     }
 

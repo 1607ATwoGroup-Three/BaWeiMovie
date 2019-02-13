@@ -30,6 +30,8 @@ public class EditionxActivity extends BaseActivity implements Contract.View {
 
     @Override
     protected void initView() {
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(EditionxActivity.this,true);
         setContentView(R.layout.activity_editionx);
     }
 

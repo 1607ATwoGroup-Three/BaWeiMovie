@@ -33,7 +33,7 @@ public class ShowActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void initView() {
         BaseActivity.doublekeydown(true);
-        BaseActivity.fullScreen(this, false);
+        BaseActivity.fullScreen(ShowActivity.this, false);
         setContentView(R.layout.activity_show);
     }
 
@@ -127,4 +127,9 @@ public class ShowActivity extends BaseActivity implements View.OnClickListener{
         animator2.start();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BaseActivity.doublekeydown(true);
+    }
 }

@@ -55,7 +55,8 @@ public class RegisterActivity extends BaseActivity implements Contract.View {
     @Override
     protected void initView() {
         setContentView(R.layout.activity_register);
-
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(RegisterActivity.this,false);
     }
 
     @Override

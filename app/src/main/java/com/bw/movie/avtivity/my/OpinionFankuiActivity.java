@@ -16,6 +16,8 @@ public class OpinionFankuiActivity extends BaseActivity {
 
 
     protected void initView() {
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(OpinionFankuiActivity.this,true);
         setContentView(R.layout.activity_opinion_fankui);
 
     }

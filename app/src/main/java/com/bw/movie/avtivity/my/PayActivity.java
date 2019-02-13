@@ -18,6 +18,8 @@ public class PayActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
+        BaseActivity.doublekeydown(false);
+        BaseActivity.fullScreen(PayActivity.this,true);
         setContentView(R.layout.activity_pay);
     }
 
