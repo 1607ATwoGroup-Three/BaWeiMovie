@@ -56,4 +56,6 @@ dependencies {
 //    饺子视频播放器
     implementation 'cn.jzvd:jiaozivideoplayer:6.2.9'
 
+//    eventBus
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }

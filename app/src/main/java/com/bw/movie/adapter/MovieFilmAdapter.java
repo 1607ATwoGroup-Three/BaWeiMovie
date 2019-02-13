@@ -26,7 +26,7 @@ public class MovieFilmAdapter extends BaseQuickAdapter<MovieFilmData.ResultBean,
 
     @Override
     protected void convert(BaseViewHolder helper, MovieFilmData.ResultBean item) {
-        MyGlideUtil.setRoundImage(mContext,item.getCommentHeadPic(),(ImageView) helper.getView(R.id.Ping_Huifu_img));
+        MyGlideUtil.setCircleImage(mContext,item.getCommentHeadPic(),(ImageView) helper.getView(R.id.Ping_Huifu_img));
         helper.setText(R.id.Ping_Huifu_name,item.getCommentUserName());
         helper.setText(R.id.Ping_Huifu_content,item.getCommentContent());
         SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
