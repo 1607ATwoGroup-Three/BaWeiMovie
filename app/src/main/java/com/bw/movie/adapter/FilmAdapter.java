@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
@@ -39,6 +41,9 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private List<FilmTypeBean> typeBeanList;
+
+    private int jindu = 2;
+    private float flag =150;
     //    热门电影
     private List<PopularCinemaBean.ResultBean> Poplist;
     //    正在热映
@@ -93,7 +98,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         ((ViewbannerHolder) viewHolder).film_recycle_banner.smoothScrollToPosition(i);
                     }
                 });
-                ((ViewbannerHolder) viewHolder).film_recycle_banner.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
+                /*((ViewbannerHolder) viewHolder).film_recycle_banner.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
                     @Override
                     public void onItemSelected(int i) {
 //                        得到当前显示的是哪一个
@@ -101,7 +106,27 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         int i1 = 100 / list.size();
                         ((ViewbannerHolder) viewHolder).film_recycle_bar.setProgress(i1*(pos+1));
                     }
+                });*/
+                ((ViewbannerHolder) viewHolder).film_recycle_banner.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
+                    @Override
+                    public void onItemSelected(int position) {
+                        if(jindu>position)
+                        {
+                            ObjectAnimator animator = ObjectAnimator.ofFloat(((ViewbannerHolder) viewHolder).linearLayout, "translationX",flag, flag-=50*(jindu-position));
+                            animator.setDuration(300);
+                            animator.start();
+                            jindu=position;
+                        }
+                        else
+                        {
+                            ObjectAnimator animator = ObjectAnimator.ofFloat(((ViewbannerHolder) viewHolder).linearLayout, "translationX",flag,flag+=50*(position-jindu));
+                            animator.setDuration(300);
+                            animator.start();
+                            jindu=position;
+                        }
+                    }
                 });
+
                 filmeRecycleAdapter.notifyDataSetChanged();
             }
         } else if (type == 1001) {
@@ -272,10 +297,14 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private class ViewbannerHolder extends RecyclerView.ViewHolder {
         public RecyclerCoverFlow film_recycle_banner;
         public ProgressBar film_recycle_bar;
+        public RelativeLayout relativeLayout;
+        public LinearLayout linearLayout;
         public ViewbannerHolder(@NonNull View itemView) {
             super(itemView);
             this.film_recycle_banner = (RecyclerCoverFlow) itemView.findViewById(R.id.film_recycle_banner);
             this.film_recycle_bar = (ProgressBar) itemView.findViewById(R.id.film_recycle_bar);
+            this.relativeLayout = (RelativeLayout) itemView.findViewById(R.id.rl_prograss_bar);
+            this.linearLayout = (LinearLayout) itemView.findViewById(R.id.rl_checked);
         }
 
     }

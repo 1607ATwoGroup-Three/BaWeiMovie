@@ -2,7 +2,14 @@ package com.bw.movie.appliction;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -19,10 +26,45 @@ import me.jessyan.autosize.utils.LogUtils;
  * <p>版本号：1<p>
  */
 public class MyApp extends Application {
+
+    /**
+     * 网络监听
+     */
+    private ConnectivityManager mConnectivityManager;
+    private NetworkInfo netInfo;
+    private BroadcastReceiver myNetReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+
+                mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                netInfo = mConnectivityManager.getActiveNetworkInfo();
+                if (netInfo != null && netInfo.isAvailable()) {
+
+                    if (netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                        /////WiFi网络
+                        Toast.makeText(context, "WiFi网络", Toast.LENGTH_SHORT).show();
+
+                    } else if (netInfo.getType() == ConnectivityManager.TYPE_ETHERNET) {
+                        /////有线网络
+                        Toast.makeText(context, "有线网络", Toast.LENGTH_SHORT).show();
+                    } else if (netInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+                        /////////4g网络
+                        Toast.makeText(context, "4g网络", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    ////////网络断开
+                    Toast.makeText(context, "网络断开", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    };
+
     @Override
     public void onCreate() {
         super.onCreate();
-        context =this;
+        context = this;
         AutoSize.initCompatMultiProcess(this);
         AutoSizeConfig.getInstance().setExcludeFontScale(true).setOnAdaptListener(new onAdaptListener() {
             @Override
@@ -40,7 +82,18 @@ public class MyApp extends Application {
             }
         }).setBaseOnWidth(false).setUseDeviceSize(true);
 
+        IntentFilter mFilter = new IntentFilter();
+        mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(myNetReceiver, mFilter);
     }
 
-    public static Context context ;
+    public static Context context;
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        if (myNetReceiver != null) {
+            unregisterReceiver(myNetReceiver);
+        }
+    }
 }
