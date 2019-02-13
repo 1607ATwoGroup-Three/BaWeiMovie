@@ -93,7 +93,7 @@ public class OpinionActivity extends BaseActivity implements Contract.View {
                 Toast.makeText(OpinionActivity.this, message, Toast.LENGTH_SHORT).show();
                 Intent in = new Intent(OpinionActivity.this, OpinionFankuiActivity.class);
                 startActivity(in);
-                content.setText("");
+                finish();
             }
         }
     }
