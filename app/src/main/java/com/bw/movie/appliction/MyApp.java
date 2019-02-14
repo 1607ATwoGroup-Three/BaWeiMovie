@@ -24,6 +24,9 @@ import me.jessyan.autosize.utils.LogUtils;
  * <p>创建时间：2019/1/23 8:09<p>
  * <p>更改时间：2019/1/23 8:09<p>
  * <p>版本号：1<p>
+ *
+ *     appliction 的生命周期
+ *     https://blog.csdn.net/menglele1314/article/details/51381213
  */
 public class MyApp extends Application {
 

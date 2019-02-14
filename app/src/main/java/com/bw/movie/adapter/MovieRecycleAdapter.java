@@ -15,6 +15,7 @@ import com.bw.movie.bean.MovieRecycleBean;
 import com.bw.movie.utils.MyGlideUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.animation.BaseAnimation;
 
 import java.util.List;
 
@@ -43,6 +44,6 @@ public class MovieRecycleAdapter extends BaseQuickAdapter<MovieRecycleBean, Base
         }else {
             MyGlideUtil.setRoundImage(mContext,R.mipmap.com_icon_collection_selected,(ImageView) helper.getView(R.id.movie_item_love));
         }
-
     }
+
 }

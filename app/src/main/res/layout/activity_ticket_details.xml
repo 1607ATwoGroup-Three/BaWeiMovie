@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="24dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginRight="24dp"
+    android:layout_height="match_parent"
+    tools:context=".avtivity.TicketDetailsActivity">
+
+    <TextView
+        android:id="@+id/Cinema_ticket_name"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/Cinema_ticket_address"
+        android:textColor="#666666"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_below="@id/Cinema_ticket_name"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:background="@mipmap/com_icon_navigation_default"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+    <RelativeLayout
+        android:id="@+id/ticket_relative"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/Cinema_ticket_address"
+        android:layout_width="312dp"
+        android:background="@mipmap/com_background_fub4"
+        android:layout_height="142dp">
+        <ImageView
+            android:id="@+id/Movie_ticket_img"
+            android:layout_margin="6dp"
+            android:layout_width="103dp"
+            android:layout_height="130dp" />
+        <TextView
+            android:id="@+id/Movie_ticket_name"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/Movie_ticket_img"
+            android:ellipsize="end"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/Movie_ticket_type"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/Movie_ticket_img"
+            android:layout_below="@id/Movie_ticket_name"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/Movie_ticket_director"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/Movie_ticket_img"
+            android:layout_below="@id/Movie_ticket_type"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/Movie_ticket_long"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/Movie_ticket_img"
+            android:layout_below="@id/Movie_ticket_director"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/Movie_ticket_address"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/Movie_ticket_img"
+            android:layout_below="@id/Movie_ticket_long"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/time_ticket_recycle"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/ticket_relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/time_ticket_text"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="当前电影没有排期"
+        android:layout_below="@id/ticket_relative"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+</RelativeLayout>
