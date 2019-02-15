@@ -231,6 +231,29 @@
         android:layout_marginTop="10dp"
         android:background="#33ffffff" />
 
+    <LinearLayout
+        android:id="@+id/line9"
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv2"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/login_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="去登录"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/Register_button"
         android:layout_width="280dp"

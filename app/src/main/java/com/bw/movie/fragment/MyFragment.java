@@ -12,12 +12,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.avtivity.LoginActivity;
 import com.bw.movie.avtivity.my.EditionxActivity;
@@ -28,7 +28,7 @@ import com.bw.movie.avtivity.my.PayActivity;
 import com.bw.movie.avtivity.my.UserActivity;
 import com.bw.movie.bean.IDUserData;
 import com.bw.movie.bean.PostImageData;
-import com.bw.movie.bean.UserMessageData;
+import com.bw.movie.bean.UserSigninBean;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MyFragment extends Fragment implements View.OnClickListener,Contract.View {
+public class MyFragment extends Fragment implements Contract.View, View.OnClickListener {
     private ImageView my_head_image;
     private TextView my_Name;
     private LinearLayout my_message;
@@ -53,6 +53,9 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
     private Presenter presenter;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
+    private Button Sign_in;
+    private String sessionid;
+    private String userid;
 
     @Nullable
     @Override
@@ -64,14 +67,14 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
     }
 
     private void presenter() {
-        String sessionid = SpBase.getString(getContext(), "sessionId", "");
-        String userid = SpBase.getString(getContext(), "userId", "");
+        sessionid = SpBase.getString(getContext(), "sessionId", "");
+        userid = SpBase.getString(getContext(), "userId", "");
         presenter = new Presenter(this);
         headmap = new HashMap<>();
-        headmap.put("userId",userid+"");
-        headmap.put("sessionId",sessionid+"");
-        Map<String,Object> map= new HashMap<>();
-        presenter.get(Interfaces.QueryUserInformation, headmap,map,IDUserData.class);
+        headmap.put("userId", userid + "");
+        headmap.put("sessionId", sessionid + "");
+        Map<String, Object> map = new HashMap<>();
+        presenter.get(Interfaces.QueryUserInformation, headmap, map, IDUserData.class);
     }
 
     private void initView(View view) {
@@ -85,6 +88,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
         my_edition = (LinearLayout) view.findViewById(R.id.my_edition);
         my_logoff = (LinearLayout) view.findViewById(R.id.my_logoff);
         my_horn = (ImageView) view.findViewById(R.id.my_horn);
+        Sign_in = (Button) view.findViewById(R.id.Sign_in);
 
         my_head_image.setOnClickListener(this);
         my_Name.setOnClickListener(this);
@@ -95,46 +99,54 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
         my_edition.setOnClickListener(this);
         my_logoff.setOnClickListener(this);
         my_horn.setOnClickListener(this);
+        Sign_in.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.my_horn:
-                Intent inhorn=new Intent(getContext(),HornActivity.class);
+                Intent inhorn = new Intent(getContext(), HornActivity.class);
                 startActivity(inhorn);
                 break;
             case R.id.my_head_image:
                 Intent intent1 = new Intent(Intent.ACTION_PICK);
                 intent1.setType("image/*");
-                startActivityForResult(intent1,0);
-                 break;
+                startActivityForResult(intent1, 0);
+                break;
             case R.id.my_Name:
                 break;
             case R.id.my_message:
-                Intent intent=new Intent(getContext(),UserActivity.class);
+                Intent intent = new Intent(getContext(), UserActivity.class);
                 startActivity(intent);
                 break;
             case R.id.my_care:
-                Intent inCare=new Intent(getContext(),FollowActivity.class);
+                Intent inCare = new Intent(getContext(), FollowActivity.class);
                 startActivity(inCare);
                 break;
             case R.id.my_pay:
-                Intent inPay=new Intent(getContext(),PayActivity.class);
+                Intent inPay = new Intent(getContext(), PayActivity.class);
                 startActivity(inPay);
                 break;
             case R.id.my_opinion:
-                Intent in=new Intent(getContext(),OpinionActivity.class);
+                Intent in = new Intent(getContext(), OpinionActivity.class);
                 startActivity(in);
                 break;
             case R.id.my_edition:
-                Intent ine=new Intent(getContext(),EditionxActivity.class);
+                Intent ine = new Intent(getContext(), EditionxActivity.class);
                 startActivity(ine);
                 break;
             case R.id.my_logoff:
-                Intent inlo=new Intent(getContext(),LoginActivity.class);
+                Intent inlo = new Intent(getContext(), LoginActivity.class);
                 startActivity(inlo);
                 getActivity().finish();
+                break;
+            case R.id.Sign_in:
+                Map<String, Object> headmap2 = new HashMap<>();
+                headmap2.put("userId", userid + "");
+                headmap2.put("sessionId", sessionid + "");
+                Map<String, Object> map2 = new HashMap<>();
+                presenter.get(Interfaces.UserCheckIn, headmap2, map2, UserSigninBean.class);
                 break;
         }
     }
@@ -142,18 +154,18 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(data==null){
+        if (data == null) {
             return;
         }
-        if(requestCode==0){
-            String filePath = getFilePath(null,requestCode,data);
+        if (requestCode == 0) {
+            String filePath = getFilePath(null, requestCode, data);
             /**
              * 这里是用的上传头像
              */
             Map<String, Object> map = new HashMap<>();
-            List<Object> list =new ArrayList<>();
+            List<Object> list = new ArrayList<>();
             list.add(filePath);
-            presenter.img(Interfaces.UploadHead,headmap,map,list,PostImageData.class);
+            presenter.img(Interfaces.UploadHead, headmap, map, list, PostImageData.class);
 //            objects.add(filePath);
 //            fpl_image_adapter.notifyDataSetChanged();
         }
@@ -161,18 +173,24 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
 
     @Override
     public void success(Object success) {
-        if (success instanceof IDUserData){
-            IDUserData idUserData= (IDUserData) success;
+        if (success instanceof IDUserData) {
+            IDUserData idUserData = (IDUserData) success;
             IDUserData.ResultBean result = idUserData.getResult();
             String nickName = result.getNickName();
             String headPic = result.getHeadPic();
             my_Name.setText(nickName);
-            MyGlideUtil.setCircleImage(getContext(),headPic,my_head_image);
-        }else if(success instanceof PostImageData){
+            MyGlideUtil.setCircleImage(getContext(), headPic, my_head_image);
+        } else if (success instanceof PostImageData) {
             PostImageData data = (PostImageData) success;
-            if(data.getStatus().equals("0000")){
-                MyGlideUtil.setCircleImage(getContext(),data.getHeadPath(),my_head_image);
-                Toast.makeText(getContext(),data.getMessage(), Toast.LENGTH_SHORT).show();
+            if (data.getStatus().equals("0000")) {
+                MyGlideUtil.setCircleImage(getContext(), data.getHeadPath(), my_head_image);
+                Toast.makeText(getContext(), data.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }else if(success instanceof UserSigninBean){
+            UserSigninBean userSigninBean= (UserSigninBean) success;
+            final String message = userSigninBean.getMessage();
+            if (userSigninBean.getStatus().equals("0000")){
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -197,7 +215,7 @@ public class MyFragment extends Fragment implements View.OnClickListener,Contrac
         } else if (requestCode == 0) {
             Uri uri = data.getData();
             String[] proj = {MediaStore.Images.Media.DATA};
-            Cursor actualimagecursor =getActivity().managedQuery(uri, proj, null, null, null);
+            Cursor actualimagecursor = getActivity().managedQuery(uri, proj, null, null, null);
             int actual_image_column_index = actualimagecursor
                     .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             actualimagecursor.moveToFirst();
