@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -40,6 +38,7 @@ public class IndexActivity extends BaseActivity {
         if(index.equals("1")){
             startActivity(new Intent(IndexActivity.this,LoginActivity.class));
 //          overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            //好伐好伐
             finish();
         }
     }

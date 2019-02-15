@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.CinemaAdapter;
-import com.bw.movie.avtivity.CinemaDetailActivity;
 import com.bw.movie.bean.NearbyCinemaData;
 import com.bw.movie.bean.RecommendCinemaData;
 import com.bw.movie.contract.Contract;
@@ -74,9 +73,9 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
         adapter.getonclcked(new CinemaAdapter.onclick() {
             @Override
             public void cinema(int id) {
-                Intent intent =new Intent(getContext(),CinemaDetailActivity.class);
-                SpBase.save(getContext(),"cinema_id",id+"");
-                startActivity(intent);
+//                Intent intent =new Intent(getContext(),CinemaDetailActivity.class);
+//                SpBase.save(getContext(),"cinema_id",id+"");
+//                startActivity(intent);
             }
 
             @Override
