@@ -1,14 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".avtivity.SeatSelectionActivity">
 
-    <com.bw.movie.ui.SeatTable
-        android:id="@+id/seat_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="151dp"
+        android:src="@mipmap/icon_select_set_background" />
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/com_background_fub2"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <TextView
+            android:id="@+id/select_sit_title_ting"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/movie_details_botton_bj"
+            android:gravity="center"
+            android:text="10-20   14:40-16:26    中影I DO巨幕全景声厅    "
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/select_sit_img_kx"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/icon_select_set_canselect" />
+
+        <TextView
+            android:id="@+id/select_sit_text_kx"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/select_sit_img_kx"
+            android:text="可选"
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
+
+
+        <ImageView
+            android:id="@+id/select_sit_img_xz"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/select_sit_text_kx"
+            android:src="@mipmap/icon_select_set_selected" />
+
+        <TextView
+            android:id="@+id/select_sit_text_xz"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/select_sit_img_xz"
+            android:text="选中"
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/select_sit_img_ys"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/select_sit_text_xz"
+            android:src="@mipmap/icon_select_set_showed" />
+
+        <TextView
+            android:id="@+id/select_sit_text_ys"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/select_sit_img_ys"
+            android:text="已售"
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/select_sit_img_greatsit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/select_sit_text_ys"
+            android:background="@drawable/my_linear" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/select_sit_title_ting"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/select_sit_img_greatsit"
+            android:text="最佳观影区"
+            android:textColor="#ffffff"
+            android:textSize="13sp" />
+
+
+    </RelativeLayout>
+
+    <com.bwei.aaa.utils.SeatTable
+        android:id="@+id/seatView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/r1"
+        android:background="#ffffff" />
+
+    <RelativeLayout
+        android:id="@+id/select_sit_sum"
+        android:visibility="visible"
+        android:layout_width="312dp"
+        android:layout_height="73dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/movie_details_botton_bj">
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="38dp"
+            android:text="合计：  ¥"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/select_sit_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/t1"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="-10dp"
+            android:layout_toRightOf="@id/t1"
+            android:gravity="bottom"
+            android:text="53.3"
+            android:textSize="35sp" />
+
+        <ImageView
+            android:id="@+id/select_sit_qd"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@id/select_sit_price"
+            android:layout_marginLeft="36dp"
+            android:layout_toRightOf="@id/select_sit_price"
+            android:src="@mipmap/com_icon_ok" />
+
+        <ImageView
+            android:id="@+id/select_sit_fq"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignBottom="@id/select_sit_qd"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/select_sit_qd"
+            android:src="@mipmap/com_fang_qi" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/select_sit_pay"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <TextView
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tzf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择支付方式"
+            android:textSize="16sp"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="24dp"
+            android:id="@+id/select_sit_down"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/com_icon_down_default"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+        <TextView
+            android:id="@+id/wx"
+            android:layout_marginLeft="24dp"
+            android:drawableLeft="@mipmap/pay_icon_weixin_default"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/tzf"
+            android:text="微信支付"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp" />
+
+        <RadioButton
+            android:id="@+id/select_sit_wxbtn"
+            android:layout_alignBottom="@id/wx"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/select_sit_down"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/com_icon_ok"
+            android:layout_marginRight="29dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+
+        <TextView
+            android:id="@+id/zfb"
+            android:layout_marginLeft="24dp"
+            android:drawableLeft="@mipmap/pay_icon_zhifubao_default"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/wx"
+            android:text="支付宝支付"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp" />
+
+
+        <RadioButton
+            android:id="@+id/select_sit_zfbbtn"
+            android:layout_alignBottom="@id/zfb"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/select_sit_wxbtn"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="29dp"
+            android:src="@mipmap/com_icon_ok"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:text="微信支付53.9元"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/movie"
+            android:layout_width="match_parent"
+            android:layout_height="33dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

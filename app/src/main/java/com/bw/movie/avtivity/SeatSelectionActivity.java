@@ -1,8 +1,5 @@
 package com.bw.movie.avtivity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.ui.SeatTable;
