@@ -49,7 +49,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         if (type == 0) {
             viewHolder.recycle_item_name.setText(Recommendlist.get(i).getName());
             viewHolder.recycle_item_address.setText(Recommendlist.get(i).getAddress());
@@ -60,6 +60,22 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
             }else{
                 Glide.with(context).load(R.mipmap.com_icon_collection_selected).into(viewHolder.recycle_item_follow);
             }
+            viewHolder.recycle_item_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onclick!=null){
+                        onclick.cinema(Recommendlist.get(i).getId());
+                    }
+                }
+            });
+            viewHolder.recycle_item_follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onclick!=null){
+                        onclick.love(Recommendlist.get(i).getId());
+                    }
+                }
+            });
         } else {
             viewHolder.recycle_item_name.setText(Nearbylist.get(i).getName());
             viewHolder.recycle_item_address.setText(Nearbylist.get(i).getAddress());
@@ -72,9 +88,24 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
             }else{
                 Glide.with(context).load(R.mipmap.com_icon_collection_selected).into(viewHolder.recycle_item_follow);
             }
+            viewHolder.recycle_item_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onclick!=null){
+                        onclick.cinema(Nearbylist.get(i).getId());
+                    }
+                }
+            });
+            viewHolder.recycle_item_follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onclick!=null){
+                        onclick.love(Nearbylist.get(i).getId());
+                    }
+                }
+            });
         }
     }
-
     @Override
     public int getItemViewType(int position) {
         return type;
@@ -104,4 +135,19 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
             this.recycle_item_follow = (ImageView) itemView.findViewById(R.id.recycle_item_follow);
         }
     }
+
+    public interface onclick {
+        //        点击跳转到新的activity
+        void cinema(int id);
+
+        //        点击的是小心心
+        void love(int id);
+    }
+
+    private onclick onclick;
+
+    public void getonclcked(onclick onclick) {
+        this.onclick = onclick;
+    }
+
 }

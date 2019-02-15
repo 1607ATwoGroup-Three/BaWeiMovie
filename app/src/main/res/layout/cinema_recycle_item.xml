@@ -27,6 +27,8 @@
             android:layout_toRightOf="@id/recycle_item_image"
             android:text="hahahahah"
             android:textColor="#333333"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textSize="14sp" />
 
         <TextView

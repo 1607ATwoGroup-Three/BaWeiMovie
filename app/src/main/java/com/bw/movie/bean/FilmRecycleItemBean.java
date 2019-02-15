@@ -1,7 +1,7 @@
 package com.bw.movie.bean;
 
 /**
- * <p>文件描述：<p>
+ * <p>文件描述：电影轮播图 用到的ID name imageurl<p>
  * <p>作者：${adai}<p>
  * <p>创建时间：2019/1/26 15:00<p>
  * <p>更改时间：2019/1/26 15:00<p>

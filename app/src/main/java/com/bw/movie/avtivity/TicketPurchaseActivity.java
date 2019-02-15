@@ -1,5 +1,6 @@
 package com.bw.movie.avtivity;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.SpBase;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,10 +66,23 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
     @Override
     public void success(Object success) {
         if(success instanceof NearbyCinemaData){
-            NearbyCinemaData  data = (NearbyCinemaData) success;
+            final NearbyCinemaData  data = (NearbyCinemaData) success;
             TicketPurchaseAdapter adapter =new TicketPurchaseAdapter(R.layout.cinema_recycle_item,data.getResult());
             movie_ticket_recycle.setLayoutManager(new LinearLayoutManager(this));
             movie_ticket_recycle.setAdapter(adapter);
+            adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                    得到电影院的id name address
+//                    得到电影的id(已经保存在了SpBase)
+                    Intent intent =new Intent(TicketPurchaseActivity.this,TicketDetailsActivity.class);
+                    intent.putExtra("Cinema_name",data.getResult().get(position).getName());
+                    intent.putExtra("Cinema_address",data.getResult().get(position).getAddress());
+                    intent.putExtra("Cinema_id",data.getResult().get(position).getId()+"");
+//                    intent.putExtra("Movie_id",SpBase.getString(TicketPurchaseActivity.this,"movieId",""));
+                    startActivity(intent);
+                }
+            });
         }
     }
 

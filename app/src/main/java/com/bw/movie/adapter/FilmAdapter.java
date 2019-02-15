@@ -98,15 +98,6 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         ((ViewbannerHolder) viewHolder).film_recycle_banner.smoothScrollToPosition(i);
                     }
                 });
-                /*((ViewbannerHolder) viewHolder).film_recycle_banner.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
-                    @Override
-                    public void onItemSelected(int i) {
-//                        得到当前显示的是哪一个
-                        int pos = ((ViewbannerHolder) viewHolder).film_recycle_banner.getSelectedPos();
-                        int i1 = 100 / list.size();
-                        ((ViewbannerHolder) viewHolder).film_recycle_bar.setProgress(i1*(pos+1));
-                    }
-                });*/
                 ((ViewbannerHolder) viewHolder).film_recycle_banner.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
                     @Override
                     public void onItemSelected(int position) {
@@ -296,13 +287,11 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private class ViewbannerHolder extends RecyclerView.ViewHolder {
         public RecyclerCoverFlow film_recycle_banner;
-        public ProgressBar film_recycle_bar;
         public RelativeLayout relativeLayout;
         public LinearLayout linearLayout;
         public ViewbannerHolder(@NonNull View itemView) {
             super(itemView);
             this.film_recycle_banner = (RecyclerCoverFlow) itemView.findViewById(R.id.film_recycle_banner);
-            this.film_recycle_bar = (ProgressBar) itemView.findViewById(R.id.film_recycle_bar);
             this.relativeLayout = (RelativeLayout) itemView.findViewById(R.id.rl_prograss_bar);
             this.linearLayout = (LinearLayout) itemView.findViewById(R.id.rl_checked);
         }

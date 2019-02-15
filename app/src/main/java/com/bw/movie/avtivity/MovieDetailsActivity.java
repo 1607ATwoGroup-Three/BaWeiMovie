@@ -191,6 +191,14 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        /**
+         * 解决一个问题
+         * 按返回键后视频还在播放问题
+         */
+        if (notice == 1) {
+            EventBus.getDefault().postSticky(true);
+            notice = 0;
+        }
         EventBus.getDefault().unregister(this);
     }
 }

@@ -1,11 +1,11 @@
 package com.bw.movie.avtivity;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -158,7 +158,14 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
     public void success(Object success) {
         if(success instanceof PopularCinemaBean){
             PopularCinemaBean bean = (PopularCinemaBean) success;
+            ObjectAnimator animator = ObjectAnimator.ofFloat(movie_list_lin_recycle,"alpha", 0f,1f);
+            // 表示的是:
+            // 动画作用对象是mButton
+            // 动画作用的对象的属性是透明度alpha
+            // 动画效果是:常规 - 全透明 - 常规
+            animator.setDuration(2000);
             list.clear();
+            animator.start();
             for (int i = 0; i <bean.getResult().size(); i++) {
                 list.add(new MovieRecycleBean(bean.getResult().get(i).getFollowMovie(),bean.getResult().get(i).getId(),
                         bean.getResult().get(i).getImageUrl(),
@@ -167,6 +174,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
             }
             MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
             movieRecycleAdapter.openLoadAnimation();
+            movieRecycleAdapter.setDuration(500);
 //            点击事件
             movieRecycleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
@@ -184,10 +192,16 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                 }
             });
             movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
-
         }else if(success instanceof IsShowingUpBean){
             IsShowingUpBean bean = (IsShowingUpBean) success;
+            ObjectAnimator animator = ObjectAnimator.ofFloat(movie_list_lin_recycle,"alpha", 0f,1f);
+            // 表示的是:
+            // 动画作用对象是mButton
+            // 动画作用的对象的属性是透明度alpha
+            // 动画效果是:常规 - 全透明 - 常规
+            animator.setDuration(2000);
             list.clear();
+            animator.start();
             for (int i = 0; i <bean.getResult().size(); i++) {
                 list.add(new MovieRecycleBean(bean.getResult().get(i).getFollowMovie(),bean.getResult().get(i).getId(),
                         bean.getResult().get(i).getImageUrl(),
@@ -196,6 +210,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
             }
             MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
             movieRecycleAdapter.openLoadAnimation();
+            movieRecycleAdapter.setDuration(500);
             movieRecycleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -212,10 +227,12 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                 }
             });
             movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
-
         }else if(success instanceof ToBeShownSoonBean){
             ToBeShownSoonBean bean = (ToBeShownSoonBean) success;
+            ObjectAnimator animator = ObjectAnimator.ofFloat(movie_list_lin_recycle,"alpha", 0f,1f);
+            animator.setDuration(2000);
             list.clear();
+            animator.start();
             for (int i = 0; i <bean.getResult().size(); i++) {
                 list.add(new MovieRecycleBean(bean.getResult().get(i).getFollowMovie(),bean.getResult().get(i).getId(),
                         bean.getResult().get(i).getImageUrl(),
@@ -224,6 +241,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
             }
             MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
             movieRecycleAdapter.openLoadAnimation();
+            movieRecycleAdapter.setDuration(500);
             movieRecycleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
