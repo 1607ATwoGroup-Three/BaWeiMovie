@@ -15,7 +15,7 @@ import com.bw.movie.utils.MyGlideUtil;
 import java.util.List;
 
 /**
- * <p>文件描述：<p>
+ * <p>文件描述：电影轮播图 用到的 适配器 <p>
  * <p>作者：${adai}<p>
  * <p>创建时间：2019/1/26 14:52<p>
  * <p>更改时间：2019/1/26 14:52<p>

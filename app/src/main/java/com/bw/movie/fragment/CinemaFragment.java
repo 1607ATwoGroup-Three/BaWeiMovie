@@ -1,6 +1,7 @@
 package com.bw.movie.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.CinemaAdapter;
+import com.bw.movie.avtivity.CinemaDetailActivity;
 import com.bw.movie.bean.NearbyCinemaData;
 import com.bw.movie.bean.RecommendCinemaData;
 import com.bw.movie.contract.Contract;
@@ -69,7 +71,19 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
 
         hashmap.put("userId", SpBase.getString(getContext(),"userId", "0"));
         hashmap.put("sessionId", SpBase.getString(getContext(),"sessionId", ""));
+        adapter.getonclcked(new CinemaAdapter.onclick() {
+            @Override
+            public void cinema(int id) {
+                Intent intent =new Intent(getContext(),CinemaDetailActivity.class);
+                SpBase.save(getContext(),"cinema_id",id+"");
+                startActivity(intent);
+            }
 
+            @Override
+            public void love(int id) {
+//                Toast.makeText(getContext(), id+"这是爱心", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void present() {

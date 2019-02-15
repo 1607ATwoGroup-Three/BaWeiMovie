@@ -104,9 +104,6 @@ public class TicketDetailsActivity extends BaseActivity implements Contract.View
                 time_ticket_recycle.setLayoutManager(new LinearLayoutManager(TicketDetailsActivity.this));
                 time_ticket_recycle.setAdapter(adapter);
                 time_ticket_text.setVisibility(View.GONE);
-
-
-
             }else{
                 time_ticket_text.setVisibility(View.VISIBLE);
             }

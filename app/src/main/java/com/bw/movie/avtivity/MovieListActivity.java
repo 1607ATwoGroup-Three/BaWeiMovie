@@ -230,10 +230,6 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
         }else if(success instanceof ToBeShownSoonBean){
             ToBeShownSoonBean bean = (ToBeShownSoonBean) success;
             ObjectAnimator animator = ObjectAnimator.ofFloat(movie_list_lin_recycle,"alpha", 0f,1f);
-            // 表示的是:
-            // 动画作用对象是mButton
-            // 动画作用的对象的属性是透明度alpha
-            // 动画效果是:常规 - 全透明 - 常规
             animator.setDuration(2000);
             list.clear();
             animator.start();
