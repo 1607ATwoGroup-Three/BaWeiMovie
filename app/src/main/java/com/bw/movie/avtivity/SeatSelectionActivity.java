@@ -13,16 +13,16 @@ public class SeatSelectionActivity extends BaseActivity {
     @Override
     protected void initView() {
         setContentView(R.layout.activity_seat_selection);
-        seat_view = (SeatTable) findViewById(R.id.seat_view);
+        seat_view = (SeatTable) findViewById(R.id.seatView);
 
-        seat_view.setData(8,10);
-        seat_view.setMaxSelected(5);//设置最多选中
+//        seat_view.setData(8,10);
+//        seat_view.setMaxSelected(5);//设置最多选中
 
     }
 
     @Override
     protected void initData() {
-        seat_view.setSeatChecker(new SeatTable.SeatChecker() {
+        /*seat_view.setSeatChecker(new SeatTable.SeatChecker() {
             //第san次
             @Override
             public boolean isValidSeat(int row, int column) {
@@ -55,7 +55,7 @@ public class SeatSelectionActivity extends BaseActivity {
                 return null;
             }
 
-        });
+        });*/
     }
 
     @Override
