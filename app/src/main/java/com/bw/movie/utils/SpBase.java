@@ -19,7 +19,6 @@ public class SpBase {
         SharedPreferences preferences = context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE);
         preferences.edit().putString(key, value).commit();
     }
-
     //    取数据
     public static String getString(Context context,String key, String defultValue) {
         return context.getSharedPreferences(Sp_Name, Context.MODE_PRIVATE).getString(key, defultValue);

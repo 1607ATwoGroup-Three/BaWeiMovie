@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.bw.movie.adapter.CinemaAdapter;
 import com.bw.movie.avtivity.CinemaDetailActivity;
 import com.bw.movie.bean.NearbyCinemaData;
 import com.bw.movie.bean.RecommendCinemaData;
+import com.bw.movie.bean.RegisterData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
@@ -80,8 +82,14 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
             }
 
             @Override
-            public void love(int id) {
-//                Toast.makeText(getContext(), id+"这是爱心", Toast.LENGTH_SHORT).show();
+            public void love(int id,int i) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("cinemaId",id);
+                if(i==2){
+                    presenter.get(Interfaces.CinemaAttention,hashmap,map,RegisterData.class);
+                }else{
+                    presenter.get(Interfaces.CancelAttentionToCinema,hashmap,map,RegisterData.class);
+                }
             }
         });
     }
@@ -140,6 +148,10 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
             Nearbylist.addAll(data.getResult());
             adapter.setType(1);
             adapter.notifyDataSetChanged();
+        }else if(success instanceof RegisterData){
+            RegisterData data = (RegisterData) success;
+            Log.e("关注电影院",data.getMessage()+"");
+//            Toast.makeText(getContext(),data.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

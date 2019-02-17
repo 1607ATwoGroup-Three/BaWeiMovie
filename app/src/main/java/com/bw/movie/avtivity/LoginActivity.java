@@ -185,4 +185,10 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         String phone = SpBase.getString(LoginActivity.this,"ter_phone","");
         login_phone.setText(phone);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }

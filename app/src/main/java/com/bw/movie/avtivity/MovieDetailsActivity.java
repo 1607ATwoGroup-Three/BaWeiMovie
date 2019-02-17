@@ -88,7 +88,6 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
         movieId = intent.getStringExtra("movieId");
         islove = intent.getStringExtra("islove");
     }
-
     @Override
     protected void initData() {
         if (islove != null)

@@ -32,6 +32,7 @@ public class IndexActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        BaseActivity.doublekeydown(true);
         BaseActivity.fullScreen(this,true);
         setContentView(R.layout.activity_index);
         String index = SpBase.getString(IndexActivity.this,"index", 2+"");

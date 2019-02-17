@@ -17,7 +17,7 @@ import com.bw.movie.utils.MyGlideUtil;
 import java.util.List;
 
 /**
- * <p>文件描述：<p>
+ * <p>文件描述：电影的适配器<p>
  * <p>作者：${adai}<p>
  * <p>创建时间：2019/1/25 9:13<p>
  * <p>更改时间：2019/1/25 9:13<p>
@@ -49,7 +49,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         if (type == 0) {
             viewHolder.recycle_item_name.setText(Recommendlist.get(i).getName());
             viewHolder.recycle_item_address.setText(Recommendlist.get(i).getAddress());
@@ -57,7 +57,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
             MyGlideUtil.setDefaultImage(context,Recommendlist.get(i).getLogo(),viewHolder.recycle_item_image);
             if(Recommendlist.get(i).getFollowCinema()==2){
                 Glide.with(context).load(R.mipmap.com_icon_collection_default).into(viewHolder.recycle_item_follow);
-            }else{
+            }else if(Recommendlist.get(i).getFollowCinema()==1){
                 Glide.with(context).load(R.mipmap.com_icon_collection_selected).into(viewHolder.recycle_item_follow);
             }
             viewHolder.recycle_item_image.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,17 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
                 @Override
                 public void onClick(View v) {
                     if(onclick!=null){
-                        onclick.love(Recommendlist.get(i).getId());
+                        if(Recommendlist.get(i).getFollowCinema()==2){
+                            Glide.with(context).load(R.mipmap.com_icon_collection_selected).into(viewHolder.recycle_item_follow);
+                        }else if(Recommendlist.get(i).getFollowCinema()==1){
+                            Glide.with(context).load(R.mipmap.com_icon_collection_default).into(viewHolder.recycle_item_follow);
+                        }
+                        onclick.love(Recommendlist.get(i).getId(),Recommendlist.get(i).getFollowCinema());
+                        if(Recommendlist.get(i).getFollowCinema()==2){
+                            Recommendlist.get(i).setFollowCinema(1);
+                        }else if(Recommendlist.get(i).getFollowCinema()==1){
+                            Recommendlist.get(i).setFollowCinema(2);
+                        }
                     }
                 }
             });
@@ -100,7 +110,17 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
                 @Override
                 public void onClick(View v) {
                     if(onclick!=null){
-                        onclick.love(Nearbylist.get(i).getId());
+                        if(Recommendlist.get(i).getFollowCinema()==2){
+                            Glide.with(context).load(R.mipmap.com_icon_collection_selected).into(viewHolder.recycle_item_follow);
+                        }else if(Recommendlist.get(i).getFollowCinema()==1){
+                            Glide.with(context).load(R.mipmap.com_icon_collection_default).into(viewHolder.recycle_item_follow);
+                        }
+                        onclick.love(Nearbylist.get(i).getId(),Recommendlist.get(i).getFollowCinema());
+                        if(Recommendlist.get(i).getFollowCinema()==2){
+                            Recommendlist.get(i).setFollowCinema(1);
+                        }else if(Recommendlist.get(i).getFollowCinema()==1){
+                            Recommendlist.get(i).setFollowCinema(2);
+                        }
                     }
                 }
             });
@@ -141,7 +161,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.ViewHolder
         void cinema(int id);
 
         //        点击的是小心心
-        void love(int id);
+        void love(int id,int i);
     }
 
     private onclick onclick;

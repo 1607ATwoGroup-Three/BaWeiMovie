@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,10 +20,12 @@ import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.IsShowingUpBean;
 import com.bw.movie.bean.MovieRecycleBean;
 import com.bw.movie.bean.PopularCinemaBean;
+import com.bw.movie.bean.RegisterData;
 import com.bw.movie.bean.ToBeShownSoonBean;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
+import com.bw.movie.utils.MyGlideUtil;
 import com.bw.movie.utils.SpBase;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -172,7 +175,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                         bean.getResult().get(i).getName(),
                         bean.getResult().get(i).getSummary()));
             }
-            MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
+            final MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
             movieRecycleAdapter.openLoadAnimation();
             movieRecycleAdapter.setDuration(500);
 //            点击事件
@@ -185,13 +188,24 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                     startActivity(intent);
                 }
             });
+            movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
             movieRecycleAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Toast.makeText(ctx, list.get(position).getName(), Toast.LENGTH_SHORT).show();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("movieId",list.get(position).getId());
+                    ImageView image =(ImageView)movieRecycleAdapter.getViewByPosition(movie_list_lin_recycle,position, R.id.movie_item_love);
+                    if(list.get(position).getFollowMovie()==2){
+                        list.get(position).setFollowMovie(1);
+                        presenter.get(Interfaces.FocusOnMovies,headmap,map,RegisterData.class);
+                        MyGlideUtil.setRoundImage(MovieListActivity.this,R.mipmap.com_icon_collection_selected,image);
+                    }else {
+                        list.get(position).setFollowMovie(2);
+                        presenter.get(Interfaces.CancelFilmConcern,headmap,map,RegisterData.class);
+                        MyGlideUtil.setRoundImage(MovieListActivity.this,R.mipmap.com_icon_collection_default,image);
+                    }
                 }
             });
-            movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
         }else if(success instanceof IsShowingUpBean){
             IsShowingUpBean bean = (IsShowingUpBean) success;
             ObjectAnimator animator = ObjectAnimator.ofFloat(movie_list_lin_recycle,"alpha", 0f,1f);
@@ -208,7 +222,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                         bean.getResult().get(i).getName(),
                         bean.getResult().get(i).getSummary()));
             }
-            MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
+            final MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
             movieRecycleAdapter.openLoadAnimation();
             movieRecycleAdapter.setDuration(500);
             movieRecycleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -220,13 +234,24 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                     startActivity(intent);
                 }
             });
+            movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
             movieRecycleAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Toast.makeText(ctx, list.get(position).getName(), Toast.LENGTH_SHORT).show();
-                }
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("movieId",list.get(position).getId());
+                    ImageView image =(ImageView)movieRecycleAdapter.getViewByPosition(movie_list_lin_recycle,position, R.id.movie_item_love);
+                    if(list.get(position).getFollowMovie()==2){
+                        list.get(position).setFollowMovie(1);
+                        presenter.get(Interfaces.FocusOnMovies,headmap,map,RegisterData.class);
+                        MyGlideUtil.setRoundImage(MovieListActivity.this,R.mipmap.com_icon_collection_selected,image);
+                    }else {
+                        list.get(position).setFollowMovie(2);
+                        presenter.get(Interfaces.CancelFilmConcern,headmap,map,RegisterData.class);
+                        MyGlideUtil.setRoundImage(MovieListActivity.this,R.mipmap.com_icon_collection_default,image);
+                    }
+            }
             });
-            movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
         }else if(success instanceof ToBeShownSoonBean){
             ToBeShownSoonBean bean = (ToBeShownSoonBean) success;
             ObjectAnimator animator = ObjectAnimator.ofFloat(movie_list_lin_recycle,"alpha", 0f,1f);
@@ -239,7 +264,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                         bean.getResult().get(i).getName(),
                         bean.getResult().get(i).getSummary()));
             }
-            MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
+            final MovieRecycleAdapter movieRecycleAdapter =new MovieRecycleAdapter(R.layout.movierecycle_item,list);
             movieRecycleAdapter.openLoadAnimation();
             movieRecycleAdapter.setDuration(500);
             movieRecycleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -251,13 +276,28 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
                     startActivity(intent);
                 }
             });
+            movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
             movieRecycleAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Toast.makeText(ctx, list.get(position).getName(), Toast.LENGTH_SHORT).show();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("movieId",list.get(position).getId());
+                    ImageView image =(ImageView)movieRecycleAdapter.getViewByPosition(movie_list_lin_recycle,position, R.id.movie_item_love);
+                    if(list.get(position).getFollowMovie()==2){
+                        list.get(position).setFollowMovie(1);
+                        presenter.get(Interfaces.FocusOnMovies,headmap,map,RegisterData.class);
+                        MyGlideUtil.setRoundImage(MovieListActivity.this,R.mipmap.com_icon_collection_selected,image);
+                    }else {
+                        list.get(position).setFollowMovie(2);
+                        presenter.get(Interfaces.CancelFilmConcern,headmap,map,RegisterData.class);
+                        MyGlideUtil.setRoundImage(MovieListActivity.this,R.mipmap.com_icon_collection_default,image);
+                    }
                 }
             });
-            movie_list_lin_recycle.setAdapter(movieRecycleAdapter);
+        }else if(success instanceof RegisterData){
+            RegisterData data = (RegisterData) success;
+            Log.e("关注电影的状态",data.getMessage()+"");
+//            Toast.makeText(MovieListActivity.this,data.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
