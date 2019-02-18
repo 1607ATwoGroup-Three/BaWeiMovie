@@ -1,5 +1,6 @@
 package com.bw.movie.avtivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -50,7 +51,16 @@ public class SeatSelectionActivity extends BaseActivity {
 
         seat_selection_seatTable.setData(8,10);
         seat_selection_seatTable.setMaxSelected(4);//设置最多选中
-
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("Cinema_name");
+        String address = intent.getStringExtra("Cinema_address");
+        String Cinema_id = intent.getStringExtra("Cinema_id");
+        String Movie_name = intent.getStringExtra("Movie_name");
+        double Movie_price = Double.parseDouble(intent.getStringExtra("Movie_price"));
+        seat_selection_name.setText(name);
+        seat_selection_address.setText(address);
+        seat_selection_movie_name.setText(Movie_name);
+        seat_selection_price.setText(Movie_price+"");
     }
 
     @Override

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.FilmeRecycleAdapter;
@@ -45,6 +44,8 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
     private RecyclerView cinema_detail_recycle;
     private TextView cinema_detail_text;
     private Presenter presenter;
+    private CinemaDetailData data1;
+    private String movie_name;
 
     @Override
     protected void initView() {
@@ -82,6 +83,7 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
     public void success(Object success) {
         if(success instanceof CinemaDetailData){
             CinemaDetailData data = (CinemaDetailData) success;
+            data1 = data;
             MyGlideUtil.setRoundImage(CinemaDetailActivity.this,data.getResult().getLogo(),cinema_detail_image);
             cinema_detail_name.setText(data.getResult().getName());
             Cinema_ticket_address.setText(data.getResult().getAddress());
@@ -96,34 +98,6 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
             getMovielist((MovieIdCinemaId) success);
         }
     }
-    /**
-     * 电影的排期表
-     */
-    private void getMovielist(MovieIdCinemaId success) {
-        final MovieIdCinemaId movieIdCinemaId = success;
-        if(movieIdCinemaId.getResult().size()!=0){
-            TicketDetailsAdapter adapter =new TicketDetailsAdapter(R.layout.ticket_detail_recycle_item,movieIdCinemaId.getResult());
-            /**
-             * 添加排期表点击事件
-             */
-            adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    Intent intent =new Intent(CinemaDetailActivity.this,SeatSelectionActivity.class);
-                    startActivity(intent);
-                }
-            });
-            cinema_detail_recycle.setLayoutManager(new LinearLayoutManager(CinemaDetailActivity.this));
-            cinema_detail_recycle.setAdapter(adapter);
-            cinema_detail_recycle.setVisibility(View.VISIBLE);
-            cinema_detail_text.setVisibility(View.GONE);
-
-
-        }else{
-            cinema_detail_recycle.setVisibility(View.GONE);
-            cinema_detail_text.setVisibility(View.VISIBLE);
-        }
-    }
 
     @Override
     public void error(String error) {
@@ -133,7 +107,7 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
      * 电影轮播图
      */
     private void Cinemabanner(MoviesAccordingToTheCinemaData success) {
-        MoviesAccordingToTheCinemaData data = success;
+        final MoviesAccordingToTheCinemaData data = success;
         if(data.getMessage().equals("无数据")){
             cinema_detail_recycle_banner.setVisibility(View.GONE);
             cinema_detail_banner_text.setVisibility(View.VISIBLE);
@@ -151,7 +125,8 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
             if(list.size()!=0){
                 cinema_detail_recycle_banner.setVisibility(View.VISIBLE);
             }
-            int pos = cinema_detail_recycle_banner.getSelectedPos();
+            final int pos = cinema_detail_recycle_banner.getSelectedPos();
+            movie_name = data.getResult().get(pos).getName();
             /**
              * 进行下一步操作 访问接口
              */
@@ -165,8 +140,10 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
             presenter.get(Interfaces.SearchMovieSchedulesBasedOnMovieIDAndCinemaID,hashmap,twomap,MovieIdCinemaId.class);
 
             cinema_detail_recycle_banner.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
+
                 @Override
                 public void onItemSelected(int position) {
+                    movie_name = data.getResult().get(position).getName();
                     /**
                      * 滑动到中间的那个数据
                      */
@@ -200,6 +177,39 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
             });
 
             filmeRecycleAdapter.notifyDataSetChanged();
+        }
+    }
+    /**
+     * 电影的排期表
+     */
+    private void getMovielist(MovieIdCinemaId success) {
+        final MovieIdCinemaId movieIdCinemaId = success;
+        if(movieIdCinemaId.getResult().size()!=0){
+            TicketDetailsAdapter adapter =new TicketDetailsAdapter(R.layout.ticket_detail_recycle_item,movieIdCinemaId.getResult());
+            /**
+             * 添加排期表点击事件
+             */
+            adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    Intent intent =new Intent(CinemaDetailActivity.this,SeatSelectionActivity.class);
+                    intent.putExtra("Cinema_name",data1.getResult().getName());
+                    intent.putExtra("Cinema_address",data1.getResult().getAddress());
+                    intent.putExtra("Cinema_id",data1.getResult().getId()+"");
+                    intent.putExtra("Movie_name",movie_name);
+                    intent.putExtra("Movie_price",movieIdCinemaId.getResult().get(position).getPrice()+"");
+                    startActivity(intent);
+                }
+            });
+            cinema_detail_recycle.setLayoutManager(new LinearLayoutManager(CinemaDetailActivity.this));
+            cinema_detail_recycle.setAdapter(adapter);
+            cinema_detail_recycle.setVisibility(View.VISIBLE);
+            cinema_detail_text.setVisibility(View.GONE);
+
+
+        }else{
+            cinema_detail_recycle.setVisibility(View.GONE);
+            cinema_detail_text.setVisibility(View.VISIBLE);
         }
     }
 
