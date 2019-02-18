@@ -1,6 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    signingConfigs {
+        config {
+            keyAlias 'bw_movie'
+            keyPassword '123456'
+            storeFile file('movie.keystore')
+            storePassword '123456'
+        }
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.bw.movie"
@@ -14,6 +24,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
     sourceSets {
@@ -52,10 +66,11 @@ dependencies {
     implementation 'com.contrarywind:Android-PickerView:4.1.7'
 //    这是一个adapter 的一个依赖
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
-
 //    饺子视频播放器
     implementation 'cn.jzvd:jiaozivideoplayer:6.2.9'
-
 //    eventBus
     implementation 'org.greenrobot:eventbus:3.1.1'
+    //微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.0.2'
+
 }
