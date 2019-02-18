@@ -150,6 +150,9 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
                     Map<String, Object> hashmap = new HashMap<>();
                     Map<String, Object> twomap = new HashMap<>();
                     twomap.put("cinemasId",SpBase.getString(CinemaDetailActivity.this,"cinema_id",""));
+//                    获取到最新的电影ID 存入Sp 里面
+                    SpBase.save(CinemaDetailActivity.this,"movieId",list.get(position).getId()+"");
+
                     twomap.put("movieId",list.get(position).getId());
                     /**
                      * 根据电影院ID 和电影ID 查询排期表
@@ -195,9 +198,12 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
                     Intent intent =new Intent(CinemaDetailActivity.this,SeatSelectionActivity.class);
                     intent.putExtra("Cinema_name",data1.getResult().getName());
                     intent.putExtra("Cinema_address",data1.getResult().getAddress());
+//                    在传值的时候获取到最新的电影院ID  然后传送给选座
+                    SpBase.save(CinemaDetailActivity.this,"cinema_id",data1.getResult().getId()+"");
                     intent.putExtra("Cinema_id",data1.getResult().getId()+"");
                     intent.putExtra("Movie_name",movie_name);
                     intent.putExtra("Movie_price",movieIdCinemaId.getResult().get(position).getPrice()+"");
+                    intent.putExtra("Movie_ting",movieIdCinemaId.getResult().get(position).getScreeningHall()+"");
                     startActivity(intent);
                 }
             });
@@ -205,8 +211,6 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
             cinema_detail_recycle.setAdapter(adapter);
             cinema_detail_recycle.setVisibility(View.VISIBLE);
             cinema_detail_text.setVisibility(View.GONE);
-
-
         }else{
             cinema_detail_recycle.setVisibility(View.GONE);
             cinema_detail_text.setVisibility(View.VISIBLE);

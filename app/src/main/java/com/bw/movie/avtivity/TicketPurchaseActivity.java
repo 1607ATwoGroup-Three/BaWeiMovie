@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.bw.movie.R;
 import com.bw.movie.adapter.TicketPurchaseAdapter;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.bean.Follow_YinyuanData;
 import com.bw.movie.bean.NearbyCinemaData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
@@ -43,13 +44,14 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
         movie_ticket_recycle =findViewById(R.id.movie_ticket_recycle);
         movie_ticket_back = findViewById(R.id.movie_ticket_back);
         movie_ticket_back.setOnClickListener(this);
-        hashmap.put("userId", SpBase.getString(TicketPurchaseActivity.this,"userId", "0"));
-        hashmap.put("sessionId", SpBase.getString(TicketPurchaseActivity.this,"sessionId", ""));
+//        hashmap.put("userId", SpBase.getString(TicketPurchaseActivity.this,"userId", "0"));
+//        hashmap.put("sessionId", SpBase.getString(TicketPurchaseActivity.this,"sessionId", ""));
 //        接口访问只有不到10个数据
-        map.put("page", 1);
-        map.put("count", 100);
-        map.put("longitude",SpBase.getString(TicketPurchaseActivity.this,"lgt",""));
-        map.put("latitude",SpBase.getString(TicketPurchaseActivity.this,"lat",""));
+//        map.put("page", 1);
+//        map.put("count", 100);
+//        map.put("longitude",SpBase.getString(TicketPurchaseActivity.this,"lgt",""));
+//        map.put("latitude",SpBase.getString(TicketPurchaseActivity.this,"lat",""));
+        map.put("movieId",SpBase.getString(TicketPurchaseActivity.this,"movieId",""));
     }
 
     @Override
@@ -60,13 +62,13 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
     @Override
     protected void present() {
         presenter = new Presenter(this);
-        presenter.get(Interfaces.SearchForNearbyCinemas,hashmap,map,NearbyCinemaData.class);
+        presenter.get(Interfaces.QuerAyTheListOfCinemasCurrentlyInProductionAccordingToTheMovieID,hashmap,map,Follow_YinyuanData.class);
     }
 
     @Override
     public void success(Object success) {
-        if(success instanceof NearbyCinemaData){
-            final NearbyCinemaData  data = (NearbyCinemaData) success;
+        if(success instanceof Follow_YinyuanData){
+            final Follow_YinyuanData  data = (Follow_YinyuanData) success;
             TicketPurchaseAdapter adapter =new TicketPurchaseAdapter(R.layout.cinema_recycle_item,data.getResult());
             movie_ticket_recycle.setLayoutManager(new LinearLayoutManager(this));
             movie_ticket_recycle.setAdapter(adapter);
