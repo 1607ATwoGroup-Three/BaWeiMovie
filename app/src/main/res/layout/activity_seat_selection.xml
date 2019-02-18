@@ -207,6 +207,7 @@
         android:layout_width="match_parent"
         android:layout_height="390dp" />
     <RelativeLayout
+        android:background="#ffffff"
         android:id="@+id/select_sit_pay"
         android:visibility="gone"
         android:layout_alignParentBottom="true"
@@ -225,9 +226,10 @@
             android:layout_marginRight="24dp"
             android:id="@+id/seat_selection_down"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/com_icon_down_default"
-            android:layout_width="24dp"
-            android:layout_height="24dp" />
+            android:background="@mipmap/com_icon_down_default"
+            android:scaleType="fitXY"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
         <TextView
             android:id="@+id/wx"
             android:layout_marginLeft="24dp"
@@ -240,16 +242,6 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp" />
 
-        <RadioButton
-            android:id="@+id/seat_selection_weixinbutton"
-            android:layout_alignBottom="@id/wx"
-            android:layout_marginTop="15dp"
-            android:layout_below="@id/seat_selection_down"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/com_icon_ok"
-            android:layout_marginRight="29dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
 
 
         <TextView
@@ -263,18 +255,31 @@
             android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="24dp" />
-
-
-        <RadioButton
-            android:id="@+id/seat_selection_zhifubaobutton"
-            android:layout_alignBottom="@id/zfb"
-            android:layout_marginTop="15dp"
-            android:layout_below="@id/seat_selection_weixinbutton"
+        <RadioGroup
+            android:layout_below="@id/seat_selection_down"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="29dp"
-            android:src="@mipmap/com_icon_ok"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_marginRight="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/seat_selection_weixinbutton"
+                android:layout_alignBottom="@id/wx"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/com_icon_ok"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+            <RadioButton
+                android:id="@+id/seat_selection_zhifubaobutton"
+                android:layout_alignBottom="@id/zfb"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/seat_selection_weixinbutton"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/com_icon_ok"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/seat_selection_weixin_paytext"

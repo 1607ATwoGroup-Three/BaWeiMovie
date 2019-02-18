@@ -19,6 +19,7 @@ import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.MyGlideUtil;
 import com.bw.movie.utils.SpBase;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +39,9 @@ public class TicketDetailsActivity extends BaseActivity implements Contract.View
     private Presenter presenter;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
+    private String moviename;
+    private String cinema_name;
+    private String cinema_address;
 
     @Override
     protected void initView() {
@@ -45,8 +49,8 @@ public class TicketDetailsActivity extends BaseActivity implements Contract.View
         BaseActivity.fullScreen(TicketDetailsActivity.this, true);
         setContentView(R.layout.activity_ticket_details);
         Intent intent = getIntent();
-        String cinema_name = intent.getStringExtra("Cinema_name");
-        String Cinema_address = intent.getStringExtra("Cinema_address");
+        cinema_name = intent.getStringExtra("Cinema_name");
+        cinema_address = intent.getStringExtra("Cinema_address");
 //        影院的ID
         String cinema_id = intent.getStringExtra("Cinema_id");
         Log.e("TicketDetailsActivity",cinema_id+"");
@@ -54,7 +58,7 @@ public class TicketDetailsActivity extends BaseActivity implements Contract.View
         Cinema_ticket_name =findViewById(R.id.Cinema_ticket_name);
         Cinema_ticket_name.setText(cinema_name);
         Cinema_ticket_address =findViewById(R.id.Cinema_ticket_address);
-        Cinema_ticket_address.setText(Cinema_address);
+        Cinema_ticket_address.setText(cinema_address);
         Movie_ticket_img =findViewById(R.id.Movie_ticket_img);
         Movie_ticket_name =findViewById(R.id.Movie_ticket_name);
         Movie_ticket_type =findViewById(R.id.Movie_ticket_type);
@@ -86,6 +90,7 @@ public class TicketDetailsActivity extends BaseActivity implements Contract.View
         if(success instanceof MovieDetailBean){
             MovieDetailBean bean = (MovieDetailBean) success;
             MovieDetailBean.ResultBean resultBean = bean.getResult();
+            moviename = resultBean.getName();
             Movie_ticket_name.setText(resultBean.getName());
             Movie_ticket_address.setText("产地:"+resultBean.getPlaceOrigin());
             Movie_ticket_long.setText("时长:"+resultBean.getDuration());
@@ -98,12 +103,28 @@ public class TicketDetailsActivity extends BaseActivity implements Contract.View
             twomap.put("movieId",SpBase.getString(TicketDetailsActivity.this, "movieId", ""));
             presenter.get(Interfaces.SearchMovieSchedulesBasedOnMovieIDAndCinemaID,hashmap,twomap,MovieIdCinemaId.class);
         }else if(success instanceof MovieIdCinemaId){
-            MovieIdCinemaId movieIdCinemaId = (MovieIdCinemaId) success;
+            final MovieIdCinemaId movieIdCinemaId = (MovieIdCinemaId) success;
             if(movieIdCinemaId.getResult().size()!=0){
                 TicketDetailsAdapter adapter =new TicketDetailsAdapter(R.layout.ticket_detail_recycle_item,movieIdCinemaId.getResult());
                 time_ticket_recycle.setLayoutManager(new LinearLayoutManager(TicketDetailsActivity.this));
                 time_ticket_recycle.setAdapter(adapter);
                 time_ticket_text.setVisibility(View.GONE);
+                /**
+                 * 条目点击事件
+                 */
+                adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        Intent intent =new Intent(TicketDetailsActivity.this,SeatSelectionActivity.class);
+                        intent.putExtra("Cinema_name",cinema_name);
+                        intent.putExtra("Cinema_address",cinema_address);
+                        intent.putExtra("Movie_name",moviename+"");
+                        intent.putExtra("Movie_ting",movieIdCinemaId.getResult().get(position).getScreeningHall());
+                        intent.putExtra("Movie_price",movieIdCinemaId.getResult().get(position).getPrice()+"");
+                        startActivity(intent);
+                    }
+                });
+
             }else{
                 time_ticket_text.setVisibility(View.VISIBLE);
             }

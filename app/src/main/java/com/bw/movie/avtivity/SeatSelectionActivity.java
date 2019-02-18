@@ -11,12 +11,15 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.contract.Contract;
+import com.bw.movie.presenter.Presenter;
 import com.bw.movie.ui.SeatTable;
+import com.bw.movie.utils.Interfaces;
 
 /**
  * 选座 Activity
  */
-public class SeatSelectionActivity extends BaseActivity {
+public class SeatSelectionActivity extends BaseActivity implements Contract.View {
 
     private TextView seat_selection_name;
     private TextView seat_selection_address;
@@ -34,6 +37,7 @@ public class SeatSelectionActivity extends BaseActivity {
     private TextView seat_selection_weixin_paytext;
     private int i=0;
     private double movie_price;
+    private Presenter presenter;
 
     @Override
     protected void initView() {
@@ -107,6 +111,7 @@ public class SeatSelectionActivity extends BaseActivity {
                 i++;
                 double v = movie_price * i;
                 seat_selection_price.setText(v+"");
+                seat_selection_weixin_paytext.setText("支付"+v+"元");
             }
 
             @Override
@@ -115,6 +120,7 @@ public class SeatSelectionActivity extends BaseActivity {
                     i--;
                     double v = movie_price * i;
                     seat_selection_price.setText(v+"");
+                    seat_selection_weixin_paytext.setText("支付"+v+"元");
                 }
             }
 
@@ -147,11 +153,55 @@ public class SeatSelectionActivity extends BaseActivity {
                 finish();
             }
         });
+        /**
+         * 点击_隐藏
+         */
+        seat_selection_down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select_sit_sum.setVisibility(View.VISIBLE);
+                select_sit_pay.setVisibility(View.GONE);
+            }
+        });
 
     }
 
     @Override
     protected void present() {
+        presenter = new Presenter(this);
+        /**
+         * 点击支付
+         */
+        seat_selection_weixin_paytext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(seat_selection_weixinbutton.isChecked()){
+                    /**
+                     * 微信
+                     */
+                    Toast.makeText(ctx, "微信支付", Toast.LENGTH_SHORT).show();
+                }else if(seat_selection_zhifubaobutton.isChecked()){
+                    /**
+                     * 支付宝支付
+                     */
+                }
+            }
+        });
+    }
 
+    @Override
+    public void success(Object success) {
+
+    }
+
+    @Override
+    public void error(String error) {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.ontach();
     }
 }
