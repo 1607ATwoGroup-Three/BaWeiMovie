@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="@dimen/dp_10"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_linear"
+        android:paddingBottom="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/recycle_item_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            />
+
+        <TextView
+            android:id="@+id/recycle_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@id/recycle_item_image"
+            android:text="hahahahah"
+            android:textColor="#333333"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/recycle_item_address"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recycle_item_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@id/recycle_item_image"
+            android:ellipsize="end"
+            android:lines="2"
+            android:text="啊哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+</RelativeLayout>
