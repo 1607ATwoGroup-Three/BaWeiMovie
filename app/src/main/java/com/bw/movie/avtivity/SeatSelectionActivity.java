@@ -2,10 +2,12 @@ package com.bw.movie.avtivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
@@ -28,7 +30,10 @@ public class SeatSelectionActivity extends BaseActivity {
     private RadioButton seat_selection_weixinbutton;
     private RadioButton seat_selection_zhifubaobutton;
     private RelativeLayout select_sit_pay;
+    private RelativeLayout select_sit_sum;
     private TextView seat_selection_weixin_paytext;
+    private int i=0;
+    private double movie_price;
 
     @Override
     protected void initView() {
@@ -47,20 +52,25 @@ public class SeatSelectionActivity extends BaseActivity {
         seat_selection_weixinbutton =findViewById(R.id.seat_selection_weixinbutton);
         seat_selection_zhifubaobutton =findViewById(R.id.seat_selection_zhifubaobutton);
         select_sit_pay =findViewById(R.id.select_sit_pay);
+        select_sit_sum =findViewById(R.id.select_sit_sum);
         seat_selection_weixin_paytext =findViewById(R.id.seat_selection_weixin_paytext);
 
-        seat_selection_seatTable.setData(8,10);
-        seat_selection_seatTable.setMaxSelected(4);//设置最多选中
         Intent intent = getIntent();
         String name = intent.getStringExtra("Cinema_name");
         String address = intent.getStringExtra("Cinema_address");
-        String Cinema_id = intent.getStringExtra("Cinema_id");
         String Movie_name = intent.getStringExtra("Movie_name");
-        double Movie_price = Double.parseDouble(intent.getStringExtra("Movie_price"));
+        String Movie_ting = intent.getStringExtra("Movie_ting");
+        movie_price = Double.parseDouble(intent.getStringExtra("Movie_price"));
         seat_selection_name.setText(name);
         seat_selection_address.setText(address);
         seat_selection_movie_name.setText(Movie_name);
-        seat_selection_price.setText(Movie_price+"");
+        seat_selection_price.setText(0.00+"");
+        seat_selection_address_ting.setText(Movie_ting);
+        /**
+         * 设置的是 影院座位的数量 和最多选中多少个
+         */
+        seat_selection_seatTable.setData(8,10);
+        seat_selection_seatTable.setMaxSelected(4);//设置最多选中
     }
 
     @Override
@@ -94,10 +104,18 @@ public class SeatSelectionActivity extends BaseActivity {
 
             @Override
             public void checked(int row, int column) {
+                i++;
+                double v = movie_price * i;
+                seat_selection_price.setText(v+"");
             }
 
             @Override
             public void unCheck(int row, int column) {
+                if(i>0){
+                    i--;
+                    double v = movie_price * i;
+                    seat_selection_price.setText(v+"");
+                }
             }
 
             @Override
@@ -106,6 +124,30 @@ public class SeatSelectionActivity extends BaseActivity {
             }
 
         });
+        /**
+         * 点击√
+         */
+        seat_selection_pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (i==0){
+                    Toast.makeText(ctx, "请选择座位", Toast.LENGTH_SHORT).show();
+                }else{
+                    select_sit_sum.setVisibility(View.GONE);
+                    select_sit_pay.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        /**
+         * 点击×
+         */
+        seat_selection_esc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     @Override
