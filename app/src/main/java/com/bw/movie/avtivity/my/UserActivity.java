@@ -21,6 +21,7 @@ import com.bigkoo.pickerview.view.TimePickerView;
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.IDUserData;
+import com.bw.movie.bean.UpdateUserMessage;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.utils.Interfaces;
@@ -45,6 +46,9 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
     private Button user_save;
     private String[] sexArry = new String[]{"男", "女"};
     private int index = 0;
+    private String sessionid;
+    private String userid;
+    private Presenter presenter;
 
     protected void initView() {
         BaseActivity.doublekeydown(false);
@@ -68,13 +72,15 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
         User_Back = (ImageView) findViewById(R.id.User_Back);
         User_Back.setOnClickListener(this);
         user_save.setOnClickListener(this);
+        user_birthday.setOnClickListener(this);
+        user_sex.setOnClickListener(this);
     }
 
     @Override
     protected void present() {
-        String sessionid = SpBase.getString(this, "sessionId", "");
-        String userid = SpBase.getString(this, "userId", "");
-        Presenter presenter = new Presenter(this);
+        sessionid = SpBase.getString(this, "sessionId", "");
+        userid = SpBase.getString(this, "userId", "");
+        presenter = new Presenter(this);
         Map<String, Object> headmap = new HashMap<>();
         headmap.put("userId", userid + "");
         headmap.put("sessionId", sessionid + "");
@@ -119,7 +125,17 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
         user_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Map<String, Object> headmap2 = new HashMap<>();
+                headmap2.put("userId", userid + "");
+                headmap2.put("sessionId", sessionid + "");
+                String u_name = user_name.getText().toString();
+                String u_sex = user_sex.getText().toString();
+                String u_emil = user_emil.getText().toString();
+                Map<String, Object> map2 = new HashMap<>();
+                map2.put("nickName",u_name+"");
+                map2.put("sex",u_sex+"");
+                map2.put("email",u_emil+"");
+                presenter.post(Interfaces.ModifyInformation, headmap2, map2, UpdateUserMessage.class);
             }
         });
     }

@@ -186,6 +186,8 @@
             android:padding="20dp">
 
             <LinearLayout
+                android:focusableInTouchMode="true"
+                android:focusable="true"
                 android:layout_marginTop="10dp"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
@@ -203,7 +205,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
-                <TextView
+                <EditText
+                    android:phoneNumber="true"
+                    android:background="@null"
                     android:id="@+id/user_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

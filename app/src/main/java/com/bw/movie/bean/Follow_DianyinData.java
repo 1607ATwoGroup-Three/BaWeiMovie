@@ -54,6 +54,15 @@ public class Follow_DianyinData {
         private long releaseTime;
         private String summary;
 
+        private int followMovie;
+        public int getFollowMovie() {
+            return followMovie;
+        }
+
+        public void setFollowMovie(int followMovie) {
+            this.followMovie = followMovie;
+        }
+
         public int getId() {
             return id;
         }
