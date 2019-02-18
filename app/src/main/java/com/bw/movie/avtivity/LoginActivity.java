@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.bw.movie.MainActivity;
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.LoginData;
@@ -23,6 +25,10 @@ import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.Interfaces;
 import com.bw.movie.utils.LocationUtil;
 import com.bw.movie.utils.SpBase;
+import com.bw.movie.utils.WeChatUtil;
+import com.bw.movie.utils.WeiXinUtil;
+import com.bw.movie.wxapi.WXEntryActivity;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.xw.repo.XEditText;
 
 import java.util.HashMap;
@@ -38,6 +44,7 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     private CheckBox login_zidongdenglu;
     private SharedPreferences.Editor edit;
     private MapView show_mapView;
+    private ImageView login_wx;
 
     private LocationSource.OnLocationChangedListener mListener = null;//定位监听器
     private LocationUtil locationUtil;
@@ -71,6 +78,7 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         login_button = findViewById(R.id.login_button);
         login_phone = findViewById(R.id.login_phone);
         login_pwd = findViewById(R.id.login_pwd);
+        login_wx = findViewById(R.id.login_wx);
         login_jizhumima = findViewById(R.id.login_jizhumima);
         login_zidongdenglu = findViewById(R.id.login_zidongdenglu);
         boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
@@ -106,6 +114,20 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
                 map.put("pwd",encrypt);
                 SpBase.save(LoginActivity.this,"pwd",pwd+"");
                 presenter.post(Interfaces.Land,headmap,map,LoginData.class);
+            }
+        });
+        login_wx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!WeChatUtil.wechat(LoginActivity.this).isWXAppInstalled()) {
+                    Toast.makeText(LoginActivity.this, "请先安装应用", Toast.LENGTH_SHORT).show();
+                } else {
+                    //  验证
+                    SendAuth.Req req = new SendAuth.Req();
+                    req.scope = "snsapi_userinfo";
+                    req.state = "wechat_sdk_demo_test";
+                    WeiXinUtil.reg(LoginActivity.this).sendReq(req);
+                }
             }
         });
     }
