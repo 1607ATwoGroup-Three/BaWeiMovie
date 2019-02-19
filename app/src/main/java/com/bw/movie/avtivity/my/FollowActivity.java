@@ -77,7 +77,7 @@ public class FollowActivity extends BaseActivity implements View.OnClickListener
         headmap.put("sessionId", sessionid + "");
         Map<String, Object> map = new HashMap<>();
         map.put("page", 1);
-        map.put("count", 3);
+        map.put("count", 100);
         presenter.get(Interfaces.SearchForVideosOfInterestToUsers, headmap, map, Follow_DianyinData.class);
     }
 
@@ -101,7 +101,7 @@ public class FollowActivity extends BaseActivity implements View.OnClickListener
                 headmap.put("sessionId", sessionid + "");
                 Map<String, Object> map = new HashMap<>();
                 map.put("page", 1);
-                map.put("count", 3);
+                map.put("count", 100);
                 presenter.get(Interfaces.SearchForVideosOfInterestToUsers, headmap, map, Follow_DianyinData.class);
                 break;
             case R.id.care_YinYuan:
@@ -117,7 +117,7 @@ public class FollowActivity extends BaseActivity implements View.OnClickListener
                 headmap2.put("sessionId", sessionid + "");
                 Map<String, Object> map2 = new HashMap<>();
                 map2.put("page", 1);
-                map2.put("count", 4);
+                map2.put("count", 100);
                 presenter.get(Interfaces.SearchForCinemaInFormationThatUsersAreInterestedIn, headmap2, map2, Follow_YinyuanData.class);
                 break;
         }

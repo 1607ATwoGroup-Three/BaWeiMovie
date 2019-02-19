@@ -73,7 +73,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener,Co
         headmap.put("sessionId", sessionid + "");
         Map<String, Object> map = new HashMap<>();
         map.put("page", 1);
-        map.put("count", 2);
+        map.put("count", 100);
         map.put("status",1);
         presenter.get(Interfaces.QueryListOfUserPurchaseRecords, headmap, map, PayTicketJiluData.class);
     }
@@ -95,7 +95,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener,Co
                 headmap.put("sessionId", sessionid + "");
                 Map<String, Object> map = new HashMap<>();
                 map.put("page", 1);
-                map.put("count", 2);
+                map.put("count", 100);
                 map.put("status",1);
                 presenter.get(Interfaces.QueryListOfUserPurchaseRecords, headmap, map, PayTicketJiluData.class);
                 break;
@@ -110,7 +110,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener,Co
                 headmap2.put("sessionId", sessionid + "");
                 Map<String, Object> map2 = new HashMap<>();
                 map2.put("page", 1);
-                map2.put("count", 2);
+                map2.put("count", 100);
                 map2.put("status",2);
                 presenter.get(Interfaces.QueryListOfUserPurchaseRecords, headmap2, map2, PayTicketJiluData.class);
                 break;

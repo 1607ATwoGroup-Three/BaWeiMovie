@@ -238,7 +238,7 @@ public class SeatSelectionActivity extends BaseActivity implements Contract.View
                 WeiXinUtil.reg(this).sendReq(req);
                 Toast.makeText(this, "去微信支付", Toast.LENGTH_SHORT).show();
 
-                
+
             }
         }
     }
