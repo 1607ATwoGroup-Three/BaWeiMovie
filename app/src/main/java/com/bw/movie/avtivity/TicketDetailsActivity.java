@@ -121,6 +121,7 @@ public class TicketDetailsActivity extends BaseActivity implements Contract.View
                         intent.putExtra("Movie_name",moviename+"");
                         intent.putExtra("Movie_ting",movieIdCinemaId.getResult().get(position).getScreeningHall());
                         intent.putExtra("Movie_price",movieIdCinemaId.getResult().get(position).getPrice()+"");
+                        SpBase.save(TicketDetailsActivity.this,"scheduleId",movieIdCinemaId.getResult().get(position).getId()+"");
                         startActivity(intent);
                     }
                 });

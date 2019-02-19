@@ -9,7 +9,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 /**
- * date:2019/1/27
+ * date:2019/2/17
  * author:fxr
  * function：微信工具类
  */

@@ -2,6 +2,7 @@ package com.bw.movie.avtivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -11,10 +12,20 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.bean.IDUserData;
+import com.bw.movie.bean.PayDanBean;
+import com.bw.movie.bean.UserXiaDanData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.ui.SeatTable;
+import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.Interfaces;
+import com.bw.movie.utils.SpBase;
+import com.bw.movie.utils.WeiXinUtil;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 选座 Activity
@@ -38,6 +49,9 @@ public class SeatSelectionActivity extends BaseActivity implements Contract.View
     private int i=0;
     private double movie_price;
     private Presenter presenter;
+    private String sessionid;
+    private String userid;
+    private String scheduleId;
 
     @Override
     protected void initView() {
@@ -65,6 +79,7 @@ public class SeatSelectionActivity extends BaseActivity implements Contract.View
         String Movie_name = intent.getStringExtra("Movie_name");
         String Movie_ting = intent.getStringExtra("Movie_ting");
         movie_price = Double.parseDouble(intent.getStringExtra("Movie_price"));
+        scheduleId = SpBase.getString(SeatSelectionActivity.this, "scheduleId", "");
         seat_selection_name.setText(name);
         seat_selection_address.setText(address);
         seat_selection_movie_name.setText(Movie_name);
@@ -179,6 +194,22 @@ public class SeatSelectionActivity extends BaseActivity implements Contract.View
                     /**
                      * 微信
                      */
+                    sessionid = SpBase.getString(SeatSelectionActivity.this, "sessionId", "");
+                    userid = SpBase.getString(SeatSelectionActivity.this, "userId", "");
+                    Map<String, Object> headmap = new HashMap<>();
+                    headmap.put("userId", userid + "");
+                    headmap.put("sessionId", sessionid + "");
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("scheduleId",scheduleId+"");
+                    map.put("amount",i+"");
+
+                    String sign = userid + scheduleId + i + "movie";
+                    Log.e("zzzzz", sign);
+                    String encrypt = EncryptUtil.MD5(sign);
+                    Log.e("zzzzz", encrypt);
+                    map.put("sign",encrypt);
+                    presenter.post(Interfaces.TicketEnquiry, headmap, map, UserXiaDanData.class);
+
                     Toast.makeText(ctx, "微信支付", Toast.LENGTH_SHORT).show();
                 }else if(seat_selection_zhifubaobutton.isChecked()){
                     /**
@@ -191,7 +222,25 @@ public class SeatSelectionActivity extends BaseActivity implements Contract.View
 
     @Override
     public void success(Object success) {
+        if (success instanceof PayDanBean) {
+            PayDanBean payBean = (PayDanBean) success;
+            Log.e("payBean", payBean.toString());
+            if (payBean != null && payBean.getStatus().equals("0000")) {
+                PayReq req = new PayReq();
+                req.appId = payBean.getAppId();
+                req.nonceStr = payBean.getNonceStr();
+                req.partnerId = payBean.getPartnerId();
+                req.prepayId = payBean.getPrepayId();
+                req.sign = payBean.getSign();
+                req.timeStamp = payBean.getTimeStamp();
+                req.packageValue = payBean.getPackageValue();
+                //去调微信
+                WeiXinUtil.reg(this).sendReq(req);
+                Toast.makeText(this, "去微信支付", Toast.LENGTH_SHORT).show();
 
+                
+            }
+        }
     }
 
     @Override
@@ -203,5 +252,16 @@ public class SeatSelectionActivity extends BaseActivity implements Contract.View
     protected void onDestroy() {
         super.onDestroy();
         presenter.ontach();
+    }
+
+    private void Pay(){
+        Map<String, Object> headmap2 = new HashMap<>();
+        headmap2.put("userId", userid + "");
+        headmap2.put("sessionId", sessionid + "");
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("payType",1+"");
+        String orderId = SpBase.getString(SeatSelectionActivity.this, "orderId", null);
+        map2.put("orderId",orderId+"");
+        presenter.post(Interfaces.Payment, headmap2, map2, PayDanBean.class);
     }
 }
