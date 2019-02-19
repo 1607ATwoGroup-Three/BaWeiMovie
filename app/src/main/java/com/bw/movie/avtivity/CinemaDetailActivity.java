@@ -200,6 +200,8 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
                     intent.putExtra("Cinema_address",data1.getResult().getAddress());
 //                    在传值的时候获取到最新的电影院ID  然后传送给选座
                     SpBase.save(CinemaDetailActivity.this,"cinema_id",data1.getResult().getId()+"");
+//                    在传值的时候获取到最新的 排期表的 ID
+                    SpBase.save(CinemaDetailActivity.this,"scheduleId",movieIdCinemaId.getResult().get(position).getId()+"");
                     intent.putExtra("Cinema_id",data1.getResult().getId()+"");
                     intent.putExtra("Movie_name",movie_name);
                     intent.putExtra("Movie_price",movieIdCinemaId.getResult().get(position).getPrice()+"");

@@ -78,7 +78,7 @@ public class Interfaces {
     public static final String SearchMovieSchedulesBasedOnMovieIDAndCinemaID = "movieApi/movie/v1/findMovieScheduleList";
     //    根据电影ID查询当前排片该电影的影院列表 get
     public static final String QuerAyTheListOfCinemasCurrentlyInProductionAccordingToTheMovieID = "movieApi/movie/v1/findCinemasListByMovieId";
-    //    购票查询 post
+    //    购票下单 post
     public static final String TicketEnquiry = "movieApi/movie/v1/verify/buyMovieTicket";
     //    支付 post
     public static final String Payment = "movieApi/movie/v1/verify/pay";
