@@ -35,11 +35,14 @@ public class MovieFilmAdapter extends BaseQuickAdapter<MovieFilmData.ResultBean,
 
         helper.setText(R.id.Ping_Huifu_DianZaiShu,item.getGreatNum()+"");
         helper.setText(R.id.Ping_Huifu_HuiFuShu,item.getReplyNum()+"");
+        helper.addOnClickListener(R.id.Ping_Huifu_love);
 
         if(item.getIsGreat()==0){
             MyGlideUtil.setRoundImage(mContext,R.mipmap.com_icon_praise_default,(ImageView) helper.getView(R.id.Ping_Huifu_love));
         }else{
             MyGlideUtil.setRoundImage(mContext,R.mipmap.com_icon_praise_selected,(ImageView) helper.getView(R.id.Ping_Huifu_love));
         }
+
+        
     }
 }

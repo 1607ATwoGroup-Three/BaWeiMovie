@@ -7,39 +7,78 @@
     tools:context=".fragment.MovieFilmReviewFragment">
 
     <TextView
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
         android:id="@+id/film_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
         android:text="影评"
         android:textColor="#333333"
         android:textSize="16sp" />
 
     <TextView
-        android:layout_marginLeft="24dp"
         android:id="@+id/film_style"
         android:layout_width="40dp"
         android:layout_height="4dp"
         android:layout_below="@id/film_name"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/cinema_ed" />
 
     <ImageView
         android:id="@+id/film_review_image_down"
-        android:background="@mipmap/com_icon_down_default"
-        android:layout_marginRight="24dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:layout_width="24dp"
-        android:layout_height="24dp" />
+        android:layout_marginRight="24dp"
+        android:background="@mipmap/com_icon_down_default" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/film_review_recycle"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/film_style"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/film_style"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"></android.support.v7.widget.RecyclerView>
 
+    <ImageView
+        android:id="@+id/film_review_write"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@mipmap/com_icon_publish_default" />
+    <LinearLayout
+        android:id="@+id/film_recycle_linear"
+        android:visibility="gone"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="80dp">
+        <EditText
+            android:id="@+id/film_recycle_edit"
+            android:hint="写评论"
+            android:maxWidth="264dp"
+            android:maxHeight="60dp"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:lines="3"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:layout_width="264dp"
+            android:layout_height="60dp" />
+        <TextView
+            android:id="@+id/film_recycle_send"
+            android:layout_marginTop="30dp"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:text="发送"
+            android:layout_width="60dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.bw.movie.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +50,7 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
     private List<RecommendCinemaData.ResultBean> recommendlist = new ArrayList<>();
     private List<NearbyCinemaData.ResultBean> Nearbylist = new ArrayList<>();
     private CinemaAdapter adapter;
+    private int rootViewLastHeight;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +61,28 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
         return view;
     }
 
-    private void initView(View view) {
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
+                Window window = getActivity().getWindow();
+                View decorView = window.getDecorView();
+                //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
+                int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                //在6.0增加了View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR，这个字段就是把状态栏标记为浅色，然后状态栏的字体颜色自动转换为深色
+                window.setStatusBarColor(Color.TRANSPARENT);
+                decorView.setSystemUiVisibility(option);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                //导航栏颜色也可以正常设置
+                //window.setNavigationBarColor(Color.TRANSPARENT);
+            }
+        }
+    }
+
+    private void initView(final View view) {
         cinema_image_white = (ImageView) view.findViewById(R.id.cinema_image_white);
         cinema_text_white = (TextView) view.findViewById(R.id.cinema_text_white);
         cinema_btn_Recommend = (TextView) view.findViewById(R.id.cinema_btn_Recommend);
@@ -92,6 +118,7 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
                 }
             }
         });
+
     }
 
     private void present() {
@@ -151,7 +178,6 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
         }else if(success instanceof RegisterData){
             RegisterData data = (RegisterData) success;
             Log.e("关注电影院",data.getMessage()+"");
-//            Toast.makeText(getContext(),data.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

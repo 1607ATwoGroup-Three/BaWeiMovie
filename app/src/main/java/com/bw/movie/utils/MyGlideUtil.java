@@ -34,7 +34,7 @@ public enum MyGlideUtil {
         Glide.with(mContext)
                 .load(mImageUrl)
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -43,7 +43,7 @@ public enum MyGlideUtil {
         Glide.with(mContext)
                 .load(mImageUrl)
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -60,7 +60,7 @@ public enum MyGlideUtil {
                 .load(mImageUrl)
                 .apply(RequestOptions.circleCropTransform())
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -70,7 +70,7 @@ public enum MyGlideUtil {
                 .load(mImageUrl)
                 .apply(RequestOptions.circleCropTransform())
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -86,7 +86,7 @@ public enum MyGlideUtil {
         Glide.with(mContext)
                 .load(mImageUrl)
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .apply(RequestOptions.noAnimation())//强制加载图片格式为静态图片   默认情况下都可以加载
                 .into(mImageView);
     }
@@ -96,7 +96,7 @@ public enum MyGlideUtil {
         Glide.with(mContext)
                 .load(mImageUrl)
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .apply(RequestOptions.noAnimation())//强制加载图片格式为静态图片   默认情况下都可以加载
                 .into(mImageView);
     }
@@ -114,7 +114,7 @@ public enum MyGlideUtil {
                 .asGif() //强制加载动态图片
                 .load(mImageUrl)
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -124,7 +124,7 @@ public enum MyGlideUtil {
                 .asGif() //强制加载动态图片
                 .load(mImageUrl)
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -141,7 +141,7 @@ public enum MyGlideUtil {
                 .load(mImageUrl)
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -151,7 +151,7 @@ public enum MyGlideUtil {
                 .load(mImageUrl)
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 
@@ -161,7 +161,7 @@ public enum MyGlideUtil {
                 .load(mImageUrl)
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
                 .apply(RequestOptions.errorOf(R.mipmap.error))        //加载失败 默认的加载图片
-                .apply(RequestOptions.placeholderOf(R.mipmap.haha_1)) //加载中 默认的加载图片
+                .apply(RequestOptions.placeholderOf(R.drawable.loading)) //加载中 默认的加载图片
                 .into(mImageView);
     }
 }
