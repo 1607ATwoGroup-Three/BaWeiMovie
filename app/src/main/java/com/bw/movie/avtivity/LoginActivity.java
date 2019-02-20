@@ -41,7 +41,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     private XEditText login_phone;
     private XEditText login_pwd;
     private CheckBox login_jizhumima;
-    private CheckBox login_zidongdenglu;
     private SharedPreferences.Editor edit;
     private MapView show_mapView;
     private ImageView login_wx;
@@ -80,7 +79,6 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
         login_pwd = findViewById(R.id.login_pwd);
         login_wx = findViewById(R.id.login_wx);
         login_jizhumima = findViewById(R.id.login_jizhumima);
-        login_zidongdenglu = findViewById(R.id.login_zidongdenglu);
         boolean cb = Boolean.parseBoolean(SpBase.getString(LoginActivity.this,"cb", false + ""));
         String phone = SpBase.getString(LoginActivity.this,"ter_phone",null);
         login_phone.setText(phone+"");

@@ -64,7 +64,7 @@ public class PayTicketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((TwoHolder) viewHolder).Pay_WDingdan.setText("订单号："+plist.get(i).getOrderId()+"");
             ((TwoHolder) viewHolder).Pay_WYinYuan.setText("影院："+plist.get(i).getCinemaName());
             ((TwoHolder) viewHolder).Pay_WTime.setText("下单时间："+longToDate(plist.get(i).getCreateTime()));
-            ((TwoHolder) viewHolder).Pay_Wgo.setText(plist.get(i).getBeginTime()+"");
+            ((TwoHolder) viewHolder).Pay_Wgo.setText(plist.get(i).getBeginTime()+"-"+plist.get(i).getEndTime());
             ((TwoHolder) viewHolder).Pay_WShu.setText("数量："+plist.get(i).getAmount()+"张");
             ((TwoHolder) viewHolder).Pay_WYinTing.setText("影厅："+plist.get(i).getScreeningHall()+"");
             ((TwoHolder) viewHolder).Pay_WMoney.setText("金额："+plist.get(i).getPrice()+"元");

@@ -38,6 +38,7 @@
             android:textSize="14sp" />
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
+        android:overScrollMode="never"
         android:id="@+id/Pay_Recy"
         android:layout_marginLeft="24dp"
         android:layout_marginBottom="12dp"
