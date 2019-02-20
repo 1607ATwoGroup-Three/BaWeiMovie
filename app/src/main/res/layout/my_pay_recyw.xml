@@ -44,7 +44,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="28dp"
                         android:textSize="14sp"
-                        android:textColor="#f7a164"
+                        android:textColor="#f88337"
                         android:text="14:00:00-16:15:00"/>
 
                 </LinearLayout>

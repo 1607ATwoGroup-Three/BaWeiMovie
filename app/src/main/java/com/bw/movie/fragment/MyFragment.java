@@ -221,6 +221,8 @@ public class MyFragment extends Fragment implements Contract.View, View.OnClickL
             final String message = userSigninBean.getMessage();
             if (userSigninBean.getStatus().equals("0000")){
                 Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -241,7 +243,7 @@ public class MyFragment extends Fragment implements Contract.View, View.OnClickL
      */
     public String getFilePath(String fileName, int requestCode, Intent data) {
         if (requestCode == 1) {
-            return fileName;
+            return  fileName;
         } else if (requestCode == 0) {
             Uri uri = data.getData();
             String[] proj = {MediaStore.Images.Media.DATA};

@@ -91,7 +91,6 @@
                     android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="fxr"
                     android:textColor="#999999"
                     android:textSize="14sp" />
 
@@ -123,7 +122,6 @@
                     android:id="@+id/user_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="女"
                     android:textColor="#999999"
                     android:textSize="14sp" />
 
@@ -155,7 +153,6 @@
                     android:id="@+id/user_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2222-02-22"
                     android:textColor="#999999"
                     android:textSize="14sp" />
 
@@ -211,7 +208,6 @@
                     android:id="@+id/user_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="136999260345"
                     android:textColor="#999999"
                     android:textSize="14sp" />
 
@@ -240,10 +236,10 @@
                     android:layout_weight="1"/>
 
                 <TextView
+                    android:text="fxr0905@163.com"
                     android:id="@+id/user_emil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="fxr0905@163.com"
                     android:textColor="#999999"
                     android:textSize="14sp" />
 

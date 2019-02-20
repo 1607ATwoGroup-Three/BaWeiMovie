@@ -75,7 +75,7 @@ public class HornActivity extends BaseActivity implements Contract.View {
         presenter.get(Interfaces.QueryTheNumberOfUnreadMessagesTheUserCurrentlyHas, headmap, map, WdMessageData.class);
         Map<String, Object> map2 = new HashMap<>();
         map2.put("page",1);
-        map2.put("count",5);
+        map2.put("count",100);
         presenter.get(Interfaces.QuerySystemMessageList, headmap, map2, HornBean.class);
 
     }

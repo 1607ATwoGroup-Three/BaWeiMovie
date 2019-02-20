@@ -315,6 +315,8 @@ public class RegisterActivity extends BaseActivity implements Contract.View {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             String ter_phone = register_phone.getText().toString();
             SpBase.save(RegisterActivity.this, "ter_phone", ter_phone);
+            String s = register_emil.getText().toString();
+            SpBase.save(RegisterActivity.this,"register_emil",s);
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
         } else {
@@ -327,9 +329,4 @@ public class RegisterActivity extends BaseActivity implements Contract.View {
         Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) and run LayoutCreator again
-    }
 }

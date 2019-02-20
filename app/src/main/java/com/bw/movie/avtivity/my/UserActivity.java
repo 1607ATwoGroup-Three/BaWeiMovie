@@ -148,6 +148,7 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
             String nickName = result.getNickName();
             String headPic = result.getHeadPic();
             String phone = result.getPhone();
+
             //性别
             if (result.getSex() == 1) {
                 user_sex.setText("男");
@@ -162,6 +163,8 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
             user_birthday.setText(format);
             user_name.setText(nickName);
             user_phone.setText(phone);
+            String register_emil = SpBase.getString(UserActivity.this, "register_emil", null);
+            user_emil.setText(register_emil);
             MyGlideUtil.setCircleImage(UserActivity.this, headPic, my_message);
         }
     }
