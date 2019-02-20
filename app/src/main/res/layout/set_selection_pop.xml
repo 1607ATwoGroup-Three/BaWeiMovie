@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/set_selection_pop"
+    android:background="#FFBBFFBB"
+    android:layout_height="150dp">
+    <RelativeLayout
+        android:id="@+id/select_sit_pay"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        >
+        <TextView
+            android:id="@+id/tzf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="10dp"
+            android:text="选择支付方式"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/seat_selection_down"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="24dp"
+            android:background="@mipmap/com_icon_down_default"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/wx"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_below="@id/tzf"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@mipmap/pay_icon_weixin_default"
+            android:gravity="center"
+            android:text="微信支付"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/zfb"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_below="@id/wx"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@mipmap/pay_icon_zhifubao_default"
+            android:gravity="center"
+            android:text="支付宝支付"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seat_selection_down"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="24dp">
+
+            <RadioButton
+                android:id="@+id/seat_selection_weixinbutton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignBottom="@id/wx"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/com_icon_ok" />
+
+            <RadioButton
+                android:id="@+id/seat_selection_zhifubaobutton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/seat_selection_weixinbutton"
+                android:layout_alignBottom="@id/zfb"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/com_icon_ok" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/seat_selection_weixin_paytext"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/login_login"
+            android:gravity="center"
+            android:text="微信支付53.3元"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</LinearLayout>

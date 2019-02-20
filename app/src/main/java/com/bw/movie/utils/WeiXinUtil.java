@@ -43,7 +43,7 @@ public class WeiXinUtil {
             return  null;
         }
     }
-    //支付
+    /*//支付
     public static void  weiXinPay(PayDanBean bean){
         IWXAPI wxapi = WXAPIFactory.createWXAPI(MyApp.context, APP_ID, true);
         //注册到微信
@@ -58,6 +58,6 @@ public class WeiXinUtil {
         payReq.sign=bean.getSign();
         payReq.packageValue=bean.getPackageValue();
         wxapi.sendReq(payReq);
-    }
+    }*/
 
 }

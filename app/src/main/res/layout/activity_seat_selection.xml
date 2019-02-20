@@ -7,47 +7,52 @@
     tools:context=".avtivity.SeatSelectionActivity">
 
     <ImageView
-        android:background="@mipmap/com_background_fub2"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        android:background="@mipmap/com_background_fub2" />
+
     <RelativeLayout
         android:id="@+id/r1"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="180dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
+
         <TextView
             android:id="@+id/seat_selection_name"
-            android:text="hahah"
-            android:textSize="14sp"
-            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="hahah"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
         <TextView
             android:id="@+id/seat_selection_address"
-            android:text="hahah"
-            android:textSize="12sp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/seat_selection_name"
-            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seat_selection_name"
+            android:layout_marginTop="10dp"
+            android:text="hahah"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
         <TextView
             android:id="@+id/seat_selection_movie_name"
-            android:text="hahah"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/seat_selection_address"
-            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seat_selection_address"
+            android:layout_marginTop="10dp"
+            android:text="hahah"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/seat_selection_address_ting"
             android:layout_width="match_parent"
             android:layout_height="26dp"
-            android:layout_marginTop="10dp"
             android:layout_below="@id/seat_selection_movie_name"
+            android:layout_marginTop="10dp"
             android:background="@drawable/movie_details_botton_bj"
             android:gravity="center"
             android:text="10-20   14:40-16:26    中影I DO巨幕全景声厅    "
@@ -142,24 +147,25 @@
             android:textColor="#ffffff"
             android:textSize="13sp" />
     </RelativeLayout>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/r1"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="-20dp"
         android:src="@mipmap/icon_select_set_background" />
     <!--这里放的是一个影院-->
     <RelativeLayout
         android:id="@+id/select_sit_sum"
-        android:visibility="visible"
         android:layout_width="312dp"
         android:layout_height="73dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
-        android:background="@drawable/movie_details_botton_bj">
+        android:background="@drawable/movie_details_botton_bj"
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/t1"
@@ -200,98 +206,12 @@
             android:layout_toRightOf="@id/seat_selection_pay"
             android:src="@mipmap/com_fang_qi" />
     </RelativeLayout>
+
     <com.bw.movie.ui.SeatTable
         android:id="@+id/seat_selection_seatTable"
-        android:layout_below="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="390dp"
         android:layout_above="@+id/select_sit_sum"
-        android:layout_width="match_parent"
-        android:layout_height="390dp" />
-    <RelativeLayout
-        android:background="#ffffff"
-        android:id="@+id/select_sit_pay"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="150dp">
-        <TextView
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/tzf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选择支付方式"
-            android:textSize="16sp"/>
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="24dp"
-            android:id="@+id/seat_selection_down"
-            android:layout_alignParentRight="true"
-            android:background="@mipmap/com_icon_down_default"
-            android:scaleType="fitXY"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
-        <TextView
-            android:id="@+id/wx"
-            android:layout_marginLeft="24dp"
-            android:drawableLeft="@mipmap/pay_icon_weixin_default"
-            android:layout_marginTop="15dp"
-            android:layout_below="@id/tzf"
-            android:text="微信支付"
-            android:gravity="center"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp" />
-
-
-
-        <TextView
-            android:id="@+id/zfb"
-            android:layout_marginLeft="24dp"
-            android:drawableLeft="@mipmap/pay_icon_zhifubao_default"
-            android:layout_marginTop="15dp"
-            android:layout_below="@id/wx"
-            android:text="支付宝支付"
-            android:gravity="center"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp" />
-        <RadioGroup
-            android:layout_below="@id/seat_selection_down"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/seat_selection_weixinbutton"
-                android:layout_alignBottom="@id/wx"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/com_icon_ok"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
-            <RadioButton
-                android:id="@+id/seat_selection_zhifubaobutton"
-                android:layout_alignBottom="@id/zfb"
-                android:layout_marginTop="15dp"
-                android:layout_below="@id/seat_selection_weixinbutton"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/com_icon_ok"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
-
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/seat_selection_weixin_paytext"
-            android:text="微信支付53.3元"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/login_login"
-            android:layout_width="match_parent"
-            android:layout_height="33dp" />
-
-    </RelativeLayout>
-
+        android:layout_below="@+id/r1"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>
