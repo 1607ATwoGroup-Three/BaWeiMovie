@@ -16,6 +16,7 @@ import com.bw.movie.adapter.PayTicketAdapter;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.Follow_DianyinData;
 import com.bw.movie.bean.Follow_YinyuanData;
+import com.bw.movie.bean.PayDanBean;
 import com.bw.movie.bean.PayTicketJiluData;
 import com.bw.movie.contract.Contract;
 import com.bw.movie.presenter.Presenter;
@@ -129,14 +130,14 @@ public class PayActivity extends BaseActivity implements View.OnClickListener,Co
                 SpBase.save(PayActivity.this,"orderId",orderId);
             }
             mlist.addAll(result);
-            adapter.setType(0);
-            adapter.notifyDataSetChanged();
-        }else if (success instanceof PayTicketJiluData){
-            mlist.clear();
-            PayTicketJiluData payTicketJiluData = (PayTicketJiluData) success;
-            List<PayTicketJiluData.ResultBean> result = payTicketJiluData.getResult();
-            mlist.addAll(result);
-            adapter.setType(1);
+            for (int i = 0; i < result.size(); i++) {
+                int status = result.get(i).getStatus();
+                if (status==1){
+                    adapter.setType(0);
+                }else if (status==2){
+                    adapter.setType(1);
+                }
+            }
             adapter.notifyDataSetChanged();
         }
     }
