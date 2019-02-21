@@ -12,7 +12,7 @@
         android:layout_below="@+id/rela1"
         android:paddingLeft="15dp"
         android:paddingTop="15dp"
-        android:paddingRight="15dp"
+        android:paddingRight="14dp"
         android:paddingBottom="5dp">
 
         <LinearLayout
