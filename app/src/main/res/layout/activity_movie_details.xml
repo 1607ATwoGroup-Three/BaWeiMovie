@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <ImageView
-        android:id="@+id/details_iamge_back_bottom"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/movie_details_botton_bj"
@@ -101,7 +100,6 @@
             android:layout_marginBottom="20dp"
             />
         <LinearLayout
-            android:id="@+id/details_lin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

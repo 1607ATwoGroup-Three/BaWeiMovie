@@ -11,11 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
-import com.amap.api.maps.AMap;
-import com.amap.api.maps.CameraUpdateFactory;
-import com.amap.api.maps.LocationSource;
-import com.amap.api.maps.MapView;
-import com.bw.movie.MainActivity;
+import com.amap.api.maps2d.AMap;
+import com.amap.api.maps2d.CameraUpdateFactory;
+import com.amap.api.maps2d.LocationSource;
+import com.amap.api.maps2d.MapView;
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.LoginData;
@@ -27,14 +26,13 @@ import com.bw.movie.utils.LocationUtil;
 import com.bw.movie.utils.SpBase;
 import com.bw.movie.utils.WeChatUtil;
 import com.bw.movie.utils.WeiXinUtil;
-import com.bw.movie.wxapi.WXEntryActivity;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.xw.repo.XEditText;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends BaseActivity implements Contract.View,LocationSource{
+public class LoginActivity extends BaseActivity implements Contract.View,LocationSource {
 
     private Button login_button;
     private TextView login_Zhuce;
@@ -166,7 +164,7 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
 
     @Override
     public void error(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
     }
 
 //    这是定位
@@ -209,6 +207,8 @@ public class LoginActivity extends BaseActivity implements Contract.View,Locatio
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

@@ -183,6 +183,15 @@ public class CinemaFragment extends Fragment implements View.OnClickListener, Co
 
     @Override
     public void error(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+
+        }
     }
 }

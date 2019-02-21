@@ -222,6 +222,8 @@ public class CinemaDetailActivity extends BaseActivity implements Contract.View 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.ontach();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

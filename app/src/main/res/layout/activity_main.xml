@@ -8,7 +8,6 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/img"
         android:fitsSystemWindows="true"
         android:background="@mipmap/icon_start_page"
         android:layout_width="match_parent"

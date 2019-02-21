@@ -48,7 +48,7 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
     private String type;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
-    private Contract.Presenter presenter;
+    private Presenter presenter;
     private List<MovieRecycleBean> list =new ArrayList<>();
 
     @Override
@@ -303,6 +303,15 @@ public class MovieListActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void error(String error) {
-        Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

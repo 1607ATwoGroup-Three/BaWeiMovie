@@ -144,6 +144,14 @@ public class PayActivity extends BaseActivity implements View.OnClickListener,Co
 
     @Override
     public void error(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

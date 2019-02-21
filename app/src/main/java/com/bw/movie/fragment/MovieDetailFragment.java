@@ -3,6 +3,7 @@ package com.bw.movie.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class MovieDetailFragment extends Fragment implements Contract.View {
     private ImageView details_img;
     private Map<String,Object> headmap;
     private Map<String,Object> map;
-    private Contract.Presenter presenter;
+    private Presenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,6 +102,14 @@ public class MovieDetailFragment extends Fragment implements Contract.View {
 
     @Override
     public void error(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

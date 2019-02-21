@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -171,7 +172,7 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void error(String error) {
-        Toast.makeText(UserActivity.this, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
     }
 
     private void getData() {
@@ -225,4 +226,11 @@ public class UserActivity extends BaseActivity implements View.OnClickListener, 
         builder.show();//弹出框
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
+    }
 }

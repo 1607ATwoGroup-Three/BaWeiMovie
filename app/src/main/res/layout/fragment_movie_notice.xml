@@ -26,7 +26,6 @@
         android:background="@drawable/cinema_ed" />
 
     <ImageView
-        android:id="@+id/film_notice_image_down"
         android:background="@mipmap/com_icon_down_default"
         android:layout_marginRight="24dp"
         android:layout_alignParentRight="true"

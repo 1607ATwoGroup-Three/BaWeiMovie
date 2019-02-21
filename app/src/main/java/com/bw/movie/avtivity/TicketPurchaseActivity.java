@@ -3,6 +3,7 @@ package com.bw.movie.avtivity;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -90,7 +91,7 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
 
     @Override
     public void error(String error) {
-        Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
     }
 
     @Override
@@ -99,6 +100,14 @@ public class TicketPurchaseActivity extends BaseActivity implements Contract.Vie
             case R.id.movie_ticket_back:
                 finish();
                 break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
         }
     }
 }

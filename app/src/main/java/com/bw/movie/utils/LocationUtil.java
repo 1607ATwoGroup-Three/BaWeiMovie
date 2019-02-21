@@ -7,9 +7,6 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.maps.model.BitmapDescriptorFactory;
-import com.amap.api.maps.model.LatLng;
-import com.amap.api.maps.model.MarkerOptions;
 import com.bw.movie.R;
 
 /**
@@ -73,10 +70,9 @@ public class LocationUtil implements AMapLocationListener {
         }
     }
 
-    /**
+    /*
      * 自定义图标
      * @return
-     */
     public MarkerOptions getMarkerOption(String str, double lat, double lgt){
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
@@ -86,7 +82,7 @@ public class LocationUtil implements AMapLocationListener {
         markerOptions.period(100);
 
         return markerOptions;
-    }
+    }*/
 
     public interface ILocationCallBack{
         void callBack(String str,double lat,double lgt,AMapLocation aMapLocation);

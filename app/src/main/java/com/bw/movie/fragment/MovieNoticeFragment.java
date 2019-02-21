@@ -32,7 +32,7 @@ public class MovieNoticeFragment extends Fragment implements Contract.View {
     private RecyclerView film_notice_recycle;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
-    private Contract.Presenter presenter;
+    private Presenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +71,14 @@ public class MovieNoticeFragment extends Fragment implements Contract.View {
 
     @Override
     public void error(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

@@ -42,7 +42,7 @@ public class MovieFilmReviewFragment extends Fragment implements Contract.View, 
 
     private RecyclerView film_review_recycle;
     private ImageView film_review_write;
-    private Contract.Presenter presenter;
+    private Presenter presenter;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
     private EditText film_recycle_edit;
@@ -122,7 +122,7 @@ public class MovieFilmReviewFragment extends Fragment implements Contract.View, 
 
     @Override
     public void error(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error);
     }
 
     private boolean submit() {
@@ -153,6 +153,14 @@ public class MovieFilmReviewFragment extends Fragment implements Contract.View, 
                 film_recycle_linear.setVisibility(View.VISIBLE);
                 film_review_write.setVisibility(View.GONE);
                 break;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
         }
     }
 }

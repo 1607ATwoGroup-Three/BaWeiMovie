@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -73,6 +74,13 @@ public class EditionxActivity extends BaseActivity implements Contract.View {
         presenter = new Presenter(this);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
+    }
 
     @Override
     public void success(Object success) {
@@ -122,6 +130,6 @@ public class EditionxActivity extends BaseActivity implements Contract.View {
 
     @Override
     public void error(String error) {
-
+        Log.e("error",error+"");
     }
 }

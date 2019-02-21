@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class MoviceStillsFragment extends Fragment implements Contract.View {
     private RecyclerView film_stils_recycle;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
-    private Contract.Presenter presenter;
+    private Presenter presenter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,6 +75,14 @@ public class MoviceStillsFragment extends Fragment implements Contract.View {
 
     @Override
     public void error(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

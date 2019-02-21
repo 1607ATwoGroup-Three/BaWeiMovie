@@ -16,7 +16,6 @@
     <RelativeLayout
         android:background="@drawable/show_relative_bg"
         android:layout_alignParentBottom="true"
-        android:id="@+id/show_lin"
         android:layout_width="match_parent"
         android:layout_height="82dp">
         <ImageView

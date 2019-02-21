@@ -232,7 +232,6 @@
         android:background="#33ffffff" />
 
     <LinearLayout
-        android:id="@+id/line9"
         android:layout_width="298dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv2"

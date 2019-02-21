@@ -32,7 +32,6 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp" />
             <LinearLayout
-                android:id="@+id/film_detail_rels3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -189,7 +188,6 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/alpha_style1"
                 android:layout_width="40dp"
                 android:layout_height="4dp"
                 android:layout_below="@id/cast"
@@ -216,7 +214,6 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/details_btn2"
                 android:layout_width="75dp"
                 android:layout_height="32dp"
                 android:layout_marginLeft="150dp"

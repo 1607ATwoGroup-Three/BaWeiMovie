@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -144,7 +145,14 @@ public class FollowActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void error(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
+    }
 }

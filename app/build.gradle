@@ -19,6 +19,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        高德添加
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","arm64-v8a","x86_64"
+        }
     }
     buildTypes {
         release {
@@ -35,6 +40,12 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+//    高德添加
+    allprojects {
+        repositories {
+            jcenter() // 或者 mavenCentral()
+        }
+    }
 }
 
 dependencies {
@@ -48,6 +59,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //    今日头条的适配
     implementation 'me.jessyan:autosize:1.1.2'
+
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.interceptor"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.converterGson"
@@ -72,5 +84,23 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'
     //微信
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.0.2'
+//    定位
+    implementation 'com.amap.api:location:latest.integration'
+//    2d 地图
+    implementation 'com.amap.api:map2d:latest.integration'
 
-}
+    }
+
+    /*android {
+        defaultConfig {
+            ndk {
+                //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+                // abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","arm64-v8a","x86_64"
+                // } } }
+                // dependencies { compile fileTree(dir: 'libs', include: ['*.jar'])
+                // 3D地图so及jar compile 'com.amap.api:3dmap:latest.integration'
+                // 定位功能 compile 'com.amap.api:location:latest.integration'
+                // 搜索功能 compile 'com.amap.api:search:latest.integration'
+            }
+        }
+    }*/

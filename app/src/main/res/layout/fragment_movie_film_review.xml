@@ -26,7 +26,6 @@
         android:background="@drawable/cinema_ed" />
 
     <ImageView
-        android:id="@+id/film_review_image_down"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_alignParentRight="true"

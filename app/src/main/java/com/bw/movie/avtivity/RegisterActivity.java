@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -326,7 +327,14 @@ public class RegisterActivity extends BaseActivity implements Contract.View {
 
     @Override
     public void error(String error) {
-        Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
+    }
 }

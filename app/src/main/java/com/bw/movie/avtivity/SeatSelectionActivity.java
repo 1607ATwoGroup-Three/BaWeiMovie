@@ -284,13 +284,15 @@ public class SeatSelectionActivity extends BaseActivity implements Contract.View
 
     @Override
     public void error(String error) {
-        Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.ontach();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 
     private void Pay() {

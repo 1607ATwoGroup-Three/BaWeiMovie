@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.transition.TransitionSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +64,7 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
     private List<IsShowingUpBean.ResultBean> IsSlist = new ArrayList<>();
     //    即将上映
     private List<ToBeShownSoonBean.ResultBean> ToBlist = new ArrayList<>();
-    private Contract.Presenter presenter;
+    private Presenter presenter;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
 //    Item 的类型
@@ -254,6 +255,14 @@ public class FilmFragment extends Fragment implements View.OnClickListener, Cont
 
     @Override
     public void error(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
 }

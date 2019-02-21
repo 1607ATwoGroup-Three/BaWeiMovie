@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -51,7 +52,7 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
     private String islove;
     private Map<String, Object> headmap;
     private Map<String, Object> map;
-    private Contract.Presenter presenter;
+    private Presenter presenter;
     private FragmentManager manager;
     private int notice = 0;
 
@@ -126,7 +127,7 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
 
     @Override
     public void error(String error) {
-        Toast.makeText(ctx, error, Toast.LENGTH_SHORT).show();
+        Log.e("error",error+"");
     }
 
     @Override
@@ -190,14 +191,17 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        /**
-         * 解决一个问题
-         * 按返回键后视频还在播放问题
-         */
+
+        /*  解决一个问题
+          按返回键后视频还在播放问题*/
         if (notice == 1) {
             EventBus.getDefault().postSticky(true);
             notice = 0;
         }
         EventBus.getDefault().unregister(this);
+        if(presenter!=null){
+            presenter.ontach();
+        }
     }
+
 }
