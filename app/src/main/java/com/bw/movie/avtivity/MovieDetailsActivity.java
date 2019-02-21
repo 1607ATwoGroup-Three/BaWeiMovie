@@ -1,15 +1,12 @@
 package com.bw.movie.avtivity;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
@@ -189,9 +186,19 @@ public class MovieDetailsActivity extends BaseActivity implements Contract.View,
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("onStop","onStop");
+        if (notice == 1) {
+            EventBus.getDefault().postSticky(true);
+            notice = 0;
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        Log.e("onDestroy","onDestroy");
         /*  解决一个问题
           按返回键后视频还在播放问题*/
         if (notice == 1) {
