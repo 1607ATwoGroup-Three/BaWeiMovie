@@ -67,7 +67,6 @@
                 android:layout_alignBottom="@id/wx"
                 android:layout_marginTop="15dp"
                 android:src="@mipmap/com_icon_ok" />
-
             <RadioButton
                 android:id="@+id/seat_selection_zhifubaobutton"
                 android:layout_width="25dp"
